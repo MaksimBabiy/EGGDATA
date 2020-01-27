@@ -1,0 +1,44 @@
+section {
+    background-color:#e4f1fe;
+}
+.news {
+    padding:100px 0;
+}
+
+.news .row.valign-wrapper {
+    margin-bottom:60px;
+}
+
+.news__subtitle, .news__title {
+    margin:0;
+    text-transform:uppercase;
+}
+
+.news__subtitle {
+    font-size:14px;
+}
+
+.news__title {
+    font-size:30px;
+}
+
+.card__image {
+    width:100%;
+}
+
+.card__title {
+    font-size:16px;
+    text-transform:uppercase;
+    font-weight:bold;
+    margin-top:10px;
+    margin-bottom:15px;
+}
+
+.card__author, .card__date {
+    font-size:14px;
+    margin-right:30px;
+}
+
+.card__link {
+    text-transform: uppercase;
+}

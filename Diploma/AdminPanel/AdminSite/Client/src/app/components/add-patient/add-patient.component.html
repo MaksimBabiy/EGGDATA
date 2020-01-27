@@ -1,0 +1,29 @@
+<section class="form-bg">
+ 
+    <div class="form">
+            <div class="form__networks">
+                 <h3 class="registration__form--title">Пожалуйста, введите данные пациента</h3>
+                    <form action="">
+                        <input type="text" name="FirstName" [(ngModel)]="model.FirstName" placeholder="Фамилия">
+                        <input type="text" name="LastName" [(ngModel)]="model.LastName" placeholder="Имя">
+                        <input type="text" name="MiddleName" [(ngModel)]="model.MiddleName" placeholder="Отчество">
+                        <input type="text" name="Age" [(ngModel)]="model.Age" placeholder="Возраст">
+                        <input type="text" name="Weight" [(ngModel)]="model.Weight" placeholder="Вес">
+                        <input type="text" name="Height" [(ngModel)]="model.Height" placeholder="Рост">
+                        <input type="text" name="Sex" [(ngModel)]="model.Sex" placeholder="Пол">
+                        <input type="text" name="PhoneNumber" [(ngModel)]="model.PhoneNumber" placeholder="Мобильный телефон">
+                        <input type="text" name="HomeNumber" [(ngModel)]="model.HomeNumber" placeholder="Домашний телефон">
+                        <input type="email" name="email" [(ngModel)]="model.Email" id="email" placeholder="Ваш email">
+                        <input type="text" name="Condition" [(ngModel)]="model.Condition" placeholder="Состояние"> 
+                        <br/><br/>
+
+                            <div class="button">
+                        <button class="btn submit" (click) = "Add()">Создать пациента</button>
+                        <button class="btn submit" (click) = "close()">Назад</button>
+                            </div>
+                    </form>  
+            
+             </div>                
+    </div>
+
+</section>

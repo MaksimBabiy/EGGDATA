@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+  <body>
+    
+    <div class="home-content">
+      <div class="home-content-logo">
+        <h3 >ЭКГ Считыватель </h3>
+        <div class="one">
+        <button (click)="return_scale( )" title="Вернуть масштаб"> <i class="material-icons">autorenew</i></button>
+        <button (click)="jump(130)" title="Пройти 1 секунду"><h3>+1с</h3></button>
+        <button (click)="jump(7680)" title="Пройти 1 минуту"><h3>+1м</h3></button>
+        <button (click)="jump(76800)" title="Пройти 10 минут"><h3>+10м</h3></button>
+        <button (click)="jump(230400)" title="Пройти 30 минут"><h3>+30м</h3></button>
+        <button (click)="jump(-start_point)" title="К началу"><i class="material-icons">arrow_back</i></button>
+      </div>
+      </div>
+    <div class="block-cardiogram" id="workBlock">
+      <svg class="block-cardiogram-content" id="svg" xmlns="http://www.w3.org/2000/svg" version="1.1"
+      (click)="svg_click($event)" (mousewheel)="svg_wheel($event)" 
+      (mouseover)="svg_over()" (mouseleave)="svg_leave()" [ngStyle]="svgTransform">
+        <!-- X  and Y -->
+        <polyline id="polyline" [attr.points]="polyline_points" stroke="red" stroke-width="0.6" fill="none">
+        </polyline>  
+        
+        <path d="M 0 275 h 1000" stroke="green" stroke-width="1" stroke-dasharray="1 5" />
+      <path d="M 0 250 h 1000" stroke="green" stroke-width="1" stroke-dasharray="1 5" />
+      <path d="M 0 200 h 1000" stroke="green" stroke-width="1" stroke-dasharray="1 5" />
+      <path d="M 0 150 h 1000" stroke="gray" stroke-width="1" stroke-dasharray="8" />
+      <path d="M 0 100 h 1000" stroke="green" stroke-width="1" stroke-dasharray="1 5" />
+      <path d="M 0 50 h 1000" stroke="green" stroke-width="1" stroke-dasharray="1 5" />
+      <path d="M 0 25 h 1000" stroke="green" stroke-width="1" stroke-dasharray="1 5" />
+      </svg>    
+    </div>
+     <b class="text-axis-y" style="margin-top: -290px;">125</b>
+      <b class="text-axis-y" style="margin-top: -265px;">100</b>
+      <b class="text-axis-y" style="margin-top: -215px;">50</b>
+      
+      <b class="text-axis-y" style="margin-top: -115px;">-50</b>
+      <b class="text-axis-y" style="margin-top: -65px;">-100</b>
+      <b class="text-axis-y" style="margin-top: -40px;">-125</b>
+    <div class="board-data">
+      <span>{{counter_time}}</span>
+      <span>{{counter_points}}</span>
+      <label class="btn-load-file">
+        <button (click)="close()" style="display: none;"></button>
+        <h4><i class="material-icons">backspace</i>&nbsp; Назад</h4>
+      </label>
+      <label class="btn-load-file">
+        <button [disabled] = "dis" (click)="convert()" style="display: none;"></button>
+        <h4><i class="material-icons">gesture</i>&nbsp; Вейвлет-преобразование</h4>
+      </label>
+    </div>
+  </div>
+  </body>
+  </html>
+ 
+
+ 

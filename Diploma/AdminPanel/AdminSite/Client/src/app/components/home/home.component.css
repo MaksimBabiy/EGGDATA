@@ -1,0 +1,397 @@
+﻿.nav-color {
+    background-color:rgb(241, 248, 255);
+}
+a.brand-logo{
+    display:flex;
+    align-items:center;
+}
+.nav-wrapper a {
+    color:#ffffff;
+}
+
+.navbar-fixed {
+    position:fixed;
+    top:0;
+}
+
+.color-links {
+    color:black;
+}
+
+.slider .indicators .indicator-item {
+    background-color: #b8b80000;
+    border: 3px solid #797878;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  }
+  .slider .indicators .indicator-item.active {
+    background-color: #dfdfdf;
+  }
+  .slider .indicators {
+    bottom: 60px;
+    z-index: 100;
+  }
+  .slider .slides li img {
+    background-position:center center;
+    background-size:cover;
+}
+.logo
+{
+    position: absolute;
+    top: 7px;
+    left: 1px;
+}
+.brand-logo
+{
+    position: absolute;
+    top: 1px;
+    left: 60px;
+}
+nav {
+    box-shadow:none;
+}
+
+.slider .nxt_b {
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    z-index: 100;
+    display:block;
+}
+.slider .prv_b {
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    z-index: 100;
+    display:block;
+}
+/* adv section*/
+.advantages__title{
+    font-size: 55px;
+}
+.advantages__subtitle{
+    font-size: 36px;
+    padding: 0;
+}
+
+.advantages hr {
+    opacity:.4;
+}
+
+.advantages__card--title,
+.advantages__card--info{
+    font-size: 16px;
+    color:#54667a;
+
+}
+.advantages__card--title{
+    font-weight: bold;
+}
+
+/* Registration form */
+
+.registration {
+    background-color:#54667a;
+}
+
+.registration__form .btn {
+    margin-right:15px;
+    border-radius:5px;
+    margin-bottom:39px;
+}
+
+.twitter {
+    background-color:#1daee3;
+}
+
+.facebook {
+    background-color:#3a5998;
+}
+
+.google {
+    background-color:#d34836;
+}
+ .twitter:hover {
+    background-color:#1daee3cc;
+}
+
+ .facebook:hover {
+    background-color:#3a5998be;
+}
+
+ .google:hover {
+    background-color:#d34836b4;
+}
+
+.registration__info {
+    margin:70px 0;
+}
+
+.registration__info--title {
+    color:#f7f7f7;
+    font-size:31px;
+    font-weight:bold;
+    margin:0;
+    text-transform:uppercase;
+}
+
+.registration__info--subtitle {
+    color:#e77e32;
+    font-size:31px;
+    font-weight:bold;
+    margin:0;
+    text-transform:uppercase;
+}
+
+.registration__info--arrow {
+
+}
+
+.registration__form {
+    background:white;
+    border-radius:5px;
+    margin:45px 0;
+}
+
+.col.l6.registration__form {
+    padding:2%;
+}
+
+.registration__form form{
+    padding:2% 0;
+}
+
+.registration__form--title {
+    font-weight:bold;
+    font-size:37px;
+    margin:0 0 10% 0;
+    text-transform:uppercase;
+}
+
+.submit,.submit:hover {
+    background-color:#e67e33;
+    color:black;
+    font-weight:bold;
+    margin-top:7%;
+}
+
+/* Doctors */
+
+.doctors__subtitle {
+    font-size:24px;
+    text-transform:uppercase;
+    margin:0;
+}
+
+.doctors__title {
+    font-size:30px;
+    text-transform:uppercase;
+    margin:0;
+}
+/* Mission */
+
+.mission {
+    background-color:#7f64b5;
+    padding:100px 0;
+}
+
+.mission .row.valign-wrapper {
+    margin-bottom:90px;
+}
+
+/* FAQ */
+
+.faq {
+    padding:60px 0;
+}
+
+.faq__content {
+    width:80%;
+    margin:0 auto;
+    padding:60px 40px 100px 40px;
+}
+
+.faq__content h4 {
+    margin:0;
+    font-size:14px;
+    text-transform:uppercase;
+    font-weight:bold;
+}
+
+.faq__content h3 {
+    margin:25px 0 0 0;
+    font-size:30px;
+    text-transform:uppercase;
+    font-weight:bold;
+}
+
+.faq__content hr {
+    width:8%;
+    margin-top:20px;
+    margin-bottom:40px;
+    border:1px solid #51b8f2;
+}
+
+.prev-q, .next-q {
+    width:100%;
+}
+
+/* NEWS */
+
+.news {
+    padding:100px 0;
+}
+
+.news .row.valign-wrapper {
+    margin-bottom:60px;
+}
+
+.news__subtitle, .news__title {
+    margin:0;
+    text-transform:uppercase;
+}
+
+.news__subtitle {
+    font-size:14px;
+}
+
+.news__title {
+    font-size:30px;
+}
+
+.card__image {
+    width:100%;
+}
+
+.card__title {
+    font-size:16px;
+    text-transform:uppercase;
+    font-weight:bold;
+    margin-top:10px;
+    margin-bottom:15px;
+}
+
+.card__author, .card__date {
+    font-size:14px;
+    margin-right:30px;
+}
+
+.card__link {
+    text-transform: uppercase;
+}
+
+/* CALL BLOCK */
+
+.call {
+    padding:40px 0;
+}
+
+.call .container {
+    display:flex;
+    justify-content:space-between;
+    align-content: center;
+    flex-wrap:wrap;
+}
+
+.call__text {
+    width:32%;
+}
+
+.call__button {
+    width:10%;
+}
+
+.call__number {
+    width:31%;
+}
+
+.call .call__title {
+    font-size:24px;
+    margin:0;
+}
+
+.call h2 {
+    margin:0;
+    font-size:36px;
+}
+
+.call h3 {
+    margin:0;
+    font-size:14px;
+    color:white;
+    text-transform: uppercase;
+}
+
+.call p {
+    margin:0;
+}
+
+.call .material-icons {
+    font-size:48px;
+}
+
+/* FOOTER */
+
+footer h5 {
+    font-size:15px;
+    margin-top:70px;
+    margin-bottom:50px;
+}
+
+footer a {
+    color:#a9b7c6;
+}
+
+footer a:hover {
+    color:#ffffff;
+}
+
+hr {
+    opacity:0.1;
+}
+
+.subscribe-email {
+    width:76% !important;
+    background-color:#3f4e5f !important;
+    color:white;
+}
+
+.subscribe-submit {
+    padding:6% 10%;
+    background-position: center center !important;
+    background-size: cover !important;
+    border:none;
+}
+
+@media screen and (max-width: 1024px) {
+    .advantage__img{
+        float: left;
+        padding: 3%;
+        vertical-align:middle;
+    }
+    .call .container {
+        flex-direction: column;
+    }
+
+    .call__button, .call__text,.call__number {
+        width:100%;
+        margin-bottom:20px;
+    }
+
+    footer h5 {
+        font-size:15px;
+        margin-top:20px;
+        margin-bottom:30px;
+    }
+
+    footer .col.l3.m6.s12 {
+        height:270px;
+    }
+    .registration__btns {
+        display:flex;
+        flex-direction:column;
+        width:30%;
+    }
+
+}

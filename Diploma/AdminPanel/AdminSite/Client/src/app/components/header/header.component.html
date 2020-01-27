@@ -1,0 +1,46 @@
+<header class="main-header">
+        <div class="navbar-fixed">
+            <nav class="transparent">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a [routerLink]="['']" class="brand-logo"><img src="../../../assets/images/logo1.png" height="50" width="50" alt="">ECGData</a>
+                        <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+                            <i class="material-icons">menu</i>
+                        </a>
+                        <ul class="right hide-on-med-and-down">
+                            <li>
+                                <a >О нас</a>
+                            </li>
+                            <li>
+                                <a >Доктора</a>
+                            </li>
+                            <li>
+                                <a >Новости</a>
+                            </li>
+                            <li>
+                                <a >Ответы</a>
+                            </li>
+                            <li>
+                                <a >Контакты</a>
+                            </li>
+                            <li>
+                                <a class="link-menu" [routerLink]="['/admin_panel']" *ngIf="this.auth.isLoggedIn()">Панель администратора</a>
+                            </li> 
+                            <li>
+                                <a class="link-menu" [routerLink]="['/login']" *ngIf="!this.auth.isLoggedIn()">Войти</a>
+                                <a class="link-menu" [routerLink]="['/login']"  *ngIf="this.auth.isLoggedIn()">Выйти</a>
+                            </li>                                                
+                        </ul>
+                    </div>
+                </div>  
+            </nav>
+        </div>
+
+         <ul class="sidenav" id="mobile-nav">
+            <li><a href="#">О НАС</a></li>
+            <li><a href="#">НОВОСТИ</a></li>
+            <li><a href="#">СОБЫТИЯ</a></li>
+            <li><a href="#">КОНТАКТЫ</a></li>
+            <li><a href="#">ВОЙТИ</a></li>
+        </ul>
+</header>

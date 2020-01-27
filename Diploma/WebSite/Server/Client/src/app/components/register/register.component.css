@@ -1,0 +1,116 @@
+.form-bg {
+    background:url(../../../assets/images/back.jpg) no-repeat;
+    background-size:cover;
+    padding:141px 0;
+}
+
+.nav-color a {
+    color:black;
+}
+
+.help{
+    opacity: 0.0;
+}
+
+.cl {
+    color: red;
+}
+
+.form {
+    width:30%;
+    height: 20%;
+    margin:5px auto;
+    margin-right:50px;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    border:2px solid rgb(129, 129, 129);
+    border-radius:6px;
+    padding:50px 0;
+    background:white;
+}
+
+.form__enter {
+    width:45%;
+}
+
+.form__networks {
+    width:85%;
+}
+
+.form-title {
+    font-size:30px;
+ 
+}
+
+.button {
+    width:90%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:none;
+}
+
+
+.registration__info {
+    margin:70px 0;
+}
+
+.registration__info--title {
+    color:#f0f0f0;
+    font-size:31px;
+    font-weight:bold;
+    margin:0;
+    text-transform:uppercase;
+}
+
+.registration__info--subtitle {
+    color:#e77e32;
+    font-size:31px;
+    font-weight:bold;
+    margin:0;
+    text-transform:uppercase;
+}
+
+.registration__form {
+    background:rgb(228, 228, 228);
+    border-radius:5px;
+    margin:45px 0;
+}
+
+.col.l6.registration__form {
+    padding:2%;
+}
+
+.registration__form form{
+    padding:2% 0;
+}
+
+.registration__form--title {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:20px;
+    margin:0 0 10% 0;
+    text-transform:uppercase;
+    white-space: nowrap;
+}
+
+.submit,.submit:hover {
+    background-color:#e67e33;
+    color:black;
+    font-weight:bold;
+    margin-top:7%;
+}
+
+.registration__form .btn {
+    margin-right:15px;
+    border-radius:5px;
+    margin-bottom:39px;
+}
+.registration__btns{
+    display:flex;
+    margin: -40px 200px;
+}
+
