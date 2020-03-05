@@ -1,0 +1,8 @@
+export {default as Header } from './Header'
+export {default as Adventages } from './Adventages'
+export {default as Registration } from './Registration'
+export {default as Doctors } from './Doctors'
+export {default as News } from './News'
+export {default as FAQ } from './FAQ'
+export {default as Footer } from './Footer'
+export {default as SliderCarousel } from './SliderCarousel'

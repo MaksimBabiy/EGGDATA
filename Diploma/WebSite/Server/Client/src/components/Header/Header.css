@@ -1,0 +1,123 @@
+.nav-color {
+    background-color:rgb(241, 248, 255);
+}
+a.brand-logo{
+    display:flex;
+    align-items:center;
+}
+.nav-wrapper a {
+    color:#ffffff;
+}
+
+.navbar-fixed {
+    position:fixed;
+    top:0;
+}
+
+.color-links {
+    color:black;
+}
+
+.slider .indicators .indicator-item {
+    background-color: #b8b80000;
+    border: 3px solid #797878;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  }
+  .slider .indicators .indicator-item.active {
+    background-color: #dfdfdf;
+  }
+  .slider .indicators {
+    bottom: 60px;
+    z-index: 100;
+  }
+  .slider .slides li img {
+    background-position:center center;
+    background-size:cover;
+}
+.logo
+{
+    position: absolute;
+    top: 7px;
+    left: 1px;
+}
+.brand-logo
+{
+    position: absolute;
+    top: 1px;
+    left: 60px;
+}
+nav {
+    box-shadow:none;
+}
+
+.slider .nxt_b {
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    z-index: 100;
+    display:block;
+}
+.slider .prv_b {
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    z-index: 100;
+    display:block;
+}
+/* adv section*/
+.advantages__title{
+    font-size: 55px;
+}
+.advantages__subtitle{
+    font-size: 36px;
+    padding: 0;
+}
+
+.advantages hr {
+    opacity:.4;
+}
+
+.advantages__card--title,
+.advantages__card--info{
+    font-size: 16px;
+    color:#54667a;
+
+}
+.advantages__card--title{
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .advantage__img{
+        float: left;
+        padding: 3%;
+        vertical-align:middle;
+    }
+    .call .container {
+        flex-direction: column;
+    }
+
+    .call__button, .call__text,.call__number {
+        width:100%;
+        margin-bottom:20px;
+    }
+
+    footer h5 {
+        font-size:15px;
+        margin-top:20px;
+        margin-bottom:30px;
+    }
+
+    footer .col.l3.m6.s12 {
+        height:270px;
+    }
+    .registration__btns {
+        display:flex;
+        flex-direction:column;
+        width:30%;
+    }
+
+}
