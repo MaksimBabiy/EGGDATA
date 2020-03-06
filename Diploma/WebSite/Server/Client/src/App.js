@@ -1,18 +1,17 @@
 import React from 'react';
-import { Header, Adventages,Registration, Doctors, News,FAQ,Footer, SliderCarousel } from 'components';
-
+import { Auth, Home } from '../src/pages'
+import { Route,Redirect, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
 const App = () => {
   return (
-    <div className="App">
-      <Header />
-      <SliderCarousel />
-      <Adventages />
-      <Registration />
-      <Doctors />
-      <News />
-      <FAQ />
-      <Footer />
-    </div>
+    <>
+    <Switch>
+    <Route exact path={["/signIn","/signUp"]} component={Auth} />
+    <Route 
+    path="/"
+    component={Home}/>
+    </Switch>
+    </>
   );
 }
 

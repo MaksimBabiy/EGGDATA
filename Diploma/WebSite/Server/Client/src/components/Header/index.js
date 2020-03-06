@@ -1,8 +1,9 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../../assets/images/logo1.png'
 import './Header.css'
 const Header = () => {
+    const [isLogin, setIsLogin] = useState(false)
     return (
         <header className="main-header">
         <div className="navbar-fixed">
@@ -30,8 +31,11 @@ const Header = () => {
                                 <a >Контакты</a>
                             </li>                            
                             <li>
-                                <a className="link-menu" >Войти</a>
+                                { !isLogin ? 
+                                <Link className="link-menu" to="signIn">Войти</Link>
+                                :
                                 <a className="link-menu" >Выйти</a>
+                                }
                             </li>                                                
                         </ul>
                     </div>
