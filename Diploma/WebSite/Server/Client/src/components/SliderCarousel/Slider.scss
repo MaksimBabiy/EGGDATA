@@ -5,12 +5,12 @@
   .awssld__bullets{
     padding-top: 40px;
     button {
-      background-color: lightgreen;
+      background-color: rgb(94, 173, 219);
     }
   }
   .awssld__bullets .awssld__bullets--active {
     transform: scale(1.5);
-    background-color: tomato;
+    background-color: rgb(230, 214, 214);
   }
     .awssld__wrapper {
       height: 660px;
