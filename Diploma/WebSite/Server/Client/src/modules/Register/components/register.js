@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button } from 'antd';
 import { Link } from 'react-router-dom'
 import { FormField, WhiteBlock } from 'components'
-
+import './register.scss'
 
 const Register = props => {
     const {
@@ -57,8 +57,7 @@ const Register = props => {
            />
            <FormField 
            name="password2"
-          
-           type="password2"
+           type="password"
            placeholder="Повторить пароль"
            handleChange={handleChange}
            handleBlur={handleBlur}

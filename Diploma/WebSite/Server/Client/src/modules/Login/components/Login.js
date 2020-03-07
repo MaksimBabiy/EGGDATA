@@ -1,8 +1,9 @@
 import React from 'react'
 import { Form, Input } from 'antd';
 import { Link } from 'react-router-dom';
-import { UserOutlined,LockOutlined } from '@ant-design/icons';
+import { UserOutlined,LockOutlined,ArrowLeftOutlined } from '@ant-design/icons';
 import { WhiteBlock, Button } from 'components'
+import './login.scss'
 const Login = (props) => {
     const { 
         values,
@@ -15,6 +16,7 @@ const Login = (props) => {
   return (
       <div>
            <WhiteBlock>
+           <Link to="/"><ArrowLeftOutlined style={{fontSize: 25}} className="icon"/></Link>
          <div className="auth__top">
            <h2>Войти в аккаунт</h2>
            <p>Пожалуйста, войдите в свой аккаунт</p>
