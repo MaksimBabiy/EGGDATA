@@ -1,6 +1,9 @@
 .nav-color {
     background-color:rgb(241, 248, 255);
 }
+.nav{
+    background-color: transparent;
+}
 a.brand-logo{
     display:flex;
     align-items:center;
