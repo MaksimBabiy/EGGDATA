@@ -21,7 +21,7 @@ const Header = () => {
                                 <a >О нас</a>
                             </li>
                             <li>
-                                <a className="link-menu" >Доктора</a>
+                                <Link className="link-menu" to="/doctors">Доктора</Link>
                             </li>
                             <li>
                                 <a  >Новости</a>

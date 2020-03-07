@@ -1,15 +1,14 @@
 import React from 'react';
 import { Auth, Home } from '../src/pages'
-import { Route,Redirect, Switch } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { Route, Switch } from 'react-router-dom'
+import { DoctorsPage } from 'components';
 const App = () => {
   return (
     <>
     <Switch>
     <Route exact path={["/signIn","/signUp"]} component={Auth} />
-    <Route 
-    path="/"
-    component={Home}/>
+    <Route exact path={"/doctors"} component={DoctorsPage} />
+    <Route path="/"component={Home}/>
     </Switch>
     </>
   );
