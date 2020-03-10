@@ -4,8 +4,9 @@ import logo from '../../assets/images/logo1.png'
 import { connect } from 'react-redux'
 import './Header.css'
 import 'utils/scroll'
-
-const Header = ({isAuth}) => {
+import { userActions } from 'redux/actions'
+const Header = ({isAuth, setIsAuth}) => {
+    console.log(setIsAuth)
     return (
         <header className="main-header">
         <div className="navbar-fixed">
@@ -36,7 +37,10 @@ const Header = ({isAuth}) => {
                                 { !isAuth ? 
                                 <Link className="link-menu" to="signIn">Войти</Link>
                                 :
-                                <a className="link-menu" >Выйти</a>
+                                <a className="link-menu" onClick={() => {
+                                    setIsAuth(false)
+                                    window.localStorage.clear()
+                                }}>Выйти</a>
                                 }
                             </li>                                                
                         </ul>
@@ -59,4 +63,4 @@ const Header = ({isAuth}) => {
 
 export default connect(({user }) => ({
     isAuth: user.isAuth
-  }))(Header);
+  }),userActions)(Header);

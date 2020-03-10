@@ -23,24 +23,24 @@ export default  withFormik({
         props.history.push("/signIn");
         setSubmitting(false)
       })
-      .catch(err => {
-        if (get(err, 'response.data.message.errmsg', '').indexOf('dup') >= 0) {
-         console.log({
-            title: 'Ошибка',
-            text: 'Аккаунт с такой почтой уже создан.',
-            type: 'error',
-            duration: 5000
-          });
-        } else {
-          console.log({
-            title: 'Ошибка',
-            text: 'Возникла серверная ошибка при регистрации. Повторите позже.',
-            type: 'error',
-            duration: 5000
-          });
-        }
-        setSubmitting(false);
-      });
+      // .catch(err => {
+      //   if (get(err, 'response.data.message.errmsg', '').indexOf('dup') >= 0) {
+      //    console.log({
+      //       title: 'Ошибка',
+      //       text: 'Аккаунт с такой почтой уже создан.',
+      //       type: 'error',
+      //       duration: 5000
+      //     });
+      //   } else {
+      //     console.log({
+      //       title: 'Ошибка',
+      //       text: 'Возникла серверная ошибка при регистрации. Повторите позже.',
+      //       type: 'error',
+      //       duration: 5000
+      //     });
+      //   }
+      //   setSubmitting(false);
+      // });
     },
     displayName: 'RegisterForm',
   })(RegisterForm);
