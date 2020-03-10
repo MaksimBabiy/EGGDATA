@@ -33,10 +33,10 @@ const actions = {
           dispatch(actions.setIsAuth(true))
         }
         return data
-    });
+    })
 },
 fetchUserRegister: obj => dispatch =>{
-  return userApi.signUp(obj);
+  return userApi.signUp(obj)
 }, 
 }
 export default actions

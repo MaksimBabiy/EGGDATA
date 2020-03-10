@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/images/logo1.png'
+import { connect } from 'react-redux'
 import './Header.css'
 import 'utils/scroll'
 
-const Header = () => {
-    const [isLogin, setIsLogin] = useState(false)
+const Header = ({isAuth}) => {
     return (
         <header className="main-header">
         <div className="navbar-fixed">
             <nav className="transparent">
                 <div className="container">
                     <div className="nav-wrapper">
-                        <a  className="brand-logo"><img src={logo} height="50" width="50" alt="" />ECGData</a>
+                        <Link className="brand-logo" to="/"><img src={logo} height="50" width="50" alt="" />ECGData</Link>
                         <a href="#" data-target="mobile-nav" className="sidenav-trigger">
                             <i className="material-icons">menu</i>
                         </a>
@@ -33,7 +33,7 @@ const Header = () => {
                                 <a >Контакты</a>
                             </li>                            
                             <li>
-                                { !isLogin ? 
+                                { !isAuth ? 
                                 <Link className="link-menu" to="signIn">Войти</Link>
                                 :
                                 <a className="link-menu" >Выйти</a>
@@ -56,4 +56,7 @@ const Header = () => {
     )
 }
 
-export default Header
+
+export default connect(({user }) => ({
+    isAuth: user.isAuth
+  }))(Header);

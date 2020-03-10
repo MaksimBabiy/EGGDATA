@@ -3,14 +3,12 @@ import { Header, Adventages,Registration, Doctors, News,FAQ,Footer, SliderCarous
 const Home = () => {
     return (
     <div className="App">
-      <Header />
       <SliderCarousel />
       <Adventages />
       <Registration />
       <Doctors />
       <News />
       <FAQ />
-      <Footer />
     </div>
     )
 }

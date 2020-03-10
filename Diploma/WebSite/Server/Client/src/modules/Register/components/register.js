@@ -25,8 +25,7 @@ const Register = props => {
          <WhiteBlock>
          <Form onSubmit={handleSubmit} className="login-form">
            <FormField 
-           name="email"
-        
+           name="Email"
            placeholder="E-Mail"
            handleChange={handleChange}
            handleBlur={handleBlur}
@@ -35,8 +34,7 @@ const Register = props => {
            values={values}
            />
             <FormField 
-           name="fullname"
-         
+           name="Login"
            placeholder="Ваше имя"
            handleChange={handleChange}
            handleBlur={handleBlur}
@@ -45,8 +43,7 @@ const Register = props => {
            values={values}
            />
             <FormField 
-           name="password"
-          
+           name="Password"
            placeholder="Пароль"
            handleChange={handleChange}
            handleBlur={handleBlur}
@@ -55,7 +52,7 @@ const Register = props => {
            values={values}
            type="password"
            />
-           <FormField 
+           {/* <FormField 
            name="password2"
            type="password"
            placeholder="Повторить пароль"
@@ -64,7 +61,7 @@ const Register = props => {
            touched={touched}
            errors={errors}
            values={values}
-           />
+           /> */}
              <Form.Item>
              {dirty && !isValid ? <span>Ошибка!</span> : '' }
                <Button type="primary" onClick={handleSubmit} htmlType="submit" size="large" className="login-form-button" >

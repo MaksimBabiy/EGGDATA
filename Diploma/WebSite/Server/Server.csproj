@@ -10,15 +10,17 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="client\src\app\**" />
+      <Content Remove="client\src\app\**" />
+      <EmbeddedResource Remove="client\src\app\**" />
+      <None Remove="client\src\app\**" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Compile Remove="Migrations\20181217141608_NameMigration.cs" />
       <Compile Remove="Migrations\20181217141608_NameMigration.Designer.cs" />
       <Compile Remove="Migrations\20181219095616_AddDoctorEntity.cs" />
       <Compile Remove="Migrations\20181219095616_AddDoctorEntity.Designer.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Client\src\app\services\exceptions.sevice.ts" />
-      <None Remove="Client\src\app\services\toolsService.ts" />
     </ItemGroup>
 
   <ItemGroup>
@@ -47,11 +49,6 @@
   <ItemGroup>
     <ProjectReference Include="..\DataBaseCore\Server.DataBaseCore\Server.DataBaseCore.csproj" />
     <ProjectReference Include="..\Infrastructure\Server.Infrastructure\Server.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="Client\src\app\services\exceptions.sevice.ts" />
-    <TypeScriptCompile Include="Client\src\app\services\toolsService.ts" />
   </ItemGroup>
 
 </Project>

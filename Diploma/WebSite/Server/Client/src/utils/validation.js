@@ -1,7 +1,6 @@
 export default ({ isAuth,values,errors }) => {
     const rules = {
-  
-      email: value => {
+      Email: value => {
         if (!value) {
             errors.email = 'Введите E-Mail';
           } else if (
@@ -12,7 +11,7 @@ export default ({ isAuth,values,errors }) => {
             errors.email = 'Неверный E-Mail';
           }
           },
-      password: value => {
+      Password: value => {
       if(!value){
         errors.password = 'Введите пароль'
       }
@@ -20,13 +19,13 @@ export default ({ isAuth,values,errors }) => {
       errors.password = "Слижком легкий пароль"
           }
         },
-      password2: value => {
-          if(!isAuth && value !== values.password){
-            errors.password2 = 'Пароли не совпадают'
-          }
+      // password2: value => {
+      //     if(!isAuth && value !== values.password){
+      //       errors.password2 = 'Пароли не совпадают'
+      //     }
           
-            },
-        fullname: value => {
+      //       },
+        Login: value => {
           if(!isAuth && !value){
             errors.fullname = 'Укажите свое имя и фамилию'
           }

@@ -7,10 +7,10 @@ import store from 'redux/store'
 
 export default  withFormik({
     mapPropsToValues: () => ({
-        email: '',
-        fullname: '',
-        password: '',
-        password2: ''
+        Email: '',
+        Login: '',
+        Password: '',
+        // password2: ''
     }),
     validate: values => {
       let errors = {};
@@ -19,8 +19,8 @@ export default  withFormik({
     },
     handleSubmit: (values, { setSubmitting,props }) => {
       store.dispatch(userActions.fetchUserRegister(values))
-      .then( () => {
-        props.history.push('/signup/verify');
+      .then(() => {
+        props.history.push("/signIn");
         setSubmitting(false)
       })
       .catch(err => {

@@ -27,7 +27,7 @@ const Login = (props) => {
            hasFeedback
            help={!touched.email ? '' : errors.email}>
                <Input
-                 id="email"
+                 id="Email"
                  size="large"
                  prefix={<UserOutlined />}
                  placeholder="E-Mail"
@@ -41,7 +41,7 @@ const Login = (props) => {
            hasFeedback
            help={!touched.password ? '' : errors.password}>
                <Input
-                 id="password"
+                 id="Password"
                  size="large"
                  type="password"
                  value={values.password}

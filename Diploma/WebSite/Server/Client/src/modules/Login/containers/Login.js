@@ -8,8 +8,8 @@ import store from 'redux/store'
 
 const LoginContainer = withFormik({
     mapPropsToValues: () => ({
-        email: '',
-        password: ''
+        Email: '',
+        Password: ''
     }),
     validate: values => {
       let errors = {};
@@ -18,10 +18,8 @@ const LoginContainer = withFormik({
     },
     handleSubmit: (values, {setSubmitting, props}) => {
       store.dispatch(userActions.fetchUserLogin(values))
-      .then( ({status}) => {
-        if(status === 'success'){
-            props.history.push('/')
-        }
+      .then( () => {
+        props.history.push("/")
         setSubmitting(false)
       })
     },
