@@ -1,0 +1,21 @@
+.advantages__title{
+    font-size: 55px;
+}
+.advantages__subtitle{
+    font-size: 36px;
+    padding: 0;
+}
+
+.advantages hr {
+    opacity:.4;
+}
+
+.advantages__card--title,
+.advantages__card--info{
+    font-size: 16px;
+    color:#54667a;
+
+}
+.advantages__card--title{
+    font-weight: bold;
+}
