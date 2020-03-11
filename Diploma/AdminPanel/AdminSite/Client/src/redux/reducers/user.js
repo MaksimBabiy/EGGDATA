@@ -2,6 +2,7 @@ const initialState = {
     data: null,
     token: window.localStorage.token,
     isAuth: !!window.localStorage.token,
+    userData: JSON.parse(localStorage.getItem('userData'))
 }
 
 export default ( state = initialState, {type, payload}) => {
@@ -11,8 +12,13 @@ export default ( state = initialState, {type, payload}) => {
                 ...state,
                data: payload,
                isAuth: true,
-               token: window.localStorage.token
+               token: window.localStorage.token,
             };
+        case 'USER:SET_NAME': 
+        return {
+            ...state,
+            userData: payload,
+        };
         case 'USER:SET_IS_AUTH':
             return {
                 ...state,

@@ -64,6 +64,6 @@ const Header = ({isAuth, setIsAuth}) => {
 }
 
 
-export default connect(({user }) => ({
+export default connect(({user}) => ({
     isAuth: user.isAuth
   }),userActions)(Header);

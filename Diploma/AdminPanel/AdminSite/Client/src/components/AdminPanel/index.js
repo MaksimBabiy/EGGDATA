@@ -1,7 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import {VerticalAlignTopOutlined,UserOutlined,MenuOutlined,MailOutlined,PieChartOutlined,BuildOutlined,ExportOutlined,UsergroupAddOutlined,BlockOutlined,GroupOutlined,BookOutlined,CalendarOutlined} from '@ant-design/icons';
 import './index.scss'
-const AdminPanel = () => {
+const AdminPanel = ({userData}) => {
     return (
     <>
     <div className="bg"><br/><br/><br/></div>
@@ -10,7 +11,7 @@ const AdminPanel = () => {
              <MenuOutlined />
             </div>
             <div className="user-panel">
-                <p className="user-panel__name">Name</p>
+                <p className="user-panel__name">{userData.Email}</p>
                 <div className="user-panel__photo">
                 <UserOutlined />
                 </div> 
@@ -23,7 +24,7 @@ const AdminPanel = () => {
                     <UserOutlined />
                 </div>
                 <div className="admin-name">
-                    <p>Name</p>
+                    <p>{userData.Email}</p>
                     <div className="admin-name__status"><span className="status" className="cl">online</span></div>
                 </div>
             </div>
@@ -84,4 +85,6 @@ const AdminPanel = () => {
     )
 }
 
-export default AdminPanel
+export default connect(({user}) => ({
+    userData: user.userData
+  }))(AdminPanel);

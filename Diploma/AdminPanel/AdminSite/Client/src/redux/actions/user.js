@@ -8,6 +8,10 @@ const actions = {
       type: 'USER:SET_IS_AUTH',
       payload: bool
   }),
+    setName: txt => ({
+      type:'USER:SET_NAME',
+      payload: txt
+    }),
   fetchUserLogin: obj => dispatch => {
     return userApi.signIn(obj)
     .then(({data}) => {
@@ -25,7 +29,9 @@ const actions = {
               title: "Авторизация успешна!",
               type: "success"
             })
+          localStorage.setItem('userData', JSON.stringify(obj))
           dispatch(actions.setUserData(data))
+          dispatch(actions.setName(obj))
           window.axios.defaults.headers.common["token"] = token;
           window.localStorage["token"] = token
         //   dispatch(actions.fetchUserData())
