@@ -55,7 +55,6 @@ const Login = (props) => {
            <Button type="primary" htmlType="submit" size="large" className="login-form-button" onClick={handleSubmit} >
               Войти
              </Button>
-             <Link to="/signUp" className="auth__register-link" >Зарегистрироваться</Link>
            </Form.Item>
          </Form>
          </WhiteBlock>

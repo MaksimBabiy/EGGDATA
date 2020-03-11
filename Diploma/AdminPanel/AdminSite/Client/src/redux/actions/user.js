@@ -1,4 +1,3 @@
-
 import { userApi } from 'utils/api'
 const actions = {
     setUserData: user => ({
@@ -35,8 +34,5 @@ const actions = {
         return data
     })
 },
-fetchUserRegister: obj => dispatch =>{
-  return userApi.signUp(obj)
-}, 
 }
 export default actions

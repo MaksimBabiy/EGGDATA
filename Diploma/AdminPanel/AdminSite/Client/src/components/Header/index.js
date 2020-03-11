@@ -6,7 +6,6 @@ import './Header.css'
 import 'utils/scroll'
 import { userActions } from 'redux/actions'
 const Header = ({isAuth, setIsAuth}) => {
-    console.log(setIsAuth)
     return (
         <header className="main-header">
         <div className="navbar-fixed">
@@ -33,8 +32,9 @@ const Header = ({isAuth, setIsAuth}) => {
                             <li>
                                 <a >Контакты</a>
                             </li>     
-                            <li>
-                                <Link to="admin_panel">Панель администратора</Link>
+                            <li> {isAuth &&
+                                    <Link to="admin_panel">Панель администратора</Link>
+                                 }
                             </li>                        
                             <li>
                                 { !isAuth ? 

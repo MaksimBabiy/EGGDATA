@@ -1,6 +1,6 @@
 import Login from '../components/Login'
 import { withFormik } from 'formik'
-import validation from 'utils/validation'
+
 
 import { userActions } from 'redux/actions'
 
@@ -13,7 +13,6 @@ const LoginContainer = withFormik({
     }),
     validate: values => {
       let errors = {};
-      validation({ isAuth: true,values,errors })
       return errors
     },
     handleSubmit: (values, {setSubmitting, props}) => {

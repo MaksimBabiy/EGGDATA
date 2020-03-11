@@ -1,6 +1,6 @@
 import React from 'react';
 import './auth.scss'
-import { Login, Register } from 'modules'
+import { Login } from 'modules'
 import { Route, Switch } from "react-router-dom";
 
 const Auth = () =>  {
@@ -10,7 +10,6 @@ const Auth = () =>  {
                 <div className="auth__content">
                 <Switch>
                     <Route exact path={["/","/signIn"]} component={Login} />
-                    <Route exact path="/signUp" component={Register}/>
                 </Switch>
                 </div>
             </section>
