@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { DoctorsTable,PatientsTable } from 'components'
+import { Link, useHistory } from 'react-router-dom' 
 import {VerticalAlignTopOutlined,UserOutlined,MenuOutlined,MailOutlined,PieChartOutlined,BuildOutlined,ExportOutlined,UsergroupAddOutlined,BlockOutlined,GroupOutlined,BookOutlined,CalendarOutlined} from '@ant-design/icons';
 import './index.scss'
+
 const AdminPanel = ({userData}) => {
+   const history = useHistory()
+   const [tableContent, setTableContent] = useState(false)
     return (
     <>
     <div className="bg"><br/><br/><br/></div>
@@ -29,11 +34,11 @@ const AdminPanel = ({userData}) => {
                 </div>
             </div>
             <ul className="admin-menu">
-                    <li className="link-menu" >
+                    <li className="link-menu" onClick={() => setTableContent(false)}>
                         <UsergroupAddOutlined/>
                         <a >Список пациентов</a>
                     </li>
-                    <li className="link-menu">
+                    <li className="link-menu" onClick={() => setTableContent(true)}>
                         <UsergroupAddOutlined/>
                         <a >Список докторов</a>
                     </li>
@@ -76,9 +81,12 @@ const AdminPanel = ({userData}) => {
                     <li className="link-menu">
                     <VerticalAlignTopOutlined />
                         <a href="#">Multilevel (in developing)</a>
-                    </li>  
-                            
+                    </li>        
             </ul>
+            
+        </div>
+        <div className="admin-page-main">
+            {tableContent ? <DoctorsTable /> : <PatientsTable /> }
         </div>
     </div>
     </>

@@ -191,3 +191,9 @@ li{
 .usertable tr:hover {
     background-color:#ffffff;
 }
+.admin-page{
+    &-main {
+        padding: 40px;
+        width: 100%;
+    }
+}

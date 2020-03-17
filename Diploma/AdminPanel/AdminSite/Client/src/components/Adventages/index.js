@@ -1,11 +1,11 @@
 import React from 'react'
-
 import comfort from '../../assets/images/comfort.png'
-
 import './Adventages.css'
 const Adventages = () => {
+    
     return (
     <section className="advantages">
+    
     <div className="container">
         <div className="row valign-wrapper">
             <div className="col l3 left-align">
