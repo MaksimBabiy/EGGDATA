@@ -1,6 +1,11 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Table } from 'components' 
+import axios from 'axios'
 const PatientsTable = () => {
+  const [data,setData] = useState()
+  useEffect(() => {
+    axios.get(`http://localhost:56839/api/AdminPatients/Get`).then(({data}) => setData(data))
+  },[])
     const columns = React.useMemo(
         () => [
           {
@@ -16,66 +21,30 @@ const PatientsTable = () => {
               },
               {
                 Header: "Email",
-                accessor: "Email"
+                accessor: "email"
               },
               {
                 Header: "Mobile",
-                accessor: "Mobile"
+                accessor: "phoneNumber"
               },
               {
                 Header: "Cardiogram",
-                accessor: "Cardiogram"
+                accessor: "cardiogram"
               }
             ]
           }
         ],
         []
     );
-    const data = React.useMemo(
-        () => [
-            {
-                firstName: "nation",
-                Email: "election",
-                age: 20,
-                Email: 47,
-                Mobile: 85,
-                Cardiogram: <button>123123</button>,
-                status: "complicated",
-                subRows: undefined
-            },
-            {
-                firstName: "asdasd",
-                Email: "election",
-                age: 20,
-                Email: 47,
-                Mobile: 85,
-                status: "complicated",
-                subRows: undefined
-            },
-            {
-                firstName: "asdasd",
-                Email: "election",
-                age: 20,
-                Email: 47,
-                Mobile: 85,
-                status: "complicated",
-                subRows: undefined
-            },
-            {
-                firstName: "asdasd",
-                Email: "election",
-                age: 20,
-                Email: 47,
-                Mobile: 85,
-                status: "complicated",
-                subRows: undefined
-            },
-        ],
-    []
-    )
+    let arr = []
+    data && data.forEach((item => {
+     item.cardiogram = <button>Кардиограма</button>
+     item.subRows = undefined
+     arr.push(item)
+    }))
     return (
         <>
-            <Table columns={columns} data={data}/>   
+            <Table columns={columns} data={arr}/>   
         </>
     )
 }

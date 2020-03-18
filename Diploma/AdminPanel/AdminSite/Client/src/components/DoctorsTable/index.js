@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import { Table } from 'components';
+import axios from 'axios'
 
 const DoctorsTable = () => {
+  const [data,setData] = useState()
+  useEffect(() => {
+    axios.get(`http://localhost:56839/api/AdminDoctors/Get`).then(({data}) => setData(data))
+  },[])
     const columns = React.useMemo(
         () => [
           {
@@ -17,61 +22,25 @@ const DoctorsTable = () => {
               },
               {
                 Header: "Email",
-                accessor: "Email"
+                accessor: "email"
               },
               {
                 Header: "Mobile",
-                accessor: "Mobile"
+                accessor: "phoneNumber"
               },
             ]
           }
         ],
         []
     );
-    const data = React.useMemo(
-        () => [
-            {
-                firstName: "nation",
-                Email: "election",
-                age: 20,
-                Email: 47,
-                Mobile: 85,
-                status: "complicated",
-                subRows: undefined
-            },
-            {
-                firstName: "asdasd",
-                Email: "election",
-                age: 20,
-                Email: 47,
-                Mobile: 85,
-                status: "complicated",
-                subRows: undefined
-            },
-            {
-                firstName: "asdasd",
-                Email: "election",
-                age: 20,
-                Email: 47,
-                Mobile: 85,
-                status: "complicated",
-                subRows: undefined
-            },
-            {
-                firstName: "asdasd",
-                Email: "election",
-                age: 20,
-                Email: 47,
-                Mobile: 85,
-                status: "complicated",
-                subRows: undefined
-            },
-        ],
-    []
-    )
+  let arr = []
+   data && data.forEach((item => {
+    item.subRows = undefined
+    arr.push(item)
+   }))
     return (
         <>
-        <Table columns={columns} data={data}/>     
+        <Table columns={columns} data={arr}/>     
         </>
     )
 }

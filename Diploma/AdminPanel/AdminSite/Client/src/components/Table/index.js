@@ -71,7 +71,6 @@ const Table = ({ columns, data }) => {
           <strong>
             {pageIndex + 1} of {pageOptions.length}
           </strong>{" "}
-          {console.log(pageOptions.length)}
         </span>
         <span>
           | Go to page:{" "}
