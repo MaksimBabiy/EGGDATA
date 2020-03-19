@@ -1,29 +1,57 @@
-🤍 so sad 🤍
-                                                                
-                                  .:*=%##+.                     
-                              ..*+++++==@####%:                 
-              .:*++*:::-     .++==+=###%++=%##@=-      ..       
-           .:****+**+*****.  *=+++=#%#++*+*++@%++*              
-          .++++++*++*****++..*++==%===+++=*++=+++=*-            
-          -=+=++=+++*****+++..*+=%=*%%+=%%+=++++++-             
-          .==++%%+++++++*+++-  -+*****++=%@++==%+               
-           .=+%%++=====%=++:    :*******+*+++=###@:.            
-             =+********+-.....   :+++++=++==##############+.    
-           .+++++++++=*. .-    -. **:. .*+##################+   
-          .+++++=+.**.  .-.-::. *      .@#####################- 
- .       ++==%@%%=-      :.----.:      *=%#####################+
-        -==++++++=%:     .- .. -.   -:=++=######################
-        +%%%=+++++++=*.    .---..+=++=++++######################
-       .=%==+++++++++====%@%===++++%=%@%=#-+####################
-        :%@@%=+++++=++++++++++++=%=-    :%% %###################
-         =%%%#####%==========%%+-       :%#*:###################
-         :%==%%%%%@@@%%*+%=*.           :=#@ %##################
-          =%%%%%%%%%%%%+                :%#@  +#################
-           -%%%%%%%%%%%%:               *%%=   @################
-            %%%%%%%%%%%%%-              *%+:   @#######-.@######
-            =%%%%%%%%%%%%.              +%:    *#######*  .#####
-           .%@%%%@#######.              =%:    .#######.       *
-            *############:              *#############@+%@==@###
-            *############%          .%##########################
-            %############=         .############################
-            *############*      -::=+:.::%####%+-:=-+#%+-#+.:...
+🤍 so sad 🤍.............................................@SSiiiiiiiSiii..iiiiiiSBi252XXXXXX2@2XXXXXXX5iSSi3...............
+...................................;,,s....@iiiSiiiiiBSiSii.SiiiiiiiiiiX2X2XXXXXXXXX#X2XXX2Xi,s.;S2@G.........
+........................,,......,.......,.iS35iS.SSSS.riii3.iiiiiiiiiiSiXXXXXXXXXXXXXXXhXXXXXi,...............
+......................,..r5.3M@@@GM@h,3.BSiSiS.iii...ii.Si5.iiiiiiiiiSSSiXXXX2XXXXXXXXXXXM2XX2Sh..............
+....................,;:.....2#r,..,.@@@r:SiS..Si....i,..iir.iiiiiiiiiiSSii2X293XiXXXXXXX22532X2iSX............
+...,.............,@:,.A.S#,@@@@@@@@@MA,3ii..sh....,,....@i.,iiiSiiiiiiiiSiSXXBX22i2X2XXXX2X2X2X2#.5i..........
+...,..2i........,.s.;@@@A@A@@M@@@@@H@@:ii,.SH....S,,....ii.,.iiiiiiiiiSSiiiXXX22XXii2Xh2X2@2@3XXX:,.M@,.......
+.......M,@...2@&@@@@@@@@@#@@@@@@h@@@@,S.,.S.....i,.....Xis.X@iiiiiiiiii3iiii2XXB322ii2222XX2XXXXXX9...M,......
+..........S.S3;r@@@@@@@@@@@@h@i@@@@X@.,,.s.....S..;.....i.....iiiiiiiiiisSSiiXXXXBX5ii5BX22X2XXX92Xh...,&.....
+......,....is@@@@@@2@G@@@@@@A@@@@@@@@A@3,.....i.H@....s.S....:.SiSiiiiii.iiii52SXXXXiiiiXXXX25XX2322,....H....
+.....,,,..iS5@@@@@@@@@@@@@@@9@@@@@@@..,........r9.....5#,......,iiAiiiii,Ssiii2HSXXXXSiii9XXXXXMX22@S.........
+...B...XSS@#@@3@@@@@@@@@@@@@@@@@&@@:,.,.....M.r,i.....ri.......;,iSiiiiiMhSSiii2Xi2XXXSiii2XXXX3G#33@.........
+.@..,..SMB&&@@A@3@@@@@H@@@@@@@@@X@AG,,.....S.r.#2.....Xi.........iiiiiiii59@iii2&iiMXX2iiSS22XXXX3S#S5........
+..,SG.iS@@H@@&@@@@@H@M3H9@@@@@@&9@@M,....M..:..3S......9,....Gs..,iiiiiiiiiSiiiiXXiSXXX5iiXSXXXX2@3G.Ai,......
+..::.S@2X@B@M@@@@X@@@G@@X@@@@@H@@i@..i.X,i.i,.S92i....,ri....SS..,SiiiiiiiiiiiiiXX2ii2XXiAS9iXXXX2&S..,.......
+.si.r@@B&@@@@@M@B9@@3@@H@&M@h&i@@@@..,..riii..M32.......i....ii...SiiSiiiiiiiiii&22SiiXX2iMBX&X2XX2S..........
+.@..Si@@@@@@@@@@@@@2X@@@X@@@i#@i&A@.9...iSi...932SH....,....iSS...i&@.iiiiiiiiSii222Xii3X2X22X3@22.5..........
+.,,Si@AX#3@@@H@@H@MXX@@@BX@9M@@@@A@3....SiS...h9X&.s....B...SABi,;@@2i.SSiiiiiiiS@2X2iiSXG#X2X2225G52B@@@@@#:.
+.@S&@i52XG@H@3X@@G3X&M@XX@i5#@5@@@@@....iSi...B3XSi.:...,i..GXGS.iBHXXH,.Siiiiiii2AXMX9iSXAXXXAHh@B&&Hh2@992@M
+,.S@s&XB323M5@S@3@XXB@@XXGiS@AiM@@S.s..riii.i..3X#Si.i....BShXXiSii@2XX&..iiiiiiiXhG22B#2SAXXX3M#32X29@2@@H@HX
+,&iiSXXX#@M3M@2@MH2GXXXX@hX@G@@M#@.@,.rSi@..i..XXSsi,SiX.S5MB&&XiiSiA2XX2.;iiii.@2XX#A2hX@@2&22@99XX2X&3@&A2@3
+,SiSiX22@#M2X#AMX@XH2&X@X2X2X@A@@B@X...#iS..i.,2MX53S.iSi.sSiXXXXXS3XX2X33sSAii:@iXXX5G2@X9X@@MBXXXXX2XX2@X@Ah
+5iS,iX@2BX@@29@@32XXXXX2X@&XXXX#@@2X.H.2SisiS,,iMX#2Si.iiiiii@2HXX22@@@@@@@@iiSr@SSX@B@hX@h2XXXX2GB922XX232222
+iBrri2&X22&2XX@@XXXXXX2X@2@X2X2@9XXXh@.BiiS,Si:9@XX#Xi25&Siii@A@@@@@@5Sii,@@Aiir@@iX2B@X@@@X&XXXXXSiii22X99H3X
+@,..X2XX2B&XXX2@XXX3i9XXXXX@2Xi@XXXXs@S@iii:SS.iSS9#9XiSX35iMX&@@@S@;..iS322XMi:@XS32XX@@&@&XXXiiiiii2&2X2S222
+.i..XXAXXXXXXXX2XXX#i222XGXXX@i@2XXXXX2@@ii@S2@@@@@@&332X9XS5i@A.,....ii292G2Xii@XX2iS@@G2X2X2iiiiiiS22X2XiSX#
+.@.:XXX2X2@XXXXGAX55iiX9XXXXXX.SXXX9X2@3Xi#Sii@@@.@SMG@@hSXX233Bh@G&@@22255hXXXh&XXXB2@@XAXXiiiiiiiiiXXX@iii2X
+.9.SiXXAHXiXXXXXXXX,@iX232hXXX.r2#XXXXX@X2#5iSSSiSiSiiiS;,iiiiShiiiSiSi...Si22SXX223@B@@2Xi..,iiiiiiii5iiiiS2X
+.;..iXXXX&Xi:XXXXXXX@@SMhH@G29rii22M2X22MX2@2H3@s@SB@ii&.iiiiiiiS.........iiiXXX2XX#@AXXi....iiiiiiiSiiiiiiXX@
+...si2XXXX&Xi.XXXXXX5@@2AHXX&.ii@@S#@MXXXXXX2X@#@,,....,.iiiiiii.........iiiSXXXX2XH2Xs.....iiiiiiS3SiiiiiSXX3
+...S&@XX2X@@@.:2XXXX9S@2@@X@5S@&@@@X@@@X2@XXXX9M@:......,SiSSS:........SSiii2XXXX@M22@,......iisSSSiiiiiiiXXXX
+.@9....Xh@X#@@@S2XXXX#XXGXXXX2X@XXMX@@2&@3XXXh@3@hr.......3i.........SS@SiiiXXXX@@X.........,iSS;.Siiiiii2XXXX
+.,:.9,.;X@@22@@@X2XXXXXXXX2X2XXXXXX2XX3XXhGX3@@2@@@i...........,95iiSiiiiii2XXH@M5,........GSi,.iiiiiiiiXXXXXX
+....h.....B@,SS3@23G292X32XXXXXXXXXX#2XX2X2X@&h@@S@@@s......M@@Siiii;iiiiiSXX@@&S,.......,S....iiiiiiii2XXXXXX
+.....,.....,.iXXXXXX2XX2XXXXXXXXXXXXXX&XXX@2@2X3X2@@2@@:.....,irrSSiiiiiii2@@@@3....S..iB....iiiiiiiiiiXXXXXXX
+..........9,,2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX2@@@GXXXA;.......,SiiiiSX@@@@3i....Ais.....iiiiiiiiiiXXXXXXXX
+.........,..i2XXXXXXXXXXX2XX22XXXXXXXXXXXXXXXXXXX@@MX2XXXX2@@H....:iiiiSB@@@@@B...sX@,....iiiiiiiiiiiXXXXXXXX#
+...........iiSXXXXXXXXXX@3XX22X22G2XXXXXXXXXXXX2@@@@@XXhXXXX2@@@@2.iii@@@@@@@@S.SS3.....,iiiiiiiiiiiXXXXXXXXXA
+.........,S@&iiii2XXXXXX22XXX22XX#X2XXXXXXXXXX23@@9HXXX2A2X2@@@@@@@@@@@@@@@@@@iii......siiiiiiiiiiiSXXXXXX2X@X
+...............Si2XXX22S2XXX2XX2i@&2XXXXXXXX2X2@2HX2XXXX2XXX@@@@@@@@@@@@@@@@@@S5G.....iiiiiiiiiiiii2XXXXXA@@2G
+...............M@:..,,;2XX22XX2X2&@XXXXXXXX2AXM2@&#@2XXX2XX@@@@@@@@@@@@@@@@@@..@....,iiiiiiiiiiiiiXXXXXX@X22MH
+....................:HiX22SG2@XXX2@XXXXXXXX&@@X3@M@2XXXXXX#@@@@@@@@@@@@@@@@@,.X.G..siiiiiiiiiiiiiXXXXXXX2&@@A@
+.....................2...i222&XXX25HXXXXX@@X&232@H@2XXXXXG@@@@@@@@@@@@@@@@@,....M.,iiiSiSSSiii9GXXXXXXXX@X2XX2
+.....................s,.iSXXX5@XXXXhA22B@@AhG@@@53XXXXXX2@@@@@@@@@@@@@@@@@@:,r,...iiiiiiiiS2XXXXXXX2G29XMXX2X@
+........................,5Si2X@XXXXXX2@@@@M@iSGGX@XXXXXX@@@@@@@@@@@@@@@@@@,.5G...:iiiiSs.X22X2XXXXXXXB332#hXHh
+.........................:rSSX@@XXXXXX@.:...,...B9iSSiSB#@@#@@@@@@@@@@@@@....BSSiSiiiiiSi@i9#@@S2M3@#G#@@@@@@3
+............................i22&2XXS@..........5@@@@@@@@#@##@#@@@@@@@@@@@.,.......riiiiiiiii@i@3H@@@@@@@@B@@##
+............................:iX@@r#9@,........@@@@@@@@@@@@@@@@@@@@@@@@@@S..........iiiiiiiiiS@SS@@M@@@@@@@@@@@
+............................h@@@@i,........,S@@@@@@@@@@@@@@@XXXXXX@@@@@@.........,iiiiiiiiiiii@@@@@@@@@@@@@@@@
+iii...5.........................,...........@@@@@@@@@@@@@@@@XXXXh@@@@@@,.........iiiiiiiiiiiiM@@@@@@@@@@@@@@@@
+22iiiis.....................................@@@@@@@@iiiiSX2XXXX@@@@@@@..........iiiiiiiiiiiiH@@@@@@@@@@@@@@@@@
+22A2X2iiiS.:.2.............................,3@@@@@@@....SiXXXA@@@@@@@@.........iiiiiiiiiiii#@@@@@@@@@@@@@@@@@@
+XXXX2GXXX2iiS,...:,.........................B@@@@@@@,....i2XXX@@@@@@@,........iiiiiiiiiiisB@@@@@@@@@@@@@@@@@@@
+X9X2X@2X@XXXXiiis...:.,....................H@@@@@@@S5...iiXXXG@@@@@@s.......,iiiiiiiiiiiS@@@A@@@@@@@@@@@@@@@@@
+3hX@2@XXX92232XX2iii.,,,...................#@@@@#@..B..iiXXX2@@@@@@B,.......iiiiiiiiiiiS@@@&@BGHA@MAG@@M@&@@@@
+XXGX&233XMX3#52MXX2XiiS..B................B@@@#9.....@,.iXX22B@@@@@;.......iiiiiiiiiii@@@@@@@#@@@@M@@@@@@@@@@@
+G@3&@XHX@2@X92X2XX2@XXXiS,.2,.............@@@.........@BiX22XXX@@@#.......iiiiiiiiiii@@@@@@@@@@@@@@@@@@@@@@@@@
