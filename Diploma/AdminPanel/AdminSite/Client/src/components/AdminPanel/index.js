@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { DoctorsTable,PatientsTable } from 'components'
-import { Link, useHistory } from 'react-router-dom' 
 import {VerticalAlignTopOutlined,UserOutlined,MenuOutlined,MailOutlined,PieChartOutlined,BuildOutlined,ExportOutlined,UsergroupAddOutlined,BlockOutlined,GroupOutlined,BookOutlined,CalendarOutlined} from '@ant-design/icons';
 import './index.scss'
 
 const AdminPanel = ({userData}) => {
-   const history = useHistory()
    const [tableContent, setTableContent] = useState(false)
     return (
     <>
@@ -16,7 +14,7 @@ const AdminPanel = ({userData}) => {
              <MenuOutlined />
             </div>
             <div className="user-panel">
-                <p className="user-panel__name">124124</p>
+                <p className="user-panel__name">{userData.email}</p>
                 <div className="user-panel__photo">
                 <UserOutlined />
                 </div> 
@@ -29,7 +27,7 @@ const AdminPanel = ({userData}) => {
                     <UserOutlined />
                 </div>
                 <div className="admin-name">
-                    <p>1231</p>
+                    <p>{userData.email}</p>
                     <div className="admin-name__status"><span className="status" className="cl">online</span></div>
                 </div>
             </div>

@@ -1,7 +1,9 @@
 import React from 'react'
 import { useTable, usePagination } from "react-table";
+import { connect } from 'react-redux'
+import { userActions } from 'redux/actions'
 import './table.scss'
-const Table = ({ columns, data,setIsEditVisiable, isEditVisiable,setEditValue }) => {
+const Table = ({ columns, data,setIsEditVisiable, isEditVisiable,setEditValue,setId,setTableValue }) => {
     const {
         getTableProps,
         getTableBodyProps,
@@ -48,8 +50,8 @@ const Table = ({ columns, data,setIsEditVisiable, isEditVisiable,setEditValue })
                     <td {...cell.getCellProps()} onClick={() => {
                       setEditValue(row.original)
                       setIsEditVisiable(!isEditVisiable)
-                      localStorage.setItem('value',JSON.stringify(row.original))
-                      localStorage.setItem('doctorId',JSON.stringify(row.original.doctorId))
+                      setId(row.original.patientId ? row.original.patientId : row.original.doctorId)
+                      setTableValue(row.original)
                     }} >{cell.render("Cell")}</td>
                   );
                 })}
@@ -102,4 +104,4 @@ const Table = ({ columns, data,setIsEditVisiable, isEditVisiable,setEditValue })
     )
 }
 
-export default Table
+export default connect(({data}) => data,userActions)(Table)

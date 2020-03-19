@@ -2,9 +2,11 @@ import React, { useEffect,useState } from 'react'
 import { Table } from 'components';
 import { Button,Modal, Input } from 'antd'
 import './doctorstable.scss'
+import { connect } from 'react-redux'
+import { userActions } from 'redux/actions'
 import { doctorApi } from 'utils/api'
 
-const DoctorsTable = () => {
+const DoctorsTable = ({tableValue, doctorId}) => {
   const [data,setData] = useState()
   const [isVisiable, setIsVisiable] = useState(false)
   const [isEditVisiable, setIsEditVisiable] = useState(false)
@@ -14,7 +16,7 @@ const DoctorsTable = () => {
     doctorApi.get().then(({data}) => setData(data))
   },[isVisiable, isEditVisiable])
   useEffect(() => {
-    setEditValue(JSON.parse(localStorage.getItem('value')))
+    setEditValue(tableValue)
   },[])
     const handleChangeInput = (e) => {
       setInputValue({
@@ -105,10 +107,13 @@ const DoctorsTable = () => {
           <Input placeholder="Домашний телефон" value={editValue.homeNumber} onChange={handleChangeEditInput} name="homeNumber"/>
           <Input placeholder="E-mail" value={editValue.email} onChange={handleChangeEditInput} name="email"/>
           <Input placeholder="О докторе" value={editValue.condition} onChange={handleChangeEditInput} name="condition"/>
-          <Button onClick={() => doctorApi.delete(JSON.parse(localStorage.getItem('doctorId'))).finally(() => setIsEditVisiable(false))}>Удалить доктора</Button>
+          <Button onClick={() => doctorApi.delete(doctorId).finally(() => setIsEditVisiable(false))}>Удалить доктора</Button>
         </Modal>}
         <Table columns={columns} data={arr} isEditVisiable={isEditVisiable} setIsEditVisiable={setIsEditVisiable} setEditValue={setEditValue}/>     
         </div>
     )
 }
-export default DoctorsTable
+export default connect(({user}) => ({
+  tableValue: user.tableValue,
+  doctorId: user.id
+}), userActions)(DoctorsTable)

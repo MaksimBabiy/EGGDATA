@@ -12,6 +12,14 @@ const actions = {
       type:'USER:SET_NAME',
       payload: txt
     }),
+    setId: data => ({
+      type: 'USER:SET_ID',
+      payload: data
+    }),
+    setTableValue: data => ({
+      type: 'USER:SET_TABLE_VALUE',
+      payload: data
+    }),
   fetchUserLogin: obj => dispatch => {
     return userApi.signIn(obj)
     .then(({data}) => {
