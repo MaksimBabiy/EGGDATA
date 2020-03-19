@@ -1,0 +1,14 @@
+.doctors {
+    margin: 0 !important;
+    &__btn {
+        margin-bottom: 10px;
+    }
+    &__modal {
+        width: 500px;
+        height: 700px;
+        background-color: lightcyan;
+        z-index: 99999999;
+        box-shadow: lightcyan;
+        border: 1px dotted lightslategray;
+    }
+}

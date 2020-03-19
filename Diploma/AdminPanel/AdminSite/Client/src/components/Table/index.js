@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTable, usePagination } from "react-table";
 import './table.scss'
-const Table = ({ columns, data }) => {
+const Table = ({ columns, data,setIsEditVisiable, isEditVisiable,setEditValue }) => {
     const {
         getTableProps,
         getTableBodyProps,
@@ -42,10 +42,15 @@ const Table = ({ columns, data }) => {
           {page.map((row, i) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr {...row.getRowProps()} >
                 {row.cells.map(cell => {
                   return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    <td {...cell.getCellProps()} onClick={() => {
+                      setEditValue(row.original)
+                      setIsEditVisiable(!isEditVisiable)
+                      localStorage.setItem('value',JSON.stringify(row.original))
+                      localStorage.setItem('doctorId',JSON.stringify(row.original.doctorId))
+                    }} >{cell.render("Cell")}</td>
                   );
                 })}
               </tr>

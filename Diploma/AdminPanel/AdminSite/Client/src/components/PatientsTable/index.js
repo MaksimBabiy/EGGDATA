@@ -44,7 +44,7 @@ const PatientsTable = () => {
     }))
     return (
         <>
-            <Table columns={columns} data={arr}/>   
+            <Table columns={columns} data={arr} />   
         </>
     )
 }

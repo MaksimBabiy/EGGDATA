@@ -16,7 +16,7 @@ const AdminPanel = ({userData}) => {
              <MenuOutlined />
             </div>
             <div className="user-panel">
-                <p className="user-panel__name">{userData.Email}</p>
+                <p className="user-panel__name">124124</p>
                 <div className="user-panel__photo">
                 <UserOutlined />
                 </div> 
@@ -29,7 +29,7 @@ const AdminPanel = ({userData}) => {
                     <UserOutlined />
                 </div>
                 <div className="admin-name">
-                    <p>{userData.Email}</p>
+                    <p>1231</p>
                     <div className="admin-name__status"><span className="status" className="cl">online</span></div>
                 </div>
             </div>
