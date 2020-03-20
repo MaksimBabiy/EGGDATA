@@ -45,14 +45,16 @@ const Table = ({ columns, data,setIsEditVisiable, isEditVisiable,setEditValue,se
             prepareRow(row);
             return (
               <tr {...row.getRowProps()} >
-                {row.cells.map(cell => {
+                {row.cells.map((cell,index) => {
                   return (
-                    <td {...cell.getCellProps()} onClick={() => {
+                    index < 4 ?  <td {...cell.getCellProps()}  onClick={() => {
                       setEditValue(row.original)
                       setIsEditVisiable(!isEditVisiable)
                       setId(row.original.patientId ? row.original.patientId : row.original.doctorId)
                       setTableValue(row.original)
-                    }} >{cell.render("Cell")}</td>
+                    }}>{cell.render("Cell")}</td>
+                    :
+                    <td {...cell.getCellProps()} >{cell.render("Cell")}</td>
                   );
                 })}
               </tr>

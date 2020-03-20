@@ -1,8 +1,8 @@
 import React from 'react'
 import { Table } from 'components';
-import { Button,Modal, Input } from 'antd'
+import { Button,Modal, Input, Upload } from 'antd'
+import { UploadOutlined } from '@ant-design/icons';
 import './patienttable.scss'
-
 const PatientsTable = ({
   handleAdd,
   handleUpdate,
@@ -16,7 +16,9 @@ const PatientsTable = ({
   handleChangeInput,
   setIsVisiable,
   setIsEditVisiable,
-  setEditValue
+  setEditValue,
+  inputValue,
+  props,
 }) => {
   
     return (
@@ -28,17 +30,17 @@ const PatientsTable = ({
         onOk={handleAdd}
         onCancel={() => setIsVisiable(false)}
       >
-        <Input placeholder="Фамилия" onChange={handleChangeInput} name="FirstName"/>
-        <Input placeholder="Имя" onChange={handleChangeInput} name="LastName"/>
-        <Input placeholder="Отчество" onChange={handleChangeInput} name="MiddleName"/>
-        <Input placeholder="Возраст" onChange={handleChangeInput} name="Age"/>
-        <Input placeholder="Вес" onChange={handleChangeInput} name="Weight"/>
-        <Input placeholder="Рост" onChange={handleChangeInput} name="Height"/>
-        <Input placeholder="Пол" onChange={handleChangeInput} name="Sex"/>
-        <Input placeholder="Мобильный телефон" onChange={handleChangeInput} name="PhoneNumber"/>
-        <Input placeholder="Домашний телефон" onChange={handleChangeInput} name="HomeNumber"/>
-        <Input placeholder="E-mail" onChange={handleChangeInput} name="Email"/>
-        <Input placeholder="О докторе" onChange={handleChangeInput} name="Condition"/>
+        <Input placeholder="Фамилия" onChange={handleChangeInput} name="FirstName" value={inputValue.FirstName}/>
+        <Input placeholder="Имя" onChange={handleChangeInput} name="LastName" value={inputValue.LastName}/>
+        <Input placeholder="Отчество" onChange={handleChangeInput} name="MiddleName" value={inputValue.MiddleName}/>
+        <Input placeholder="Возраст" onChange={handleChangeInput} name="Age" value={inputValue.Age}/>
+        <Input placeholder="Вес" onChange={handleChangeInput} name="Weight" value={inputValue.Weight}/>
+        <Input placeholder="Рост" onChange={handleChangeInput} name="Height" value={inputValue.Height}/>
+        <Input placeholder="Пол" onChange={handleChangeInput} name="Sex" value={inputValue.Sex}/>
+        <Input placeholder="Мобильный телефон" onChange={handleChangeInput} name="PhoneNumber" value={inputValue.PhoneNumber}/>
+        <Input placeholder="Домашний телефон" onChange={handleChangeInput} name="HomeNumber" value={inputValue.HomeNumber}/>
+        <Input placeholder="E-mail" onChange={handleChangeInput} name="Email" value={inputValue.Email}/>
+        <Input placeholder="О докторе" onChange={handleChangeInput} name="Condition" value={inputValue.Condition}/>
       </Modal>
       {editValue && <Modal
         title="Редактирование доктора"
@@ -57,9 +59,14 @@ const PatientsTable = ({
         <Input placeholder="Домашний телефон" value={editValue.homeNumber} onChange={handleChangeEditInput} name="homeNumber"/>
         <Input placeholder="E-mail" value={editValue.email} onChange={handleChangeEditInput} name="email"/>
         <Input placeholder="О докторе" value={editValue.condition} onChange={handleChangeEditInput} name="condition"/>
+        <Upload {...props}>
+          <Button>
+            <UploadOutlined /> Click to Upload
+          </Button>
+        </Upload>
         <Button onClick={handleDelete}>Удалить доктора</Button>
       </Modal>}
-      <Table columns={columns} data={data} isEditVisiable={isEditVisiable} setIsEditVisiable={setIsEditVisiable} setEditValue={setEditValue}/>     
+      <Table columns={columns} data={data} isEditVisiable={isEditVisiable} setIsEditVisiable={setIsEditVisiable} setEditValue={setEditValue} />     
       </div>
     )
 }

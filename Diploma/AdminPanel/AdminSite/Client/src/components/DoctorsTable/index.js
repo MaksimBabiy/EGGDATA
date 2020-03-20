@@ -30,17 +30,17 @@ const DoctorsTable = ({
           onOk={handleAdd}
           onCancel={() => setIsVisiable(false)}
         >
-          <Input placeholder="Фамилия" onChange={handleChangeInput} name="FirstName"/>
-          <Input placeholder="Имя" onChange={handleChangeInput} name="LastName"/>
-          <Input placeholder="Отчество" onChange={handleChangeInput} name="MiddleName"/>
-          <Input placeholder="Возраст" onChange={handleChangeInput} name="Age"/>
-          <Input placeholder="Вес" onChange={handleChangeInput} name="Weight"/>
-          <Input placeholder="Рост" onChange={handleChangeInput} name="Height"/>
-          <Input placeholder="Пол" onChange={handleChangeInput} name="Sex"/>
-          <Input placeholder="Мобильный телефон" onChange={handleChangeInput} name="PhoneNumber"/>
-          <Input placeholder="Домашний телефон" onChange={handleChangeInput} name="HomeNumber"/>
-          <Input placeholder="E-mail" onChange={handleChangeInput} name="Email"/>
-          <Input placeholder="О докторе" onChange={handleChangeInput} name="Condition"/>
+          <Input placeholder="Фамилия" onChange={handleChangeInput} name="FirstName" value={inputValue.FirstName}/>
+          <Input placeholder="Имя" onChange={handleChangeInput} name="LastName" value={inputValue.LastName}/>
+          <Input placeholder="Отчество" onChange={handleChangeInput} name="MiddleName" value={inputValue.MiddleName}/>
+          <Input placeholder="Возраст" onChange={handleChangeInput} name="Age" value={inputValue.Age}/>
+          <Input placeholder="Вес" onChange={handleChangeInput} name="Weight" value={inputValue.Weight}/>
+          <Input placeholder="Рост" onChange={handleChangeInput} name="Height"value={inputValue.Height}/>
+          <Input placeholder="Пол" onChange={handleChangeInput} name="Sex" value={inputValue.Sex}/>
+          <Input placeholder="Мобильный телефон" onChange={handleChangeInput} name="PhoneNumber" value={inputValue.PhoneNumber}/>
+          <Input placeholder="Домашний телефон" onChange={handleChangeInput} name="HomeNumber" value={inputValue.HomeNumber}/>
+          <Input placeholder="E-mail" onChange={handleChangeInput} name="Email" value={inputValue.Email}/>
+          <Input placeholder="О докторе" onChange={handleChangeInput} name="Condition" value={inputValue.Condition}/>
         </Modal>
         {editValue && <Modal
           title="Редактирование доктора"
