@@ -1,79 +1,31 @@
-import React, { useEffect,useState } from 'react'
+import React from 'react'
 import { Table } from 'components';
 import { Button,Modal, Input } from 'antd'
 import './patienttable.scss'
-import { connect } from 'react-redux'
-import { userActions } from 'redux/actions' 
-import { patientApi } from 'utils/api'
-const PatientsTable = ({tableValue,patientId}) => {
-  const [data,setData] = useState()
-  const [isVisiable, setIsVisiable] = useState(false)
-  const [isEditVisiable, setIsEditVisiable] = useState(false)
-  const [inputValue, setInputValue] = useState({})
-  const [editValue, setEditValue] = useState()
-  useEffect(() => {
-    patientApi.get().then(({data}) => setData(data))
-  },[isVisiable, isEditVisiable])
-  useEffect(() => {
-    setEditValue(tableValue)
-  },[])
-  const handleChangeInput = (e) => {
-    setInputValue({
-      ...inputValue,
-      [e.target.name]: e.target.value
-    })
-  }
-  const handleChangeEditInput = e => {
-    setEditValue({
-      ...editValue,
-      [e.target.name]: e.target.value
-    })
-  }
-    const columns = React.useMemo(
-        () => [
-          {
-            Header: "PatientTable",
-            columns: [
-              {
-                Header: "Full Name",
-                accessor: "firstName"
-              },
-              {
-                Header: "Age",
-                accessor: "age"
-              },
-              {
-                Header: "Email",
-                accessor: "email"
-              },
-              {
-                Header: "Mobile",
-                accessor: "phoneNumber"
-              },
-              {
-                Header: "Cardiogram",
-                accessor: "cardiogram"
-              }
-            ]
-          }
-        ],
-        []
-    );
-    let arr = []
-    data && data.forEach((item => {
-     item.cardiogram = <button>Кардиограма</button>
-     item.subRows = undefined
-     arr.push(item)
-    }))
+
+const PatientsTable = ({
+  handleAdd,
+  handleUpdate,
+  handleDelete,
+  data,
+  columns,
+  isVisiable,
+  isEditVisiable,
+  editValue,
+  handleChangeEditInput,
+  handleChangeInput,
+  setIsVisiable,
+  setIsEditVisiable,
+  setEditValue
+}) => {
+  
     return (
       <div className="patients">
       <Button className="doctors__btn" onClick={() => setIsVisiable(!isVisiable)}>Добавление</Button>
       <Modal
         title="Добавление доктора"
         visible={isVisiable}
-        onOk={() => {
-         patientApi.add(inputValue).then((data) => console.log(data)).finally(() => setIsVisiable(false), setInputValue(''))
-        }}
+        onOk={handleAdd}
         onCancel={() => setIsVisiable(false)}
       >
         <Input placeholder="Фамилия" onChange={handleChangeInput} name="FirstName"/>
@@ -91,13 +43,7 @@ const PatientsTable = ({tableValue,patientId}) => {
       {editValue && <Modal
         title="Редактирование доктора"
         visible={isEditVisiable}
-        onOk={() => {
-         patientApi.update(editValue).finally(() => {
-          localStorage.setItem('value', JSON.stringify(editValue))
-          setIsEditVisiable(false)
-          setInputValue('')
-         })
-        }}
+        onOk={handleUpdate}
         onCancel={() => setIsEditVisiable(false)}
       >
         <Input placeholder="Фамилия" value={editValue.firstName} onChange={handleChangeEditInput} name="firstName"/>
@@ -111,14 +57,11 @@ const PatientsTable = ({tableValue,patientId}) => {
         <Input placeholder="Домашний телефон" value={editValue.homeNumber} onChange={handleChangeEditInput} name="homeNumber"/>
         <Input placeholder="E-mail" value={editValue.email} onChange={handleChangeEditInput} name="email"/>
         <Input placeholder="О докторе" value={editValue.condition} onChange={handleChangeEditInput} name="condition"/>
-        <Button onClick={() => patientApi.delete(patientId).finally(() => setIsEditVisiable(false))}>Удалить доктора</Button>
+        <Button onClick={handleDelete}>Удалить доктора</Button>
       </Modal>}
-      <Table columns={columns} data={arr} isEditVisiable={isEditVisiable} setIsEditVisiable={setIsEditVisiable} setEditValue={setEditValue}/>     
+      <Table columns={columns} data={data} isEditVisiable={isEditVisiable} setIsEditVisiable={setIsEditVisiable} setEditValue={setEditValue}/>     
       </div>
     )
 }
 
-export default connect(({user}) => ({
-  tableValue: user.tableValue,
-  patientId: user.id
-}), userActions)(PatientsTable)
+export default PatientsTable
