@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { DoctorsTable,PatientsTable } from 'components'
+import { PatientsTable } from 'components'
+import { DoctorsTable } from 'containers'
 import {VerticalAlignTopOutlined,UserOutlined,MenuOutlined,MailOutlined,PieChartOutlined,BuildOutlined,ExportOutlined,UsergroupAddOutlined,BlockOutlined,GroupOutlined,BookOutlined,CalendarOutlined} from '@ant-design/icons';
 import './index.scss'
 
