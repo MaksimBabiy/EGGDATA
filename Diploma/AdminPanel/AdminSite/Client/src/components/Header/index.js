@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/images/logo1.png'
 import { connect } from 'react-redux'
@@ -6,6 +6,7 @@ import './Header.css'
 import 'utils/scroll'
 import { userActions } from 'redux/actions'
 const Header = ({isAuth, setIsAuth}) => {
+
     return (
         <header className="main-header">
         <div className="navbar-fixed">
@@ -24,7 +25,7 @@ const Header = ({isAuth, setIsAuth}) => {
                                 <Link className="link-menu" to="/doctors">Доктора</Link>
                             </li>
                             <li>
-                                <a  >Новости</a>
+                                <a>Новости</a>
                             </li>
                             <li>
                                 <a >Ответы</a>
@@ -32,6 +33,9 @@ const Header = ({isAuth, setIsAuth}) => {
                             <li>
                                 <a >Контакты</a>
                             </li>     
+                            {localStorage.getItem('zxc') == '123' && <li>
+                            <Link className="link-menu" to="/test">Test</Link>
+                            </li> } 
                             <li> {isAuth &&
                                     <Link to="admin_panel">Панель администратора</Link>
                                  }

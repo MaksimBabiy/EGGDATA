@@ -20,7 +20,7 @@ const PatientsTable = ({
   inputValue,
   props,
 }) => {
-  
+console.log(props)
     return (
       <div className="patients">
       <Button className="doctors__btn" onClick={() => setIsVisiable(!isVisiable)}>Добавление</Button>

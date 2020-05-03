@@ -80,7 +80,7 @@ const PatientsTable = ({tableValue,patientId}) => {
 
       let arr = []
       data && data.forEach((item => {
-        console.log(item)
+    
        item.cardiogram = <button onClick={()=> handleGetGraph(item.patientId)} style={{zIndex: 99999999}}>Кардиограма</button>
        item.subRows = undefined
        arr.push(item)
@@ -93,12 +93,12 @@ const PatientsTable = ({tableValue,patientId}) => {
         },
         onChange(info) {
           if (info.file.status === 'done') {
-            console.log(info)
+           
             message.success(`${info.file.name} file uploaded successfully`);
             let formData = new FormData()
             const file = new File([info.file], 'file.dat')
             formData.append('file', file)
-            console.log(formData)
+      
             patientApi.uploadFile(formData).then((data) => console.log(data))
           } else if (info.file.status === 'error') {
             message.error(`${info.file.name} file upload failed.`);
