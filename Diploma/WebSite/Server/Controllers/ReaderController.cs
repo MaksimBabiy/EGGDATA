@@ -1,6 +1,7 @@
 ﻿namespace Server.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
@@ -29,7 +30,7 @@
         {
             try
             {
-                string[] data;
+                List<string> data;
                 var file = this.Request.Form.Files[0];
                 FileData = file;
 
@@ -47,9 +48,11 @@
 
                 using (Stream stream = file.OpenReadStream())
                 {
-                    using (BinaryReader reader = new BinaryReader(stream))
+                    string f = (string)stream.ToString();
+                    using (FileStream reader = new FileStream(f, FileMode.Open))
                     {
-                        data = Reader.GetData(reader);
+
+                        data = ReaderUpdate.GetData2(reader);
                     }
                 }
 
@@ -65,7 +68,7 @@
         [HttpGet("Get/{id}")]
         public IActionResult Get(int id)
         {
-            string[] data;
+            List<string> data;
 
             string folderName = "Upload";
             string webRootPath = this.hostingEnvironment.WebRootPath;
@@ -76,9 +79,10 @@
                 {
                     try
                     {
-                        using (BinaryReader reader = new BinaryReader(stream))
+                        string f = (string)stream.ToString();
+                        using (FileStream reader = new FileStream(f, FileMode.Open))
                         {
-                            data = Reader.GetData(reader);
+                            data = ReaderUpdate.GetData2(reader);
                         }
                     }
                     catch (Exception ex)
