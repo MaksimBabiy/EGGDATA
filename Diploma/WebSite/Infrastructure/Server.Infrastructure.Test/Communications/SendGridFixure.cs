@@ -7,7 +7,7 @@
     using Server.Infrastructure.Communications;
     using Xunit;
 
-    public class SendGridFixure
+    public class SendGridFixure  
     {
         [Fact]
         public async Task SendEmailAsync_ReturnsSuccessResult()
