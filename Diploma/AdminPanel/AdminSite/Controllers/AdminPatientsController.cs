@@ -139,7 +139,7 @@
                     {
                         return this.Json(new string[] { "Exception", "Тільки файл з розширенням dat!" });
                     }
-                    
+
                     string folderName = "Upload";
                     string webRootPath = this.hostingEnvironment.WebRootPath;
                     string newPath = Path.Combine(webRootPath, folderName);
