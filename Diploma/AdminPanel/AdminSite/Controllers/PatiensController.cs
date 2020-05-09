@@ -74,7 +74,6 @@
                             FileBytes = null;
                         }
                     }
-
                     return this.Json("Created!");
                 }
                 else

@@ -1,40 +1,38 @@
-﻿namespace AdminSite.Controllers
+﻿namespace Server.Controllers
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Threading.Tasks;
-    using AdminPanelInfrastructure.Classes;
-    using AdminPanelInfrastructure.Interfaces;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Server.Infrastructure.Classes;
 
     [Produces("application/json")]
-    [Route("api/[controller]")]
-    public class AdminReaderController : Controller
+    [Route("api/reader")]
+    public class ReaderController : Controller
     {
-        private static IFormFile _file { get; set; }
+        private readonly IHostingEnvironment hostingEnvironment;
 
-        private IHostingEnvironment hostingEnvironment;
-
-        public AdminReaderController(IHostingEnvironment hostingEnvironment)
+        public ReaderController(IHostingEnvironment hostingEnvironment)
         {
             this.hostingEnvironment = hostingEnvironment;
         }
 
-        // [Authorize]
-        [AllowAnonymous]
+        private static IFormFile FileData { get; set; }
+
+        [Authorize]
         [HttpPost("convert")]
         [DisableRequestSizeLimit]
         public IActionResult Convert()
         {
             try
             {
-                string[] data;
+                List<string> data;
                 var file = this.Request.Form.Files[0];
-                _file = file;
+                FileData = file;
 
                 var filePath = Path.GetTempFileName();
 
@@ -50,9 +48,11 @@
 
                 using (Stream stream = file.OpenReadStream())
                 {
-                    using (BinaryReader reader = new BinaryReader(stream))
+                    string f = (string)stream.ToString();
+                    using (FileStream reader = new FileStream(f, FileMode.Open))
                     {
-                        data = Reader.GetData(reader);
+
+                        data = ReaderUpdate.GetData2(reader);
                     }
                 }
 
@@ -65,11 +65,10 @@
         }
 
         // [Authorize]
-        [AllowAnonymous]
-        [HttpGet("Get/{id}")]
+        [HttpGet]
         public IActionResult Get(int id)
         {
-            string[] data;
+            List<string> data;
 
             string folderName = "Upload";
             string webRootPath = this.hostingEnvironment.WebRootPath;
@@ -80,9 +79,10 @@
                 {
                     try
                     {
-                        using (BinaryReader reader = new BinaryReader(stream))
+                        string f = (string)stream.ToString();
+                        using (FileStream reader = new FileStream(f, FileMode.Open))
                         {
-                            data = Reader.GetData(reader);
+                            data = ReaderUpdate.GetData2(reader);
                         }
                     }
                     catch (Exception ex)
@@ -93,31 +93,10 @@
             }
             catch (Exception ex)
             {
-                return this.Json(new string[] { "Exception", "Could not find a part of the path" });
+                return this.Json(new string[] { "Exception", ex.Message });
             }
 
             return this.Json(data);
-        }
-
-        [AllowAnonymous]
-        [HttpPost("Wave")]
-        public IActionResult WaveletTransform([FromBody] string[] data)
-        {
-            double[] arr = new double[data.Length];
-            for (int i = 0; i < data.Length; i++)
-            {
-                arr[i] = System.Convert.ToDouble(data[i]);
-            }
-
-            Vector inp = new Vector(arr);
-
-            // Быстрое вейвлет преобразование
-            Vector inpNew = inp.CutAndZero(Vector.NextPow2(inp.N));
-            List<double> sourceData = new List<double>();
-            sourceData.AddRange(inpNew.DataInVector);
-            double[] outp = Vector.DirectTransform(sourceData).ToArray();
-
-            return this.Json(outp);
         }
 
         [HttpGet("data")]
