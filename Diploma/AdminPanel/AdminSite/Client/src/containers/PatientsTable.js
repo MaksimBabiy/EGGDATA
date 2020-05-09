@@ -12,9 +12,11 @@ const PatientsTable = ({tableValue,patientId}) => {
        cardiogram: null
     })
     const [editValue, setEditValue] = useState()
+
     useEffect(() => {
       patientApi.get().then(({data}) => setData(data))
     },[isVisiable, isEditVisiable])
+    
     useEffect(() => {
       setEditValue(tableValue)
     },[])

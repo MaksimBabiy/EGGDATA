@@ -25,7 +25,7 @@ console.log(props)
       <div className="patients">
       <Button className="doctors__btn" onClick={() => setIsVisiable(!isVisiable)}>Добавление</Button>
       <Modal
-        title="Добавление доктора"
+        title="Добавление Пациента"
         visible={isVisiable}
         onOk={handleAdd}
         onCancel={() => setIsVisiable(false)}
@@ -43,7 +43,7 @@ console.log(props)
         <Input placeholder="О докторе" onChange={handleChangeInput} name="Condition" value={inputValue.Condition}/>
       </Modal>
       {editValue && <Modal
-        title="Редактирование доктора"
+        title="Редактирование пациета"
         visible={isEditVisiable}
         onOk={handleUpdate}
         onCancel={() => setIsEditVisiable(false)}
@@ -59,7 +59,7 @@ console.log(props)
         <Input placeholder="Домашний телефон" value={editValue.homeNumber} onChange={handleChangeEditInput} name="homeNumber"/>
         <Input placeholder="E-mail" value={editValue.email} onChange={handleChangeEditInput} name="email"/>
         <Input placeholder="О докторе" value={editValue.condition} onChange={handleChangeEditInput} name="condition"/>
-        <Upload {...props}>
+        <Upload {...props} >
           <Button>
             <UploadOutlined /> Click to Upload
           </Button>

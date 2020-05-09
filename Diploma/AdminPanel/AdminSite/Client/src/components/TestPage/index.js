@@ -15,11 +15,11 @@ const TestPage = () => {
     return (
         <div style={{height: '100%'}}>
             <div style={{marginTop: 100}}>
-            <Upload {...props}>
-          <Button>
-            <UploadOutlined /> Click to Upload
-          </Button>
-        </Upload>
+              <Upload {...props}>
+                <Button>
+                  <UploadOutlined /> Click to Upload
+                </Button>
+              </Upload>
             </div>
         </div>
     )

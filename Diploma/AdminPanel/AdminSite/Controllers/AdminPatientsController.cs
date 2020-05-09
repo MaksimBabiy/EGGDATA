@@ -40,7 +40,6 @@
             {
                 return this.BadRequest("Форму повністю не заповнено");
             }
-
             try
             {
                 patientViewModel = await this.patientLogic.AddPatientAsync(patientViewModel);
@@ -48,18 +47,16 @@
                 {
                     return this.Json("Паціент з цим e-mail вже існує!");
                 }
-
                 if (PathData != null)
                 {
-                    using (FileStream fstream = new FileStream(System.IO.Path.Combine(PathData, patientViewModel.PatientId + ".dat"), FileMode.OpenOrCreate))
+                    using (FileStream fstream = new FileStream(System.IO.Path.Combine(PathData, 
+                    patientViewModel.PatientId + ".dat"), FileMode.OpenOrCreate))
                     {
-                        // запись массива байтов в файл
                         await fstream.WriteAsync(fileBytes, 0, fileBytes.Length);
                         PathData = null;
                         fileBytes = null;
                     }
                 }
-
                 return this.Json("Пацієнта включено до системи!");
             }
             catch (Exception ex)
