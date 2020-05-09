@@ -1,23 +1,25 @@
 ﻿namespace AdminSite.Controllers
 {
-    using AdminPanel.DataBaseCore;
     using AdminPanelDataBaseCore.Interfaces;
+    using AdminPanelInfrastructure;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
 
     [Route("api/[controller]")]
     public class BaseApiController : Controller
     {
+        private readonly IAdminRepositoryDb adminRepositoryDb;
+
+        private readonly IOptions<AppSettings> options;
+
         public BaseApiController(
-        AdminDbContext context,
         IAdminRepositoryDb repo,
-        IConfiguration configuration)
+        IOptions<AppSettings> options)
         {
             // Instantiate the required classes through DI
-            this.Repository = repo;
-            this.Configuration = configuration;
-            this.DbContext = context;
+            this.adminRepositoryDb = repo;
+            this.options = options;
 
             // Instantiate a single JsonSerializerSettings object
             // that can be reused multiple times.
@@ -26,12 +28,6 @@
                 Formatting = Formatting.Indented
             };
         }
-
-        protected AdminDbContext DbContext { get; private set; }
-
-        protected IAdminRepositoryDb Repository { get; private set; }
-
-        protected IConfiguration Configuration { get; private set; }
 
         protected JsonSerializerSettings JsonSettings { get; private set; }
     }
