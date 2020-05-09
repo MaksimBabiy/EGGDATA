@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="WindowsAzure.Storage" Version="8.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AdminPanelDataBaseCore\AdminPanelDataBaseCore.csproj" />
   </ItemGroup>
 
