@@ -78,6 +78,12 @@
         public async Task<IActionResult> DeleteFileFromBlob([FromRoute] string blobFileName)
         {
             return null;
+            /*
+             * 1) Ищем файл: FileExistsAsync(blobFileName, this.UserId)
+             * 2) result = DeleteFileDataAsync(blobFileName, this.UserId) ---- AzureBlobService => если результат успешен, то пункт 3
+             * 3) DeleteFile(blobFileName, this.UserId) ----- FileManager
+             * 4) Добавляем проверки
+             */
         }
     }
 }
