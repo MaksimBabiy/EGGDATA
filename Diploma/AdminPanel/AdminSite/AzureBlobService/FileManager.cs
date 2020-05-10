@@ -8,6 +8,7 @@
     using AdminPanelDataBaseCore.Helpers;
     using AdminPanelInfrastructure;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
 
     public class FileManager : IFileManager

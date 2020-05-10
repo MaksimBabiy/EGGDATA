@@ -61,5 +61,23 @@
                 return this.BadRequest(ex.Message);
             }
         }
+
+        // index of file and quantity = 1
+        [HttpGet]
+        public async Task<IActionResult> GetBlobDataAsync(int fileIndex, int quantity)
+        {
+            return null;
+            // Tuple Item1 = List<FileBlobModel> models
+            //       Item2 = int totalItems = 1
+            // Add method to get format: 
+            // string.Foramat("{0}, {1}, {2}, {3}", this.AppSettings.BlobStorageUrl, this.AppSettings.ContainerName, this.UserId, model.FileId)
+        }
+
+        // Delete file from blob
+        [HttpDelete("{fileName}")]
+        public async Task<IActionResult> DeleteFileFromBlob([FromRoute] string blobFileName)
+        {
+            return null;
+        }
     }
 }
