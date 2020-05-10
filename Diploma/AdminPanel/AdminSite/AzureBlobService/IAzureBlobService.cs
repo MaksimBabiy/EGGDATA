@@ -10,5 +10,7 @@
         CloudBlobContainer CloudBlobContainer { get; }
 
         Task<BlobTaskHelper> AddAsync(Stream file, string fileName);
+
+
     }
 }

@@ -57,7 +57,6 @@
                 throw;
             }
         }
-
         #region PrivateMethods
         private string BuidPath(string userId, string fileId)
         {
