@@ -2,9 +2,11 @@
 {
     using AdminPanelDataBaseCore.Interfaces;
     using AdminPanelInfrastructure;
+    using AspNet.Security.OpenIdConnect.Primitives;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
+    using System.Linq;
 
     [Route("api/[controller]")]
     public class BaseApiController : Controller
@@ -30,5 +32,13 @@
         }
 
         protected JsonSerializerSettings JsonSettings { get; private set; }
+
+        protected string UserId
+        {
+            get
+            {
+                return this.User.Claims.Where(us => us.Type == OpenIdConnectConstants.Claims.Subject).Select(us => us.Value).SingleOrDefault();
+            }
+        }
     }
 }

@@ -1,7 +1,9 @@
 ﻿namespace AdminSite.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
+    using AdminPanelDataBaseCore.Helpers;
     using AdminPanelDataBaseCore.Interfaces;
     using AdminPanelInfrastructure;
     using AdminSite.AzureBlobService;
@@ -19,13 +21,16 @@
 
         private readonly IAdminRepositoryDb adminRepositoryDb;
 
+        private readonly IFileManager fileManager;
+
         private readonly IOptions<AppSettings> options;
 
-        public BlobController(IAzureBlobService azureBlobService, IOptions<AppSettings> options, IAdminRepositoryDb adminRepositoryDb)
+        public BlobController(IAzureBlobService azureBlobService, IOptions<AppSettings> options, IAdminRepositoryDb adminRepositoryDb, IFileManager fileManager)
             : base(adminRepositoryDb, options)
         {
             this.azureBlobService = azureBlobService;
             this.options = options;
+            this.fileManager = fileManager;
         }
 
         [HttpPost]
@@ -44,7 +49,12 @@
 
             try
             {
-                return null;
+                List<FileBlobModel> fileBlobModels = await this.fileManager.AddFilesAsync(formFiles, this.UserId);
+
+                IActionResult result = this.Ok(new { Items = fileBlobModels });
+
+                return result;
+
             }
             catch (Exception ex)
             {
