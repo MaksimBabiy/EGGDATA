@@ -70,69 +70,35 @@
         [HttpGet]
         public async Task<IActionResult> GetBlobDataAsync(int fileIndex, int quantity)
         {
-
-            try
-            {
-                string blobFileName = string.Format("{0},{1}", Guid.NewGuid().ToString(), Path.GetExtension(fileIndex.ToString()));
-                this.azureBlobService.CloudBlobContainer.GetBlockBlobReference(blobFileName);
-                IActionResult result = this.Ok(200);
-                return result;
-            }
-            catch
-            {
-                return this.BadRequest();
-            }
-            // Tuple Item1 = List<FileBlobModel> models
-            //       Item2 = int totalItems = 1
-            // Add method to get format: 
-            // string.Foramat("{0}, {1}, {2}, {3}", this.AppSettings.BlobStorageUrl, this.AppSettings.ContainerName, this.UserId, model.FileId)
+            return null;
         }
 
         // Delete file from blob
         [HttpDelete("{fileName}")]
-        public async Task<IActionResult> DeleteFileFromBlob([FromRoute] string blobFileName)
+        public async Task<IActionResult> DeleteFileFromBlobAsync([FromRoute] string blobFileName)
         {
-            //var blobs = await ListBlobASync(container);
-            //var files = blobs.Cast<CloudBlockBlob>().Select(item => item.Name).ToList();
-
-            //if (files.Any(item => item == blobFileName))
+            //if (!await this.fileManager.FileExistsAsync(blobName, existingFile.UserId).ConfigureAwait(false))
             //{
-            //    var blob = azureBlobService.CloudBlobContainer.GetBlockBlobReference(blobFileName);
-            //    await blob.DeleteIfExistsAsync();
+            //    return this.NotFound();
             //}
 
-            try
-            {
-                await this.azureBlobService.CloudBlobContainer.GetBlockBlobReference(blobFileName).DeleteIfExistsAsync();
-                IActionResult result = this.Ok(200);
-                return result;
-            }
-            catch
-            {
-                return this.BadRequest();
-            }
+            var result = await this.fileManager.DeleteAsync(blobFileName, this.UserId).ConfigureAwait(false);
 
-            /*
-             * 1) Ищем файл: FileExistsAsync(blobFileName, this.UserId)
-             * 2) result = DeleteFileDataAsync(blobFileName, this.UserId) ---- AzureBlobService => если результат успешен, то пункт 3
-             * 3) DeleteFile(blobFileName, this.UserId) ----- FileManager
-             * 4) Добавляем проверки
-             */
+            if (result.Successful)
+            {
+                try
+                {
+                   return this.Ok();
+                }
+                catch (Exception ex)
+                {
+                    return this.BadRequest(ex.Message);
+                }
+            }
+            else
+            {
+                return this.BadRequest(result.Message);
+            }
         }
-
-        //public async Task<List<IListBlobItem>> ListBlobASync(CloudBlobContainer container)
-        //{
-        //    BlobContinuationToken continuationToken = null;
-        //    var results = new List<IListBlobItem>();
-        //    do
-        //    {
-        //        var responce = await container.ListBlobsSegmentedAsync(continuationToken);
-        //        continuationToken = responce.ContinuationToken;
-        //        results.AddRange(responce.Results);
-        //    }
-        //    while (continuationToken != null);
-
-        //    return results;
-        //}
     }
 }

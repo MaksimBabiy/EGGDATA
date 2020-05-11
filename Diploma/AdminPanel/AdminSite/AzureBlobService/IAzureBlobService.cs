@@ -11,6 +11,6 @@
 
         Task<BlobTaskHelper> AddAsync(Stream file, string fileName);
 
-
+        Task DeleteAsync(string fileName);
     }
 }

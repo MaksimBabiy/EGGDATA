@@ -47,6 +47,22 @@
             }
         }
 
+        public async Task DeleteAsync(string fileName)
+        {
+            try
+            {
+                await this.CloudBlobContainer.CreateIfNotExistsAsync().ConfigureAwait(false);
+
+                ICloudBlob blob = await this.CloudBlobContainer.GetBlobReferenceFromServerAsync(fileName).ConfigureAwait(false);
+
+                await blob.DeleteAsync().ConfigureAwait(false);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         private BlobTaskHelper CreateDataAsync(CloudBlockBlob cloudBlockBlob)
         {
             return new BlobTaskHelper

@@ -57,6 +57,23 @@
                 throw;
             }
         }
+
+        public async Task<AddingFileResult> DeleteAsync(string fileName, string userId)
+        {
+            string path = this.BuidPath(userId, fileName);
+
+            try
+            {
+                await this.azureBlobService.DeleteAsync(path).ConfigureAwait(false);
+
+                return new AddingFileResult { Successful = true, Message = $"{fileName} deleted successfully" };
+            }
+            catch (Exception ex)
+            {
+                return new AddingFileResult { Successful = false, Message = $"Error deleting {fileName} file: {ex.GetBaseException().Message}" };
+            }
+        }
+
         #region PrivateMethods
         private string BuidPath(string userId, string fileId)
         {

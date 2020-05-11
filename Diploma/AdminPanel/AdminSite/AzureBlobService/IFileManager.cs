@@ -8,5 +8,7 @@
     public interface IFileManager
     {
         Task<List<FileBlobModel>> AddFilesAsync(IFormFileCollection formFiles, string userId);
+
+        Task<AddingFileResult> DeleteAsync(string fileName, string userId);
     }
 }
