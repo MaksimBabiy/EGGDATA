@@ -2,9 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Reflection.Metadata;
     using System.Threading.Tasks;
     using AdminPanelDataBaseCore.Helpers;
     using AdminPanelDataBaseCore.Interfaces;
@@ -14,7 +11,6 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
-    using Microsoft.WindowsAzure.Storage.Blob;
 
     [Route("api/[controller]")]
     [Authorize]
@@ -35,6 +31,7 @@
             this.azureBlobService = azureBlobService;
             this.options = options;
             this.fileManager = fileManager;
+            this.adminRepositoryDb = adminRepositoryDb;
         }
 
         [HttpPost]
@@ -66,7 +63,6 @@
             }
         }
 
-        // index of file and quantity = 1
         [HttpGet]
         public async Task<IActionResult> GetBlobDataAsync(int fileIndex, int quantity)
         {
