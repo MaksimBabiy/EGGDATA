@@ -52,7 +52,7 @@
                     using (FileStream reader = new FileStream(f, FileMode.Open))
                     {
 
-                        data = ReaderUpdate.GetData2(reader);
+                        data = null;
                     }
                 }
 
@@ -64,7 +64,7 @@
             }
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("Get/{id}")]
         public IActionResult Get(int id)
         {
@@ -75,25 +75,36 @@
             string path = Path.Combine(webRootPath, folderName);
             try
             {
-                using (Stream stream = System.IO.File.OpenRead(Path.Combine(path, id + ".dat")))
+                //using (Stream stream = System.IO.File.OpenRead(Path.Combine(path, id + ".dat")))
+                //{
+                //    try
+                //    {
+                //        using (FileStream reader = new FileStream(, FileMode.Open))
+                //        {
+                //            data = ReaderUpdate.GetData2(Path.Combine(path, id + ".dat"));
+                //        }
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        return this.Json(new string[] { "Exception", ex.Message });
+                //    }
+                //}
+
+                using (FileStream stream = new FileStream(Path.Combine(path, id + ".dat"), FileMode.Open))
                 {
                     try
                     {
-                        string f = (string)stream.ToString();
-                        using (FileStream reader = new FileStream(f, FileMode.Open))
-                        {
-                            data = ReaderUpdate.GetData2(reader);
-                        }
+                        data = ReaderUpdate.GetData2(stream);
                     }
                     catch (Exception ex)
                     {
-                        return this.Json(new string[] { "Exception", ex.Message });
+                        return this.Json(new string[] { "Inner Exception", ex.Message });
                     }
                 }
             }
             catch (Exception ex)
             {
-                return this.Json(new string[] { "Exception", ex.Message });
+                return this.Json(new string[] { "Outer Ex", ex.Message });
             }
 
             return this.Json(data);
