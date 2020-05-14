@@ -13,7 +13,7 @@
     using Microsoft.Extensions.Options;
 
     [Route("api/[controller]")]
-    [Authorize]
+    // [Authorize]
     [ApiController]
     public class BlobController : BaseApiController
     {

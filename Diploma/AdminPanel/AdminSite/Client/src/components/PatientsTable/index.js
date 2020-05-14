@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table } from 'components';
+import { Table,Graph } from 'components';
 import { Button,Modal, Input, Upload } from 'antd'
 import { UploadOutlined } from '@ant-design/icons';
 import './patienttable.scss'
@@ -19,9 +19,12 @@ const PatientsTable = ({
   setEditValue,
   inputValue,
   props,
+  isVisiableGraph
 }) => {
-console.log(props)
+console.log(isVisiableGraph)
     return (
+      <>
+     {isVisiableGraph && <Graph />}
       <div className="patients">
       <Button className="doctors__btn" onClick={() => setIsVisiable(!isVisiable)}>Добавление</Button>
       <Modal
@@ -68,6 +71,7 @@ console.log(props)
       </Modal>}
       <Table columns={columns} data={data} isEditVisiable={isEditVisiable} setIsEditVisiable={setIsEditVisiable} setEditValue={setEditValue} />     
       </div>
+      </>
     )
 }
 
