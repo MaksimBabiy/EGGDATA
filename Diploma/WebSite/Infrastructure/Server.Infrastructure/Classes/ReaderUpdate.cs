@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -6,21 +7,42 @@ namespace Server.Infrastructure.Classes
 {
     public static class ReaderUpdate
     {
-        static List<string> Points { get; set; }
+        static List<string> Points { get; set; } = new List<string>();
         public static List<string> GetData2(FileStream stream)
         {
-            int hexIn;
-            String hex;
-            int row = 0;
-
-            for (int i = 0; (hexIn = stream.ReadByte()) != -1; i++)
+            using (stream)
             {
-                hex = string.Format("{0:X2}", hexIn);
-                Points.Add(hex);
-                row++;
-            }
+                int hexIn;
+                String hex = "";
 
-            return Points;
+                for (int i = 0; (hexIn = stream.ReadByte()) != -1; i++)
+                {
+                    hex += string.Format("{0:X2}", hexIn);
+                    
+                }
+                foreach(var item in SplitString(hex))
+                {
+                    string point = "";
+                    point = item.Substring(2, 2) + item.Substring(0, 2);
+                    Points.Add(Convert.ToInt32(point,16).ToString());
+                }
+                return Points;
+            }
+        }
+        public static List<string> SplitString(string str)
+        {
+            List<string> list = new List<string>();
+            int i = 0;
+            while (i < str.Length - 1)
+            {
+                try
+                {
+                    list.Add(str.Substring(i, 4));
+                    i += 4;
+                }
+                catch { break; }
+            }
+            return list;
         }
     }
 }
