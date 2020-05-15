@@ -7,9 +7,11 @@ const PatientsTable = ({
   handleAdd,
   handleUpdate,
   handleDelete,
+  graphData,
   data,
   columns,
   isVisiable,
+  setIsVisiableGraph,
   isEditVisiable,
   editValue,
   handleChangeEditInput,
@@ -21,10 +23,9 @@ const PatientsTable = ({
   props,
   isVisiableGraph
 }) => {
-console.log(isVisiableGraph)
     return (
       <>
-     {isVisiableGraph && <Graph />}
+     {isVisiableGraph && <Graph graphData={graphData} isVisiableGraph={isVisiableGraph} setIsVisiableGraph={setIsVisiableGraph}/>}
       <div className="patients">
       <Button className="doctors__btn" onClick={() => setIsVisiable(!isVisiable)}>Добавление</Button>
       <Modal

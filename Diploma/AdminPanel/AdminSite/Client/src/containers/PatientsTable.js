@@ -6,6 +6,7 @@ import { patientApi } from 'utils/api'
 import { message  } from 'antd'
 const PatientsTable = ({tableValue,patientId}) => {
     const [data,setData] = useState()
+    const [graphData, setGraphData] = useState()
     const [isVisiable, setIsVisiable] = useState(false)
     const [isEditVisiable, setIsEditVisiable] = useState(false)
     const [isVisiableGraph, setIsVisiableGraph] = useState(false)
@@ -78,8 +79,7 @@ const PatientsTable = ({tableValue,patientId}) => {
       );
 
       const handleGetGraph = (id) => {
-      //  patientApi.getGraph(id).then(({data}) => data[1] == 'Could not find a part of the path' ? alert('Кардиограмма не загруженна') : null)
-      setIsVisiableGraph(!isVisiableGraph)
+       patientApi.getGraph(id).then(({data}) => setGraphData(data)).finally(() => setIsVisiableGraph(!isVisiableGraph))
       }
 
       let arr = []
@@ -112,7 +112,9 @@ const PatientsTable = ({tableValue,patientId}) => {
       };
     return <BasePatientsTable 
     data={arr}
+    graphData={graphData}
     isVisiableGraph={isVisiableGraph}
+    setIsVisiableGraph={setIsVisiableGraph}
     isVisiable={isVisiable}
     isEditVisiable={isEditVisiable}
     inputValue={inputValue}

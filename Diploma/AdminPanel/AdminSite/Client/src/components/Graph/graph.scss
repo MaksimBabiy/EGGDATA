@@ -1,14 +1,46 @@
+.graphLayout{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: lightblue;
+}
+// .ant-modal-content{
+//     width: 1050px;
+// }
+.ct-point{
+    stroke-width: 5px;
+}
 .mainGraph {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 1200px;
-    height: 800px;
+    height: 750px;
     position: absolute;
-    background-color: rgb(249, 250, 249);
+    background-color:#fff;
     z-index: 999999;
+    &__header {
+        display: flex;
+        justify-content: start;
+    }
+    &__footer {
+        display: flex;
+        justify-content: end;
+    }
 }
-.ct-chart  {
-    width: 800px;
-    height: 400px;
+.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut{
+    stroke: #ff0000;
+}
+.ct-grid {
+    stroke-width: 1px;
+    stroke: rgba(223, 211, 211, 0.2)!important;
+}
+.ct-line {
+    stroke-width: 1px;
+}
+span.ct-label.ct-vertical.ct-start {
+    width: 13px !important;
 }
