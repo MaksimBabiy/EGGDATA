@@ -1,48 +1,35 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.IO;
-
-namespace Server.Infrastructure.Classes
+﻿namespace Server.Infrastructure.Classes
 {
-    public static class ReaderUpdate
-    {
-        static List<string> Points { get; set; } = new List<string>();
-        public static List<string> GetData2(FileStream stream)
-        {
-            using (stream)
-            {
-                int hexIn;
-                String hex = "";
+    using System;
+    using System.IO;
 
-                for (int i = 0; (hexIn = stream.ReadByte()) != -1; i++)
-                {
-                    hex += string.Format("{0:X2}", hexIn);
-                    
-                }
-                foreach(var item in SplitString(hex))
-                {
-                    string point = "";
-                    point = item.Substring(2, 2) + item.Substring(0, 2);
-                    Points.Add(Convert.ToInt32(point,16).ToString());
-                }
-                return Points;
-            }
-        }
-        public static List<string> SplitString(string str)
+    public static class Reader
+    {
+        public static string[] GetData(BinaryReader reader)
         {
-            List<string> list = new List<string>();
-            int i = 0;
-            while (i < str.Length - 1)
+            try
             {
-                try
+                string[] storageFirstSecondPointsOfDiagram = new string[reader.BaseStream.Length];
+
+                string[] pointsY = new string[500000];
+
+                for (int i = 0; i < 1500000; i++)
                 {
-                    list.Add(str.Substring(i, 4));
-                    i += 4;
+                    // Вносим данные в
+                    storageFirstSecondPointsOfDiagram[i] = Convert.ToString(reader.ReadSByte());
                 }
-                catch { break; }
+
+                for (int step = 0; step < 500000; step++)
+                {
+                    pointsY[step] = storageFirstSecondPointsOfDiagram[step * 3];
+                }
+
+                return pointsY;
             }
-            return list;
+            catch (Exception ex)
+            {
+                return new string[] { "Exception", ex.Message };
+            }
         }
     }
 }
