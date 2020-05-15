@@ -34,7 +34,7 @@
             this.adminRepositoryDb = adminRepositoryDb;
         }
 
-        [HttpPost]
+        [HttpPost("UploadFileAsync")]
         [DisableRequestSizeLimit]
         public async Task<IActionResult> UploadFileAsync(IFormFileCollection formFiles)
         {
