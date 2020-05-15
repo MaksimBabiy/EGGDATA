@@ -71,24 +71,12 @@
             List<string> data;
 
             string folderName = "Upload";
+            //string webRootPath = this.hostingEnvironment.WebRootPath;
             string webRootPath = this.hostingEnvironment.WebRootPath;
             string path = Path.Combine(webRootPath, folderName);
             try
             {
-                //using (Stream stream = System.IO.File.OpenRead(Path.Combine(path, id + ".dat")))
-                //{
-                //    try
-                //    {
-                //        using (FileStream reader = new FileStream(, FileMode.Open))
-                //        {
-                //            data = ReaderUpdate.GetData2(Path.Combine(path, id + ".dat"));
-                //        }
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        return this.Json(new string[] { "Exception", ex.Message });
-                //    }
-                //}
+                
 
                 using (FileStream stream = new FileStream(Path.Combine(path, id + ".dat"), FileMode.Open))
                 {

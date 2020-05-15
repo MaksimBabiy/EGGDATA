@@ -12,9 +12,11 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
 
+    
     [Route("api/[controller]")]
-    [Authorize]
     [ApiController]
+    //[Authorize]
+
     public class BlobController : BaseApiController
     {
         private readonly IAzureBlobService azureBlobService;
@@ -34,7 +36,7 @@
             this.adminRepositoryDb = adminRepositoryDb;
         }
 
-        [HttpPost]
+        [HttpPost("Upload")]
         [DisableRequestSizeLimit]
         public async Task<IActionResult> UploadFileAsync(IFormFileCollection formFiles)
         {

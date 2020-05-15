@@ -52,7 +52,7 @@
                     using (FileStream reader = new FileStream(f, FileMode.Open))
                     {
 
-                        data = null;
+                        data = ReaderUpdate.GetData2(reader);
                     }
                 }
 
@@ -82,7 +82,7 @@
                         string f = (string)stream.ToString();
                         using (FileStream reader = new FileStream(f, FileMode.Open))
                         {
-                            data = null;
+                            data = ReaderUpdate.GetData2(reader);
                         }
                     }
                     catch (Exception ex)
