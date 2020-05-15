@@ -8,6 +8,7 @@ const PatientsTable = ({tableValue,patientId}) => {
     const [data,setData] = useState()
     const [isVisiable, setIsVisiable] = useState(false)
     const [isEditVisiable, setIsEditVisiable] = useState(false)
+    const [isVisiableGraph, setIsVisiableGraph] = useState(false)
     const [inputValue, setInputValue] = useState({
        cardiogram: null
     })
@@ -77,7 +78,8 @@ const PatientsTable = ({tableValue,patientId}) => {
       );
 
       const handleGetGraph = (id) => {
-       patientApi.getGraph(id).then(({data}) => data[1] == 'Could not find a part of the path' ? alert('Кардиограмма не загруженна') : null)
+      //  patientApi.getGraph(id).then(({data}) => data[1] == 'Could not find a part of the path' ? alert('Кардиограмма не загруженна') : null)
+      setIsVisiableGraph(!isVisiableGraph)
       }
 
       let arr = []
@@ -110,6 +112,7 @@ const PatientsTable = ({tableValue,patientId}) => {
       };
     return <BasePatientsTable 
     data={arr}
+    isVisiableGraph={isVisiableGraph}
     isVisiable={isVisiable}
     isEditVisiable={isEditVisiable}
     inputValue={inputValue}

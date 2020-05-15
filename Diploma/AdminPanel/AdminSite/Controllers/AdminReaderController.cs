@@ -23,7 +23,7 @@
 
         private static IFormFile FileData { get; set; }
 
-        [Authorize]
+        // [Authorize]
         [HttpPost("convert")]
         [DisableRequestSizeLimit]
         public IActionResult Convert()
