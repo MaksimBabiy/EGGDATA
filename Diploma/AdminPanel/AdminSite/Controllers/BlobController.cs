@@ -12,7 +12,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
 
-    [Route("api/[controller]")]
+    [Route("api/blobik/[controller]")]
     // [Authorize]
     [ApiController]
     public class BlobController : BaseApiController

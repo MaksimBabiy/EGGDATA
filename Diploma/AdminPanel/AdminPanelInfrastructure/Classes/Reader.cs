@@ -1,34 +1,48 @@
-﻿namespace AdminPanelInfrastructure.Classes
-{
-    using System;
-    using System.IO;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
+namespace Server.Infrastructure.Classes
+{
     public static class Reader
     {
-        public static string[] GetData(BinaryReader reader)
+        static List<string> Points { get; set; } = new List<string>();
+        public static List<string> GetData(FileStream stream)
         {
-            try
+            using (stream)
             {
-                string[] storageFirstSecondPointsOfDiagram = new string[reader.BaseStream.Length];
+                int hexIn;
+                String hex = "";
 
-                string[] pointsY = new string[500000];
-
-                for (int i = 0; i < 1500000; i++)
+                for (int i = 0; (hexIn = stream.ReadByte()) != -1; i++)
                 {
-                    storageFirstSecondPointsOfDiagram[i] = Convert.ToString(reader.ReadSByte());
+                    hex += string.Format("{0:X2}", hexIn);
+                    
                 }
-
-                for (int step = 0; step < 500000; step++)
+                foreach(var item in SplitString(hex))
                 {
-                    pointsY[step] = storageFirstSecondPointsOfDiagram[step*3];
+                    string point = "";
+                    point = item.Substring(2, 2) + item.Substring(0, 2);
+                    Points.Add(Convert.ToInt32(point,16).ToString());
                 }
-
-                return pointsY;
+                return Points;
             }
-            catch (Exception ex)
+        }
+        public static List<string> SplitString(string str)
+        {
+            List<string> list = new List<string>();
+            int i = 0;
+            while (i < str.Length - 1)
             {
-                return new string[] { "Exception", ex.Message };
+                try
+                {
+                    list.Add(str.Substring(i, 4));
+                    i += 4;
+                }
+                catch { break; }
             }
+            return list;
         }
     }
 }

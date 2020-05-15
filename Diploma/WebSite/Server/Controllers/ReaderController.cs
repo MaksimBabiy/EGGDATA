@@ -8,6 +8,7 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Newtonsoft.Json;
     using Server.Infrastructure.Classes;
 
     [Produces("application/json")]
@@ -68,33 +69,18 @@
         [HttpGet("Get/{id}")]
         public IActionResult Get(int id)
         {
-            List<string> data;
+            List<string> data = new List<string>();
 
             string folderName = "Upload";
             string webRootPath = this.hostingEnvironment.WebRootPath;
             string path = Path.Combine(webRootPath, folderName);
             try
             {
-                //using (Stream stream = System.IO.File.OpenRead(Path.Combine(path, id + ".dat")))
-                //{
-                //    try
-                //    {
-                //        using (FileStream reader = new FileStream(, FileMode.Open))
-                //        {
-                //            data = ReaderUpdate.GetData2(Path.Combine(path, id + ".dat"));
-                //        }
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        return this.Json(new string[] { "Exception", ex.Message });
-                //    }
-                //}
-
                 using (FileStream stream = new FileStream(Path.Combine(path, id + ".dat"), FileMode.Open))
                 {
                     try
                     {
-                        data = ReaderUpdate.GetData2(stream);
+                        data = Reader.GetData(stream);
                     }
                     catch (Exception ex)
                     {
@@ -104,9 +90,12 @@
             }
             catch (Exception ex)
             {
+                
                 return this.Json(new string[] { "Outer Ex", ex.Message });
             }
-
+            this.Response.Headers.Add("Vary", "Accept-Encoding");
+            this.Response.Headers.Add("Content-type", "text/plain");
+            
             return this.Json(data);
         }
 
