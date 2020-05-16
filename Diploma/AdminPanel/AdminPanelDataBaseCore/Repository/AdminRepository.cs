@@ -2,12 +2,15 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using AdminPanel.DataBaseCore;
     using AdminPanelDataBaseCore.Entities;
     using AdminPanelDataBaseCore.Interfaces;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Storage;
     using Server.DataBaseCore.Entities;
     using Server.DataBaseCore.Interfaces;
@@ -90,6 +93,54 @@
         //{
         //    return await this.signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
         //}
+
+        [SuppressMessage("StyleCop.CSharp.SpacingRules", "SA1009:ClosingParenthesisMustBeSpacedCorrectly", Justification = "ValueTuple.")]
+        public async Task<(List<FileStorage>, int)> GetFileStoragesAsync(string userId, int index, int count)
+        {
+            try
+            {
+                var filesQuery = this.applicationDbContext.FileStorages.Where(x => x.UserId == userId);
+                int totalAmount = await filesQuery.CountAsync();
+
+                List<FileStorage> fileStorage = await filesQuery
+                    .OrderByDescending(a => a.CreatedDate)
+                    .Skip(index)
+                    .Take(count)
+                    .ToListAsync();
+
+                return (fileStorage, totalAmount);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<FileStorage> GetFileAsync(string fileBlobName)
+        {
+            return await this.applicationDbContext.FileStorages.FirstOrDefaultAsync(f => f.FileId.Equals(fileBlobName));
+        }
+
+        public async Task<List<FileStorage>> GetAllFilesAsync()
+        {
+            return await this.applicationDbContext.FileStorages.ToListAsync();
+        }
+
+        public async Task<bool> DeleteFileAsync(string fileBlobName, string userId)
+        {
+            var deletedFile = await this.applicationDbContext.FileStorages.FirstOrDefaultAsync(f => f.FileId.Equals(fileBlobName) && f.UserId.Equals(userId));
+
+            if (deletedFile != null)
+            {
+                this.applicationDbContext.FileStorages.Remove(deletedFile);
+
+                return await this.applicationDbContext.SaveChangesAsync() > 0;
+            }
+            else
+            {
+                throw new Exception($"File with {fileBlobName} name not found");
+            }
+        }
 
         public async Task LogOut()
         {

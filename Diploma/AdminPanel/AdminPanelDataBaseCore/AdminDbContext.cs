@@ -21,6 +21,8 @@
 
         public DbSet<Token> Tokens { get; set; }
 
+        public DbSet<FileStorage> FileStorages { get; set; }
+
         #region Transactions
 
         public IDbContextTransaction BeginTransaction()

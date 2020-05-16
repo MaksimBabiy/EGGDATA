@@ -27,6 +27,14 @@
 
         Task<SignInResult> PasswordSignInAsync(string email, string password, bool rememberMe);
 
+        Task<FileStorage> GetFileAsync(string fileBlobName);
+
+        Task<List<FileStorage>> GetAllFilesAsync();
+
+        Task<bool> DeleteFileAsync(string fileBlobName, string userId);
+
+        Task<(List<FileStorage>, int)> GetFileStoragesAsync(string userId, int index, int count);
+
         Task LogOut();
 
         Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default(CancellationToken));

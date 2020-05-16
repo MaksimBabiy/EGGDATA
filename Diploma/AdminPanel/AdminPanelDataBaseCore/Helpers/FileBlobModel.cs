@@ -1,4 +1,4 @@
-﻿namespace AdminPanelDataBaseCore.Helpers
+﻿namespace AdminPanelInfrastructure.Helpers
 {
     using System;
 
@@ -6,26 +6,33 @@
     {
         public FileBlobModel()
         {
-
         }
 
-        public FileBlobModel(string fileId, BlobTaskHelper blobTaskHelper)
+        public FileBlobModel(string fileId, BlobMetaData blob)
         {
             this.FileId = fileId;
-            this.CreatedDate = blobTaskHelper.CreatedDate;
-            this.Url = blobTaskHelper.Url;
+            this.CreatedDate = blob.Created;
+            this.FileUrl = blob.Url;
+        }
+
+        public FileBlobModel(string fileId, string url, string title, DateTime createdDate)
+        {
+            this.FileId = fileId;
+            this.Title = title;
+            this.FileUrl = url;
+            this.CreatedDate = createdDate;
         }
 
         public string FileId { get; set; }
 
-        public string FileName { get; set; }
+        public string Title { get; set; }
+
+        public string FileUrl { get; set; }
 
         public long Size { get; set; }
 
         public DateTime CreatedDate { get; set; }
 
-        public DateTime UpdatedDate { get; set; }
-
-        public string Url { get; set; }
+        public DateTime? UpdatedDate { get; set; }
     }
 }

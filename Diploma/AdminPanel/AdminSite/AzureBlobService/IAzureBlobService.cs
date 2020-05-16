@@ -2,15 +2,19 @@
 {
     using System.IO;
     using System.Threading.Tasks;
-    using AdminPanelDataBaseCore.Helpers;
+    using AdminPanelInfrastructure.Helpers;
     using Microsoft.WindowsAzure.Storage.Blob;
 
     public interface IAzureBlobService
     {
         CloudBlobContainer CloudBlobContainer { get; }
 
-        Task<BlobTaskHelper> AddAsync(Stream file, string fileName);
+        Task<BlobMetaData> AddAsync(Stream file, string fileName);
 
         Task DeleteAsync(string fileName);
+
+        Task<BlobMetaData> UpdateAsync(MemoryStream stream, string blobName);
+
+        Task<bool> FileExistsAsync(string blobName);
     }
 }
