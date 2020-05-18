@@ -11,14 +11,17 @@
     using Server.Infrastructure.Interfaces;
     using Server.Infrastructure.Models;
 
+
     [Authorize]
     [Route("api/[controller]")]
     public class AdminDoctorsController : Controller
     {
+
         private readonly IDoctorLogic doctorLogic;
 
         public AdminDoctorsController(IDoctorLogic doctorLogic)
         {
+            
             this.doctorLogic = doctorLogic;
         }
 
