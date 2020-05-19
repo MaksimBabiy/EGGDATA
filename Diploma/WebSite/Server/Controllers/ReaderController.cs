@@ -95,8 +95,46 @@
             }
             this.Response.Headers.Add("Vary", "Accept-Encoding");
             this.Response.Headers.Add("Content-type", "text/plain");
+
             
             return this.Json(data);
+        }
+
+        [HttpGet("GetPeaks/{id}")]
+        public IActionResult GetPeaks(int id)
+        {
+            List<string> peaks = new List<string>();
+
+            string folderName = "Upload\\";
+            string webRootPath = this.hostingEnvironment.WebRootPath;
+            string path = Path.Combine(webRootPath, folderName);
+
+            path += id.ToString() + ".dat";
+            try
+            {
+                using (StreamReader stream = new StreamReader(path))
+                {
+                    try
+                    {
+                        PeaksDetection.GetRPeaks(path);
+                        peaks = PeaksDetection.FindRPeaks(path);
+                    }
+                    catch (Exception ex)
+                    {
+                        return this.Json(new string[] { "Inner Exception", ex.Message });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return this.Json(new string[] { "Outer Ex", ex.Message });
+            }
+            this.Response.Headers.Add("Vary", "Accept-Encoding");
+            this.Response.Headers.Add("Content-type", "text/plain");
+
+
+            return this.Json(peaks);
         }
 
         [HttpGet("data")]
