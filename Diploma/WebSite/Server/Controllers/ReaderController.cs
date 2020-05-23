@@ -105,11 +105,13 @@
         {
             List<string> peaks = new List<string>();
 
-            string folderName = "Upload\\";
+            string folderName = "Upload";
             string webRootPath = this.hostingEnvironment.WebRootPath;
+            
             string path = Path.Combine(webRootPath, folderName);
+            string path2 = Path.Combine(this.hostingEnvironment.ContentRootPath, "Rpeaks.txt");
 
-            path += id.ToString() + ".dat";
+            path = Path.Combine(path, id + ".dat");
             try
             {
                 using (StreamReader stream = new StreamReader(path))
@@ -117,7 +119,7 @@
                     try
                     {
                         PeaksDetection.GetRPeaks(path);
-                        peaks = PeaksDetection.FindRPeaks(path);
+                        peaks = PeaksDetection.FindRPeaks(path2);
                     }
                     catch (Exception ex)
                     {
