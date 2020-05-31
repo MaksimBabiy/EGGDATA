@@ -40,28 +40,33 @@ namespace Server.Infrastructure.Classes
 
         public static List<double> CorrelationPoints(List<string> allPoints, List<string> rPeaks)
         {
+            
             List<double> FirstSegment = new List<double>();
             List<double> SecondSegment = new List<double>();
             List<double> CorrPoints = new List<double>();
 
-            for (int i = 1; i <= rPeaks.Count - 1; i++)
+            for (int i = 0; i <= rPeaks.Count; i++)
             {
                 int j = i + 1;
-                for(int g = 1; g <= rPeaks.Count; g++)
+                for(int g = 0; g <= rPeaks.Count; g++)
                 {
                     int m = g + 1;
 
-                    for(int n = i; n <= j; n++)
+                    try
                     {
-                        FirstSegment.Add(Convert.ToDouble(allPoints[n]));
-                    }
+                        for (int n = Convert.ToInt32(rPeaks[i]); n <= Convert.ToInt32(rPeaks[j]); n++)
+                        {
+                            FirstSegment.Add(Convert.ToDouble(allPoints[n]));
+                        }
 
-                    for (int n = g; n <= m; n++)
-                    {
-                        SecondSegment.Add(Convert.ToDouble(allPoints[n]));
-                    }
+                        for (int n = Convert.ToInt32(rPeaks[g]); n <= Convert.ToInt32(rPeaks[m]); n++)
+                        {
+                            SecondSegment.Add(Convert.ToDouble(allPoints[n]));
+                        }
 
-                    CorrPoints.Add(Correlation.Pearson(FirstSegment, SecondSegment));
+                        CorrPoints.Add(Correlation.Pearson(FirstSegment, SecondSegment));
+                    }
+                    catch { break; }
                 }
             }
             return CorrPoints;

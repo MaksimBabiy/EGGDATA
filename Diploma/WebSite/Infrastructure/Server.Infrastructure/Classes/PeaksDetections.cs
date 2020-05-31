@@ -31,6 +31,7 @@ namespace Server.Infrastructure.Classes
             using (StreamReader stream = new StreamReader(path))
             {
                 result = stream.ReadToEnd();
+                result.Trim();
             }
             return result.Split(' ').ToList<string>();
 
