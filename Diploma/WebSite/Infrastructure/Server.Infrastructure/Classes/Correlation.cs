@@ -29,12 +29,42 @@ namespace Server.Infrastructure.Classes
                 n++;
                 r += (ieA.Current - meanA) * (ieB.Current - meanB) / (sdevA * sdevB);
             }
+
             if (ieB.MoveNext() == true)
             {
                 throw new ArgumentOutOfRangeException("Datasets dataA and dataB need to have the same length.");
             }
 
             return r / (n - 1);
+        }
+
+        public static List<double> CorrelationPoints(List<string> allPoints, List<string> rPeaks)
+        {
+            List<double> FirstSegment = new List<double>();
+            List<double> SecondSegment = new List<double>();
+            List<double> CorrPoints = new List<double>();
+
+            for (int i = 1; i <= rPeaks.Count - 1; i++)
+            {
+                int j = i + 1;
+                for(int g = 1; g <= rPeaks.Count; g++)
+                {
+                    int m = g + 1;
+
+                    for(int n = i; n <= j; n++)
+                    {
+                        FirstSegment.Add(Convert.ToDouble(allPoints[n]));
+                    }
+
+                    for (int n = g; n <= m; n++)
+                    {
+                        SecondSegment.Add(Convert.ToDouble(allPoints[n]));
+                    }
+
+                    CorrPoints.Add(Correlation.Pearson(FirstSegment, SecondSegment));
+                }
+            }
+            return CorrPoints;
         }
 
     }

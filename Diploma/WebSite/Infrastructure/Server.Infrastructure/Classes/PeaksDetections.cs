@@ -24,7 +24,7 @@ namespace Server.Infrastructure.Classes
             detector.qrs(path);
         }
 
-        public static List<string> FindRPeaks(string path)
+        public static List<string> RPeaksToList(string path)
         {
             string result = "";
 
@@ -36,5 +36,6 @@ namespace Server.Infrastructure.Classes
 
         }
 
+       
     }
 }

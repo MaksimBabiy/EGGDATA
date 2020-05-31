@@ -80,6 +80,7 @@
                 {
                     try
                     {
+                        //data - все точки
                         data = Reader.GetData(stream);
                     }
                     catch (Exception ex)
@@ -103,6 +104,7 @@
         [HttpGet("GetPeaks/{id}")]
         public IActionResult GetPeaks(int id)
         {
+            //peaks - все пики
             List<string> peaks = new List<string>();
 
             string folderName = "Upload";
@@ -119,7 +121,7 @@
                     try
                     {
                         PeaksDetection.GetRPeaks(path);
-                        peaks = PeaksDetection.FindRPeaks(path2);
+                        peaks = PeaksDetection.RPeaksToList(path2);
                     }
                     catch (Exception ex)
                     {
@@ -144,6 +146,54 @@
         {
             this.HttpContext.Response.ContentType = "text/html; charset=utf-8";
             return this.HttpContext.Response.WriteAsync($"<h2 style=\"color: blue;\">Hopa?</h2>");
+        }
+
+        [HttpGet("fuck/{id}")]
+        public IActionResult Cor(int id)
+        {
+            //ВСЕ ТОЧКИ
+            List<string> data = new List<string>();
+
+            string folderName = "Upload";
+            string webRootPath = this.hostingEnvironment.WebRootPath;
+            string path = Path.Combine(webRootPath, folderName);
+
+            //ПИКИ
+            List<string> peaks = new List<string>();
+            string path2 = Path.Combine(this.hostingEnvironment.ContentRootPath, "Rpeaks.txt");
+
+           
+
+            using (FileStream stream = new FileStream(Path.Combine(path, id + ".dat"), FileMode.Open))
+            {
+                try
+                {
+                    //data - все точки
+                    data = Reader.GetData(stream);
+                }
+                catch (Exception ex)
+                {
+                    return this.Json(new string[] { "Inner Exception", ex.Message });
+                }
+            }
+
+            path = Path.Combine(path, id + ".dat");
+
+            using (StreamReader stream = new StreamReader(path))
+            {
+                try
+                {
+                    PeaksDetection.GetRPeaks(path);
+                    peaks = PeaksDetection.RPeaksToList(path2);
+                }
+                catch (Exception ex)
+                {
+                    return this.Json(new string[] { "Inner Exception", ex.Message });
+                }
+            }
+
+            return this.Json(Correlation.CorrelationPoints(data, peaks));
+
         }
     }
 }
