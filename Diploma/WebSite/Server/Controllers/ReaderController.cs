@@ -221,6 +221,7 @@
                 {
                     try
                     {
+                        //Correlation.Pearson(new List<double> { 1, 2, 3 }, new List<double> { 1, 2 });
                         data = Reader.GetData(stream);
                     }
                     catch (Exception ex)
@@ -269,7 +270,6 @@
             };
 
             return this.Json(model);
-
 
         }
     }
