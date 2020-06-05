@@ -14,10 +14,10 @@
 
   <ItemGroup>
     <Reference Include="MWArray">
-      <HintPath>D:\Program Files\Mat\toolbox\dotnetbuilder\bin\win64\v4.0\MWArray.dll</HintPath>
+      <HintPath>..\..\WebSite\Server\matlablibs\MWArray.dll</HintPath>
     </Reference>
     <Reference Include="qrs">
-      <HintPath>..\..\..\..\..\..\Desktop\Matlabxyeta\qrs\for_testing\qrs.dll</HintPath>
+      <HintPath>..\..\WebSite\Server\matlablibs\qrs.dll</HintPath>
     </Reference>
   </ItemGroup>
 

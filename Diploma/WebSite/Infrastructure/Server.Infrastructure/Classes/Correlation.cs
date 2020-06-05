@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using MathNet.Numerics.Statistics;
 
@@ -45,10 +46,11 @@ namespace Server.Infrastructure.Classes
             List<double> SecondSegment = new List<double>();
             List<double> CorrPoints = new List<double>();
 
-            for (int i = 0; i <= rPeaks.Count; i++)
+            for (int i = 0; i < rPeaks.Count - 1; i++)
             {
                 int j = i + 1;
-                for(int g = 0; g <= rPeaks.Count; g++)
+
+                for (int g = 0; g < rPeaks.Count - 1; g++)
                 {
                     int m = g + 1;
 
@@ -66,7 +68,10 @@ namespace Server.Infrastructure.Classes
 
                         CorrPoints.Add(Correlation.Pearson(FirstSegment, SecondSegment));
                     }
-                    catch { break; }
+                    catch (IOException e)
+                    {
+                        throw new Exception(e.Source);
+                    }
                 }
             }
             return CorrPoints;
