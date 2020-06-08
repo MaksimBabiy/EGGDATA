@@ -1,6 +1,10 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { DoctorItem } from 'components'
+import axios from 'axios'
 const DoctorsPage = () => {
+    useEffect(() => {
+       axios.get('http://localhost:10847/api/Doctors/Get').then(({data}) => console.log(data))
+    }, [])
     return (
    <section class="doctors">
     <div class="container">

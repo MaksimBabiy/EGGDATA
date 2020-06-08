@@ -14,7 +14,7 @@ const AdminPanel = ({userData}) => {
              <MenuOutlined />
             </div>
             <div className="user-panel">
-                <p className="user-panel__name">{userData.email}</p>
+                <p className="user-panel__name">zxc</p>
                 <div className="user-panel__photo">
                 <UserOutlined />
                 </div> 
@@ -27,11 +27,11 @@ const AdminPanel = ({userData}) => {
                     <UserOutlined />
                 </div>
                 <div className="admin-name">
-                    <p>{userData.email}</p>
+                    <p>zxc</p>
                     <div className="admin-name__status"><span className="status" className="cl">online</span></div>
                 </div>
             </div>
-            <ul className="admin-menu">
+            <ul className="admin-menu" >
                     <li className="link-menu" onClick={() => setTableContent(false)}>
                         <UsergroupAddOutlined/>
                         <a >Список пациентов</a>
@@ -83,7 +83,7 @@ const AdminPanel = ({userData}) => {
             </ul>
             
         </div>
-        <div className="admin-page-main">
+        <div className="admin-page-main" >
             {tableContent ? <DoctorsTable /> : <PatientsTable /> }
         </div>
     </div>

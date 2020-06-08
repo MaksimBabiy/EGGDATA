@@ -23,8 +23,8 @@
         }
 
         // POST: api/Doctors/AddPatient
-        [Authorize(Roles = "SystemAdministrator")]
-        [Authorize(Roles = "Doctor")]
+        // [Authorize(Roles = "SystemAdministrator")]
+        // [Authorize(Roles = "Doctor")]
         [HttpPost("AddDoctor")]
         public async Task<IActionResult> AddDoctorAsync([FromBody] DoctorViewModel doctorViewModel)
         {
@@ -50,8 +50,8 @@
         }
 
         // PATCH: api/Doctors/UpdateDoctor
-        [Authorize(Roles = "SystemAdministrator")]
-        [Authorize(Roles = "Doctor")]
+        // [Authorize(Roles = "SystemAdministrator")]
+        // [Authorize(Roles = "Doctor")]
         [HttpPatch("UpdateDoctor")]
         public async Task<IActionResult> UpdateDoctorAsync([FromBody] DoctorViewModel model)
         {
@@ -68,8 +68,8 @@
         }
 
         // Delete: api/Doctors/DeleteDoctor/{doctorId}
-        [Authorize(Roles = "SystemAdministrator")]
-        [Authorize(Roles = "Doctor")]
+        // [Authorize(Roles = "SystemAdministrator")]
+        // [Authorize(Roles = "Doctor")]
         [HttpDelete("DeleteDoctor/{doctorId}")]
         public async Task<IActionResult> DeletePatientAsync(int doctorId)
         {
@@ -84,7 +84,8 @@
             }
         }
 
-        [Authorize]
+        // [Authorize]
+        [AllowAnonymous]
         [HttpGet("Get")]
         public async Task<IActionResult> Get()
         {

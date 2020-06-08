@@ -85,7 +85,7 @@ const PatientsTable = ({tableValue,patientId}) => {
       let arr = []
       data && data.forEach((item => {
     
-       item.cardiogram = <button onClick={()=> handleGetGraph(item.patientId)} style={{zIndex: 99999999}}>Кардиограма</button>
+       item.cardiogram = <button onClick={()=> handleGetGraph(item.patientId)} style={{zIndex: 99999999}}>Отобразить</button>
        item.subRows = undefined
        arr.push(item)
       }))

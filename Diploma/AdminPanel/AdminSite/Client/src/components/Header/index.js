@@ -6,7 +6,7 @@ import './Header.css'
 import 'utils/scroll'
 import { userActions } from 'redux/actions'
 const Header = ({isAuth, setIsAuth}) => {
-
+ setIsAuth(true)
     return (
         <header className="main-header">
         <div className="navbar-fixed">
