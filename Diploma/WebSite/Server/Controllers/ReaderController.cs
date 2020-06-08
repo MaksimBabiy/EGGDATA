@@ -197,7 +197,7 @@
 
         //}
 
-        [HttpGet("fuckyou/{id}")]
+        [HttpGet("GetData/{id}")]
         public IActionResult Show(int id)
         {
 
