@@ -197,7 +197,7 @@
 
         //}
 
-        [HttpGet("fuckyou/{id}")]
+        [HttpGet("GetData/{id}")]
         public IActionResult Show(int id)
         {
 
@@ -250,7 +250,7 @@
                     }
                     catch (Exception ex)
                     {
-                        return this.Json(new string[] { "Cannot get peaks!", ex.Message });
+                        return this.Json(new string[] { "Cannot get peaks!", ex.InnerException.Message });
                     }
                 }
             }
