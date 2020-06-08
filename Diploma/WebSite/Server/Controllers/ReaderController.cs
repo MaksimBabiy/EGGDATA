@@ -250,7 +250,7 @@
                     }
                     catch (Exception ex)
                     {
-                        return this.Json(new string[] { "Cannot get peaks!", ex.Message });
+                        return this.Json(new string[] { "Cannot get peaks!", ex.InnerException.Message });
                     }
                 }
             }

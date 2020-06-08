@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MathNet.Numerics.Statistics;
-
-namespace Server.Infrastructure.Classes
+﻿namespace Server.Infrastructure.Classes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using MathNet.Numerics.Statistics;
+
     public static class Correlation
     {
         public static double Pearson(IEnumerable<double> dataA, IEnumerable<double> dataB)
@@ -40,9 +40,6 @@ namespace Server.Infrastructure.Classes
 
         public static List<double> CorrelationPoints(List<string> allPoints, List<string> rPeaks)
         {
-
-
-
             //for (int i = 0; i <= rPeaks.Count; i++)
             //{
             //    for(int g = 0; g <= rPeaks.Count; g++)
@@ -65,33 +62,107 @@ namespace Server.Infrastructure.Classes
             //    }
             //}
 
-            List<double> FirstSegment = new List<double>();
-            List<double> SecondSegment = new List<double>();
-            List<double> CorrPoints = new List<double>();
-            for (int i = 0; i < rPeaks.Count; i++)
+            List<double> firstSegment = new List<double>();
+            List<double> secondSegment = new List<double>();
+            List<double> corrPoints = new List<double>();
+            for (int i = 0; i < rPeaks.Count - 2; i++)
             {
-                for (int j = i + 1; j < rPeaks.Count; j++)
+                int j = i + 1;
+                for (int g = j; g < rPeaks.Count - 1; g++)
                 {
+                    int m = g + 1;
                     try
                     {
-                        for (int n = Convert.ToInt32(rPeaks[j - 1]); n <= Convert.ToInt32(rPeaks[j]); n++)
+                        double difference = 0;
+
+                        for (int n = Convert.ToInt32(rPeaks[i]); n <= Convert.ToInt32(rPeaks[j]); n++)
                         {
-                            FirstSegment.Add(Convert.ToDouble(allPoints[n]));
+                            firstSegment.Add(Convert.ToDouble(allPoints[n]));
                         }
 
-                        for (int n = Convert.ToInt32(rPeaks[j]); n <= Convert.ToInt32(rPeaks[j + 1]); n++)
+                        for (int n = Convert.ToInt32(rPeaks[g]); n <= Convert.ToInt32(rPeaks[m]); n++)
                         {
-                            SecondSegment.Add(Convert.ToDouble(allPoints[n]));
+                            secondSegment.Add(Convert.ToDouble(allPoints[n]));
                         }
 
-                        CorrPoints.Add(Correlation.Pearson(FirstSegment, SecondSegment));
-                        FirstSegment.Clear();
-                        SecondSegment.Clear();
+                        if (firstSegment.Count != secondSegment.Count)
+                        {
+
+                            int numberOfPoint = 0;
+
+                            if (firstSegment.Count > secondSegment.Count) // Проверка какой список доминирует
+                            {
+                                int startCount = secondSegment.Count;
+
+                                while (secondSegment.Count != firstSegment.Count) // Создание новых точек между существующими
+                                {
+                                    double newBetweenPoint = (secondSegment[numberOfPoint] + secondSegment[numberOfPoint + 1]) / 2;
+                                    secondSegment.Insert(numberOfPoint + 1, newBetweenPoint);
+                                    numberOfPoint += 2;
+
+                                    if (numberOfPoint > secondSegment.Count - 3) // Если список точек подходит к концу, а операция не закончена номер точки обнуляется
+                                    {
+                                        numberOfPoint = 0;
+                                    }
+                                }
+
+                                int endCount = secondSegment.Count;
+
+                                difference = (endCount - startCount) / ((endCount + startCount) / 2); // Переменная разности показывает насколько график был увеличен
+                            }
+                            else if (firstSegment.Count < secondSegment.Count) // Проверка какой список доминирует
+                            {
+                                int startCount = firstSegment.Count;
+
+                                while (firstSegment.Count != secondSegment.Count) // Создание новых точек между существующими
+                                {
+                                    double newBetweenPoint = (firstSegment[numberOfPoint] + firstSegment[numberOfPoint + 1]) / 2;
+                                    firstSegment.Insert(numberOfPoint + 1, newBetweenPoint);
+                                    numberOfPoint += 2;
+
+                                    if (numberOfPoint > firstSegment.Count - 3) // Если список точек подходит к концу, а операция не закончена номер точки обнуляется
+                                    {
+                                        numberOfPoint = 0;
+                                    }
+                                }
+
+                                int endCount = firstSegment.Count;
+
+                                difference = (endCount - startCount) / ((endCount + startCount) / 2);
+                            }
+                        } // Проверка на одинаковое кол-во элементов
+
+                        double corrCoefPoint = Correlation.Pearson(firstSegment, secondSegment);
+
+                        if (corrCoefPoint > 0)
+                        {
+                            corrCoefPoint -= difference;
+                            if (corrCoefPoint < 0)
+                            {
+                                corrCoefPoint = 0;
+                            }
+                        }
+                        else if (corrCoefPoint < 0)
+                        {
+                            corrCoefPoint += difference;
+                            if (corrCoefPoint > 0)
+                            {
+                                corrCoefPoint = 0;
+                            }
+                        }
+
+                        corrPoints.Add(corrCoefPoint);
+                        firstSegment.Clear();
+                        secondSegment.Clear();
                     }
-                    catch { break; }
+                    catch
+                    {
+                        // break;
+                    }
                 }
             }
-            return CorrPoints;
+
+            return corrPoints;
         }
 
     }
