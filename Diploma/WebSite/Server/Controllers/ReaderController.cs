@@ -10,6 +10,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Newtonsoft.Json;
     using Server.Infrastructure.Classes;
+    using Server.Infrastructure.Models;
 
     [Produces("application/json")]
     [Route("api/reader")]
@@ -66,52 +67,178 @@
         }
 
         //[Authorize]
-        [HttpGet("Get/{id}")]
-        public IActionResult Get(int id)
-        {
-            List<string> data = new List<string>();
+        //[HttpGet("Get/{id}")]
+        //public IActionResult Get(int id)
+        //{
+        //    List<string> data = new List<string>();
 
+        //    string folderName = "Upload";
+        //    string webRootPath = this.hostingEnvironment.WebRootPath;
+        //    string path = Path.Combine(webRootPath, folderName);
+        //    try
+        //    {
+        //        using (FileStream stream = new FileStream(Path.Combine(path, id + ".dat"), FileMode.Open))
+        //        {
+        //            try
+        //            {
+        //                //data - все точки
+        //                data = Reader.GetData(stream);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                return this.Json(new string[] { "Inner Exception", ex.Message });
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+                
+        //        return this.Json(new string[] { "Outer Ex", ex.Message });
+        //    }
+        //    this.Response.Headers.Add("Vary", "Accept-Encoding");
+        //    this.Response.Headers.Add("Content-type", "text/plain");
+
+            
+        //    return this.Json(data);
+        //}
+
+        //[HttpGet("GetPeaks/{id}")]
+        //public IActionResult GetPeaks(int id)
+        //{
+        //    //peaks - все пики
+        //    List<string> peaks = new List<string>();
+
+        //    string folderName = "Upload";
+        //    string webRootPath = this.hostingEnvironment.WebRootPath;
+            
+        //    string path = Path.Combine(webRootPath, folderName);
+        //    string path2 = Path.Combine(this.hostingEnvironment.ContentRootPath, "Rpeaks.txt");
+
+        //    path = Path.Combine(path, id + ".dat");
+        //    try
+        //    {
+        //        using (StreamReader stream = new StreamReader(path))
+        //        {
+        //            try
+        //            {
+        //                PeaksDetection.GetRPeaks(path);
+        //                peaks = PeaksDetection.RPeaksToList(path2);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                return this.Json(new string[] { "Inner Exception", ex.Message });
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return this.Json(new string[] { "Outer Ex", ex.Message });
+        //    }
+        //    this.Response.Headers.Add("Vary", "Accept-Encoding");
+        //    this.Response.Headers.Add("Content-type", "text/plain");
+
+
+        //    return this.Json(peaks);
+        //}
+
+        [HttpGet("data")]
+        public Task Data()
+        {
+            this.HttpContext.Response.ContentType = "text/html; charset=utf-8";
+            return this.HttpContext.Response.WriteAsync($"<h2 style=\"color: blue;\">Hopa?</h2>");
+        }
+
+        //[HttpGet("fuck/{id}")]
+        //public IActionResult Cor(int id)
+        //{
+        //    //ВСЕ ТОЧКИ
+        //    List<string> data = new List<string>();
+
+        //    string folderName = "Upload";
+        //    string webRootPath = this.hostingEnvironment.WebRootPath;
+        //    string path = Path.Combine(webRootPath, folderName);
+
+        //    //ПИКИ
+        //    List<string> peaks = new List<string>();
+        //    string path2 = Path.Combine(this.hostingEnvironment.ContentRootPath, "Rpeaks.txt");
+
+           
+
+        //    using (FileStream stream = new FileStream(Path.Combine(path, id + ".dat"), FileMode.Open))
+        //    {
+        //        try
+        //        {
+        //            //data - все точки
+        //            data = Reader.GetData(stream);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return this.Json(new string[] { "Inner Exception", ex.Message });
+        //        }
+        //    }
+
+        //    path = Path.Combine(path, id + ".dat");
+
+        //    using (StreamReader stream = new StreamReader(path))
+        //    {
+        //        try
+        //        {
+        //            PeaksDetection.GetRPeaks(path);
+        //            peaks = PeaksDetection.RPeaksToList(path2);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return this.Json(new string[] { "Inner Exception", ex.Message });
+        //        }
+        //    }
+
+        //    return this.Json(Correlation.CorrelationPoints(data, peaks));
+
+        //}
+
+        [HttpGet("GetData/{id}")]
+        public IActionResult Show(int id)
+        {
+
+
+            //все точки
+            List<string> data = new List<string>();
+            //все пики
+            List<string> peaks = new List<string>();
+            //папка хранения файлов
             string folderName = "Upload";
             string webRootPath = this.hostingEnvironment.WebRootPath;
+            //путь к этой папке
             string path = Path.Combine(webRootPath, folderName);
+            //путь файла
+            path = Path.Combine(path, id + ".dat");
+
+            //достаем данные из датовского файла
             try
             {
-                using (FileStream stream = new FileStream(Path.Combine(path, id + ".dat"), FileMode.Open))
+                using (FileStream stream = new FileStream(path, FileMode.Open))
                 {
                     try
                     {
+                        //Correlation.Pearson(new List<double> { 1, 2, 3 }, new List<double> { 1, 2 });
                         data = Reader.GetData(stream);
                     }
                     catch (Exception ex)
                     {
-                        return this.Json(new string[] { "Inner Exception", ex.Message });
+                        return this.Json(new string[] { "Cannot convert data!", ex.Message });
                     }
                 }
             }
             catch (Exception ex)
             {
-                
-                return this.Json(new string[] { "Outer Ex", ex.Message });
+
+                return this.Json(new string[] { "Cannot open file!", ex.Message });
             }
-            this.Response.Headers.Add("Vary", "Accept-Encoding");
-            this.Response.Headers.Add("Content-type", "text/plain");
 
-            
-            return this.Json(data);
-        }
-
-        [HttpGet("GetPeaks/{id}")]
-        public IActionResult GetPeaks(int id)
-        {
-            List<string> peaks = new List<string>();
-
-            string folderName = "Upload";
-            string webRootPath = this.hostingEnvironment.WebRootPath;
-            
-            string path = Path.Combine(webRootPath, folderName);
+            //путь файла с пиками
             string path2 = Path.Combine(this.hostingEnvironment.ContentRootPath, "Rpeaks.txt");
-
-            path = Path.Combine(path, id + ".dat");
+            //заносим пики в список
             try
             {
                 using (StreamReader stream = new StreamReader(path))
@@ -119,31 +246,31 @@
                     try
                     {
                         PeaksDetection.GetRPeaks(path);
-                        peaks = PeaksDetection.FindRPeaks(path2);
+                        peaks = PeaksDetection.RPeaksToList(path2);
                     }
                     catch (Exception ex)
                     {
-                        return this.Json(new string[] { "Inner Exception", ex.Message });
+                        return this.Json(new string[] { "Cannot get peaks!", ex.InnerException.Message });
                     }
                 }
             }
             catch (Exception ex)
             {
 
-                return this.Json(new string[] { "Outer Ex", ex.Message });
+                return this.Json(new string[] { "Cannot open file!", ex.Message });
             }
-            this.Response.Headers.Add("Vary", "Accept-Encoding");
-            this.Response.Headers.Add("Content-type", "text/plain");
 
+            List<double> CorrelationRes = Correlation.CorrelationPoints(data, peaks);
 
-            return this.Json(peaks);
-        }
+            JsonResultModel model = new JsonResultModel
+            {
+                Points = data,
+                Peaks = peaks,
+                CorelationResult = CorrelationRes
+            };
 
-        [HttpGet("data")]
-        public Task Data()
-        {
-            this.HttpContext.Response.ContentType = "text/html; charset=utf-8";
-            return this.HttpContext.Response.WriteAsync($"<h2 style=\"color: blue;\">Hopa?</h2>");
+            return this.Json(model);
+
         }
     }
 }
