@@ -7,6 +7,8 @@
 
     public static class Correlation
     {
+
+        //алгоритм пирсона (один из вариантов алгоритма корреляции)
         public static double Pearson(IEnumerable<double> dataA, IEnumerable<double> dataB)
         {
             int n = 0;
@@ -38,29 +40,9 @@
             return r / (n - 1);
         }
 
+        //алгоритм корреляции
         public static List<double> CorrelationPoints(List<string> allPoints, List<string> rPeaks)
         {
-            //for (int i = 0; i <= rPeaks.Count; i++)
-            //{
-            //    for(int g = 0; g <= rPeaks.Count; g++)
-            //    {
-            //        try
-            //        {
-            //            for (int n = Convert.ToInt32(rPeaks[i]); n <= Convert.ToInt32(rPeaks[j]); n++)
-            //            {
-            //                FirstSegment.Add(Convert.ToDouble(allPoints[n]));
-            //            }
-
-            //            for (int n = Convert.ToInt32(rPeaks[g]); n <= Convert.ToInt32(rPeaks[m]); n++)
-            //            {
-            //                SecondSegment.Add(Convert.ToDouble(allPoints[n]));
-            //            }
-
-            //            CorrPoints.Add(Correlation.Pearson(FirstSegment, SecondSegment));
-            //        }
-            //        catch { break; }
-            //    }
-            //}
 
             List<double> firstSegment = new List<double>();
             List<double> secondSegment = new List<double>();
