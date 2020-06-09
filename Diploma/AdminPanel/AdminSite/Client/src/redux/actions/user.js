@@ -1,5 +1,9 @@
 import { userApi } from 'utils/api'
 const actions = {
+  setScroll: (count,us) => ({
+    type: 'USER:SET_SCROLL',
+    payload: {count, us}
+  }),
     setUserData: user => ({
         type: 'USER:SET_DATA',
         payload: user

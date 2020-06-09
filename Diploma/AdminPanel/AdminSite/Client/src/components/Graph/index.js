@@ -2,19 +2,20 @@ import React, { useState,useRef, useEffect } from 'react';
 import ChartistGraph from 'react-chartist';
 import { Button,Modal } from 'antd'
 import './graph.scss'
+
 const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
-  useEffect(() => {
-    console.log('mounted')
-    console.log(document)
-    setTimeout(() => {
-      document.querySelector('.sema').addEventListener('wheel', onWheel)
-    },1000)
-    
-  },[])
-  const svgRef = useRef(null)
-  const [scrollCount, setScrollCount] = useState(1)
  
-    var data = {
+  const svgRef = useRef(null)
+ 
+  let count = 1;
+  // useEffect(() => {
+  //   console.log('render')
+  //   setTimeout(() => {
+     
+  //   },100)
+  // },[])
+
+    var datamin = {
         // labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,55,22,77,22,77],
         series: [
           graphData
@@ -27,8 +28,8 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
         showArea: false,
         showPoint: false,
         lineSmooth: false,
-        width: 1000,
-        height: 600,
+        width: 1920,
+        height: 800,
         // showLabel: true,
         axisY: {
             onlyInteger: true,
@@ -36,44 +37,42 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
             offset: 20
           }
       };
-   
+     
       var type = 'Line'
-      
+
     const onWheel = (e) => {
-    
       let delta = e.deltaY
       let x = e.offsetX==undefined?e.layerX:e.offsetX;
       let y = e.offsetY;
-  
-    console.log(typeof delta)
-  
+     
+      console.log(count)
     if (delta > 0) {
-      setScrollCount(scrollCount + 0.5)
-      console.log('suka')
+     count +=0.5
     }
     else {
-      if(scrollCount > 1) {
-        setScrollCount(scrollCount - 0.5)
+      if(count > 1) {
+       count -=0.5
       }
-      
+
     }
-    console.log(scrollCount)
-    svgRef.current.chart.style.transform = 'scale('+scrollCount+','+scrollCount+')';
+   
+    svgRef.current.chart.style.transform = `scale(${count},${count})`;
     svgRef.current.chart.style.transformOrigin = x + 'px '+ y+'px';
     }
+    
     return ( 
       <>
       <Modal
       visible={isVisiableGraph}
       onOk={() => setIsVisiableGraph(!isVisiableGraph)}
       onCancel={() => setIsVisiableGraph(!isVisiableGraph)}
-      width={1050}
+      width={1920}
     >
       <div className="mainGraph__header"><h4 className="mainGraph__header-title" >ЭКГ Считыватель</h4></div>
-        <div style={{overflow: 'hidden'}} className="sema">
-        <ChartistGraph data={data} options={options} type={type} ref={svgRef} />
+        <div style={{overflow: 'hidden'}} className="sema" >
+        <ChartistGraph data={datamin} options={options} type={type} ref={svgRef} />
         </div>
-         <div className="mainGraph__footer"><Button className="mainGraph__footer-text" >Вейвлет преобразование</Button></div>
+         <div className="mainGraph__footer"><Button className="mainGraph__footer-text" onClick={() => document.querySelector('.sema').addEventListener('wheel', (e) => onWheel(e))}>Трансформирование</Button></div>
     </Modal>
     </>     
      );
