@@ -65,7 +65,7 @@ const PatientsTable = ({
         <Input placeholder="О докторе" value={editValue.condition} onChange={handleChangeEditInput} name="condition"/>
         <Upload {...props} >
           <Button>
-            <UploadOutlined /> Click to Upload
+            <UploadOutlined /> Выберите файл
           </Button>
         </Upload>
         <Button onClick={handleDelete}>Удалить доктора</Button>

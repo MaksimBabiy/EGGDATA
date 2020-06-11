@@ -33,6 +33,7 @@
 
         protected JsonSerializerSettings JsonSettings { get; private set; }
 
+
         protected string UserId
         {
             get

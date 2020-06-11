@@ -17,7 +17,7 @@ const TestPage = () => {
             <div style={{marginTop: 100}}>
               <Upload {...props}>
                 <Button>
-                  <UploadOutlined /> Click to Upload
+                  <UploadOutlined /> Выберите файл
                 </Button>
               </Upload>
             </div>

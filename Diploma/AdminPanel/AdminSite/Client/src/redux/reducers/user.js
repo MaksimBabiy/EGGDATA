@@ -4,7 +4,8 @@ const initialState = {
     isAuth: !!window.localStorage.token,
     userData: JSON.parse(localStorage.getItem('userData')),
     id: null,
-    tableValue: null
+    tableValue: null,
+    scrollCount: 1
 }
 
 export default ( state = initialState, {type, payload}) => {
@@ -35,6 +36,11 @@ export default ( state = initialState, {type, payload}) => {
             return {
                 ...state,
                 tableValue: payload
+            }
+        case 'USER:SET_SCROLL':
+            return {
+                ...state,
+                scrollCount: eval(`${state.scrollCount} ${payload.us} ${payload.count}`)
             }
         default:
             return state

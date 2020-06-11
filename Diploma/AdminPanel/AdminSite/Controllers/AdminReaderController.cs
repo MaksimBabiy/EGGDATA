@@ -67,11 +67,9 @@
         }
 
         // [Authorize]
-        [HttpGet("GetData/{id}")]
+        [HttpGet("getinfo/{id}")]
         public IActionResult Show(int id)
         {
-
-
             //все точки
             List<string> data = new List<string>();
             //все пики

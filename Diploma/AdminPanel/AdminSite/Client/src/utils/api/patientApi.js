@@ -10,5 +10,5 @@ export default {
      }
    }
   ),
-  getGraph: id =>  axios.get(`http://localhost:56839/api/reader/get/6`)
+  getGraph: id =>  axios.get(`http://localhost:56839/api/reader/getinfo/8`)
 }
