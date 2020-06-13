@@ -10,13 +10,6 @@ namespace Server.Infrastructure.Logic
 {
     public class GetData
     {
-        ////папка хранения файлов
-        //string folderName = "Upload";
-        //string webRootPath = hostingEnvironment.WebRootPath;
-        ////путь к этой папке
-        //string path = Path.Combine(webRootPath, folderName);
-        ////путь файла
-        //path = Path.Combine(path, id + ".dat");
         
         public static List<string> ReadFile(int id, IHostingEnvironment env)
         {
