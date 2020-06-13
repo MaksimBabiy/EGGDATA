@@ -180,7 +180,14 @@
         [HttpGet("Get")]
         public async Task<IActionResult> Get()
         {
-            return this.Json(await this.patientLogic.GetPatientsListAsync());
+            try
+            {
+                return this.Json(await this.patientLogic.GetPatientsListAsync());
+            }
+            catch(Exception ex)
+            {
+                return this.Json(ex.Message);
+            }
         }
     }
 }
