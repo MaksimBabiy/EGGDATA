@@ -10,6 +10,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Newtonsoft.Json;
     using Server.Infrastructure.Classes;
+    using Server.Infrastructure.Logic;
     using Server.Infrastructure.Models;
 
     [Produces("application/json")]
@@ -26,80 +27,29 @@
         [HttpGet("GetData/{id}")]
         public IActionResult Show(int id)
         {
-
-
-            //все точки
-            List<string> data = new List<string>();
-            //все пики
-            List<string> peaks = new List<string>();
-            //папка хранения файлов
-            string folderName = "Upload";
-            string webRootPath = this.hostingEnvironment.WebRootPath;
-            //путь к этой папке
-            string path = Path.Combine(webRootPath, folderName);
-            //путь файла
-            path = Path.Combine(path, id + ".dat");
-
-            //достаем данные из датовского файла
             try
             {
-                using (FileStream stream = new FileStream(path, FileMode.Open))
+                //все точки
+                List<string> data = GetData.ReadFile(id, this.hostingEnvironment);
+                //все пики
+                List<string> peaks = GetData.GetRPeaks(id, this.hostingEnvironment);
+                //все результаті корреляции
+                List<double> CorrelationRes = Correlation.CorrelationPoints(data, peaks);
+
+                //модель ответа пользователю
+                JsonResultModel model = new JsonResultModel
                 {
-                    try
-                    {
-                        //читаем все точки из файла и заносим в список
-                        data = Reader.GetData(stream);
-                    }
-                    catch (Exception ex)
-                    {
-                        return this.Json(new string[] { "Cannot convert data!", ex.Message });
-                    }
-                }
+                    Points = data,
+                    Peaks = peaks,
+                    CorelationResult = CorrelationRes
+                };
+
+                return this.Json(model);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-
-                return this.Json(new string[] { "Cannot open file!", ex.Message });
+                return this.BadRequest(ex.Message);
             }
-
-            //путь файла с пиками
-            string path2 = Path.Combine(this.hostingEnvironment.ContentRootPath, "Rpeaks.txt");
-            
-            try
-            {
-                using (StreamReader stream = new StreamReader(path))
-                {
-                    try
-                    {
-                        //Получаем пики и заносим их в список
-                        PeaksDetection.GetRPeaks(path);
-                        peaks = PeaksDetection.RPeaksToList(path2);
-                    }
-                    catch (Exception ex)
-                    {
-                        return this.Json(new string[] { "Cannot get peaks!", ex.InnerException.Message });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-                return this.Json(new string[] { "Cannot open file!", ex.Message });
-            }
-
-            //заносим результаты корреляции в список
-            List<double> CorrelationRes = Correlation.CorrelationPoints(data, peaks);
-
-            //модель ответа пользователю
-            JsonResultModel model = new JsonResultModel
-            {
-                Points = data,
-                Peaks = peaks,
-                CorelationResult = CorrelationRes
-            };
-
-            return this.Json(model);
-
         }
     }
 }
