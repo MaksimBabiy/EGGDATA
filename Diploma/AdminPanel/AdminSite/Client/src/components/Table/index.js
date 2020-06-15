@@ -47,7 +47,6 @@ const Table = ({ columns, data,setIsEditVisiable, isEditVisiable,setEditValue,se
               <tr {...row.getRowProps()} >
                 {row.cells.map((cell,index) => {
                   return (
-                   
                     index < 4 ?  <td {...cell.getCellProps()}  onClick={() => {
                       setEditValue(row.original)
                       setIsEditVisiable(!isEditVisiable)
@@ -100,7 +99,6 @@ const Table = ({ columns, data,setIsEditVisiable, isEditVisiable,setEditValue,se
             setPageSize(Number(e.target.value));
           }}
         >
-         
         </select>
       </div>
     </>
