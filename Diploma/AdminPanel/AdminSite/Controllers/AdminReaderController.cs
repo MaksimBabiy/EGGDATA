@@ -113,6 +113,11 @@
                 {
                     try
                     {
+                        //var peaksDetection = new PeaksDetection();
+
+                        //peaksDetection.GetRPeaks(path);
+                        //peaks = peaksDetection.RPeaksToList(path2);
+
                         PeaksDetection.GetRPeaks(path);
                         peaks = PeaksDetection.RPeaksToList(path2);
                     }

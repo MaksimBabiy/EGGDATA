@@ -55,10 +55,10 @@
 
   <ItemGroup>
     <Reference Include="MWArray">
-      <HintPath>matlablibs\MWArray.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Downloads\MWArray.dll</HintPath>
     </Reference>
     <Reference Include="qrs">
-      <HintPath>matlablibs\qrs.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Downloads\qrs.dll</HintPath>
     </Reference>
   </ItemGroup>
 

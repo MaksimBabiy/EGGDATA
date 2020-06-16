@@ -34,19 +34,19 @@
                 //все пики
                 List<string> peaks = GetData.GetRPeaks(id, this.hostingEnvironment);
                 //все результаті корреляции
-                List<double> CorrelationRes = Correlation.CorrelationPoints(data, peaks);
+                List<double> correlationRes = Correlation.CorrelationPoints(data, peaks);
 
                 //модель ответа пользователю
                 JsonResultModel model = new JsonResultModel
                 {
                     Points = data,
                     Peaks = peaks,
-                    CorelationResult = CorrelationRes
+                    CorelationResult = correlationRes
                 };
 
                 return this.Json(model);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return this.BadRequest(ex.Message);
             }
