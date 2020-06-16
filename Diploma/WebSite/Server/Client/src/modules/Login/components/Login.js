@@ -18,8 +18,8 @@ const Login = (props) => {
            <WhiteBlock>
            <Link to="/"><ArrowLeftOutlined style={{fontSize: 25}} className="icon"/></Link>
          <div className="auth__top">
-           <h2>Войти в аккаунт</h2>
-           <p>Пожалуйста, войдите в свой аккаунт</p>
+         <h2>Увійти в акаунт</h2>
+           <p>Будь ласка, увійдіть в свій аккаунт</p>
        </div>
        <Form onSubmit={handleSubmit} className="login-form">
            <Form.Item 
@@ -53,9 +53,9 @@ const Login = (props) => {
            </Form.Item>
            <Form.Item>
            <Button type="primary" htmlType="submit" size="large" className="login-form-button" onClick={handleSubmit} >
-              Войти
+            Увійти
              </Button>
-             <Link to="/signUp" className="auth__register-link" >Зарегистрироваться</Link>
+             <Link to="/signUp" className="auth__register-link" >Зареєструватися</Link>
            </Form.Item>
          </Form>
          </WhiteBlock>

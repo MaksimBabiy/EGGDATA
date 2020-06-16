@@ -28,7 +28,7 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
         showArea: false,
         showPoint: false,
         lineSmooth: false,
-        width: 1920,
+        width: 20000,
         height: 800,
         // showLabel: true,
         axisY: {
@@ -68,11 +68,11 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
       onCancel={() => setIsVisiableGraph(!isVisiableGraph)}
       width={1920}
     >
-      <div className="mainGraph__header"><h4 className="mainGraph__header-title" >ЭКГ Считыватель</h4></div>
+      <div className="mainGraph__header"><h4 className="mainGraph__header-title" >ЕКГ Зчитувач</h4></div>
         <div style={{overflow: 'hidden'}} className="sema" >
         <ChartistGraph data={datamin} options={options} type={type} ref={svgRef} />
         </div>
-         <div className="mainGraph__footer"><Button className="mainGraph__footer-text" onClick={() => document.querySelector('.sema').addEventListener('wheel', (e) => onWheel(e))}>Трансформирование</Button></div>
+         <div className="mainGraph__footer"><Button className="mainGraph__footer-text" onClick={() => document.querySelector('.sema').addEventListener('wheel', (e) => onWheel(e))}>Трансформування</Button></div>
     </Modal>
     </>     
      );

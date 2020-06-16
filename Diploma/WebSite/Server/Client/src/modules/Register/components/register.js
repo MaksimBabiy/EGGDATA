@@ -19,8 +19,8 @@ const Register = props => {
     return ( 
       <div>
            <div className="auth__top">
-             <h2>Регистрация</h2>
-             <p>Для входа в чат, вам нужно зарегистрироваться</p>
+             <h2>Зареєструватися</h2>
+             <p>Для входу, вам потрібно зареєструватися</p>
          </div>
          <WhiteBlock>
          <Form onSubmit={handleSubmit} className="login-form">
@@ -65,9 +65,9 @@ const Register = props => {
              <Form.Item>
              {dirty && !isValid ? <span>Ошибка!</span> : '' }
                <Button type="primary" onClick={handleSubmit} htmlType="submit" size="large" className="login-form-button" >
-                 Зарегистрироваться
+               Зареєструватися
                </Button>
-               <Link to="/signIn" className="auth__register-link">Войти в аккаунт</Link>
+               <Link to="/signIn" className="auth__register-link">Увійти в акаунт</Link>
              </Form.Item>
            </Form> 
            

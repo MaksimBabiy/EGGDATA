@@ -3,6 +3,7 @@ import { Table,Graph } from 'components';
 import { Button,Modal, Input, Upload } from 'antd'
 import { UploadOutlined } from '@ant-design/icons';
 import './patienttable.scss'
+import { LoadingOutlined } from '@ant-design/icons';
 const PatientsTable = ({
   handleAdd,
   handleUpdate,
@@ -21,10 +22,20 @@ const PatientsTable = ({
   setEditValue,
   inputValue,
   props,
-  isVisiableGraph
+  isVisiableGraph,
+  isLoading
 }) => {
+  console.log(isLoading)
+  const mystyle = {
+    fontSize: '60px',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%,-50%)'
+  };
     return (
       <>
+      {isLoading && <LoadingOutlined style={mystyle}/>}
      {isVisiableGraph && <Graph graphData={graphData} isVisiableGraph={isVisiableGraph} setIsVisiableGraph={setIsVisiableGraph}/>}
       <div className="patients">
       <Button className="doctors__btn" onClick={() => setIsVisiable(!isVisiable)}>Добавление</Button>
@@ -47,7 +58,7 @@ const PatientsTable = ({
         <Input placeholder="О докторе" onChange={handleChangeInput} name="Condition" value={inputValue.Condition}/>
       </Modal>
       {editValue && <Modal
-        title="Редактирование пациета"
+        title="Редагування пацієнта"
         visible={isEditVisiable}
         onOk={handleUpdate}
         onCancel={() => setIsEditVisiable(false)}
