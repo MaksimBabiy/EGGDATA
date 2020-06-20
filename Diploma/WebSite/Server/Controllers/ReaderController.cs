@@ -14,6 +14,7 @@
     using Server.Infrastructure.Logic;
     using Server.Infrastructure.Models;
     using RPeaksRecognizeDLL;
+    using System.Security.Claims;
 
     [Produces("application/json")]
     [Route("api/reader")]
@@ -52,6 +53,27 @@
             {
                 return this.BadRequest(ex.Message);
             }
+        }
+
+        //[Authorize]
+        [HttpPost("add/{id}")]
+        public async Task<IActionResult> AddFile(IFormFile file, int id)
+        {
+            if (file != null)
+            {
+
+                string path = "/Upload/" + id + ".dat";
+                using (var fileStream = new FileStream(this.hostingEnvironment.WebRootPath + path, FileMode.Create))
+                {
+
+                    await file.CopyToAsync(fileStream);
+                }
+
+                return this.Ok("File has been uploaded");
+            }
+
+            return this.BadRequest("Cannot upload file!");
+
         }
     }
 }
