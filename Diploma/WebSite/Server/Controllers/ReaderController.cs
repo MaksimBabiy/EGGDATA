@@ -56,13 +56,13 @@
         }
 
         //[Authorize]
-        [HttpPost("add")]
-        public async Task<IActionResult> AddFile(IFormFile file)
+        [HttpPost("add/{id}")]
+        public async Task<IActionResult> AddFile(IFormFile file, int id)
         {
             if (file != null)
             {
 
-                string path = "/Upload/" + file.FileName;
+                string path = "/Upload/" + id + ".dat";
                 using (var fileStream = new FileStream(this.hostingEnvironment.WebRootPath + path, FileMode.Create))
                 {
 
