@@ -3,6 +3,7 @@ import { Table,Graph } from 'components';
 import { Button,Modal, Input, Upload } from 'antd'
 import { UploadOutlined } from '@ant-design/icons';
 import './patienttable.scss'
+import { patientApi } from 'utils/api'
 import { LoadingOutlined } from '@ant-design/icons';
 const PatientsTable = ({
   handleAdd,
@@ -21,6 +22,7 @@ const PatientsTable = ({
   setIsEditVisiable,
   setEditValue,
   inputValue,
+  handleUpload,
   props,
   isVisiableGraph,
   isLoading
@@ -74,11 +76,8 @@ const PatientsTable = ({
         <Input placeholder="Домашний телефон" value={editValue.homeNumber} onChange={handleChangeEditInput} name="homeNumber"/>
         <Input placeholder="E-mail" value={editValue.email} onChange={handleChangeEditInput} name="email"/>
         <Input placeholder="О докторе" value={editValue.condition} onChange={handleChangeEditInput} name="condition"/>
-        <Upload {...props} >
-          <Button>
-            <UploadOutlined /> Выберите файл
-          </Button>
-        </Upload>
+      
+        <Input type="file" name="file" onChange={handleUpload}/>
         <Button onClick={handleDelete}>Удалить пациента</Button>
       </Modal>}
       <Table columns={columns} data={data} isEditVisiable={isEditVisiable} setIsEditVisiable={setIsEditVisiable} setEditValue={setEditValue} />     

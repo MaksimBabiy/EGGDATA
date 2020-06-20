@@ -2,21 +2,20 @@ import React, { useState,useRef, useEffect } from 'react';
 import ChartistGraph from 'react-chartist';
 import { Button,Modal } from 'antd'
 import './graph.scss'
-import { createElement } from 'react';
-import { Bar } from 'chartist';
+
 
 const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
+  useEffect(() => {
+
+    // returned function will be called on component unmount 
+    return () => {
+       graphData = []
+    }
+  }, [])
   const svgRef = useRef(null)
   const [isVisiableResult,setIsVisiableResult] = useState(false)
   let cor = 1
   let count = 1;
-  // useEffect(() => {
-  //   console.log('render')
-  //   setTimeout(() => {
-     
-  //   },100)
-  // },[])
-
     var datamin = {
         // labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,55,22,77,22,77],
         series: [
@@ -131,11 +130,6 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
           }
           break;
         }
-        console.log(cor)
-          // if(index % peaks.length - 1) {
-          //   cor++
-          //   index = index % peaks.length - 1
-          // }
           return <li><span>{cor}:{count}</span>&nbsp;{item}</li>
         })}
         </ul>

@@ -85,7 +85,7 @@ const PatientsTable = ({tableValue,patientId}) => {
         setIsLoading(false)
        })
       }
-
+      
       let arr = []
       data && data.forEach((item => {
     
@@ -96,27 +96,31 @@ const PatientsTable = ({tableValue,patientId}) => {
        item.subRows = undefined
        arr.push(item)
       }))
-      const props = {
-        name: 'file',
-        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-        headers: {
-          authorization: 'authorization-text',
-        },
-        onChange(info) {
-          if (info.file.status === 'done') {
-           
-            message.success(`${info.file.name} file uploaded successfully`);
-            let formData = new FormData()
-            const file = new File([info.file], 'file.dat')
-            formData.append('file', file)
-            console.log(patientId)
-            patientApi.uploadFile(formData,patientId).then((data) => console.log(data))
-          } else if (info.file.status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
-          }
+      const handleUpload = (e) => {
+        const data = new FormData() 
+        data.append('file', e.target.files[0])
+        patientApi.uploadFile(data,patientId).then((data) => console.log(data))
+      }
+      // const props = {
+      //   name: 'file',
+      //   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+      //   headers: {
+      //     authorization: 'authorization-text',
+      //   },
+      //   onChange(info) {
+      //     if (info.file.status === 'done') {
+      //       message.success(`${info.file.name} file uploaded successfully`);
+      //       let formData = new FormData()
+      //       const file = new File([info.file], 'file.dat')
+      //       formData.append('file', file)
+      //       console.log(info)
+      //       patientApi.uploadFile(formData,patientId).then((data) => console.log(data))
+      //     } else if (info.file.status === 'error') {
+      //       message.error(`${info.file.name} file upload failed.`);
+      //     }
         
-        },
-      };
+      //   },
+      // };
     return <BasePatientsTable 
     data={arr}
     graphData={graphData}
@@ -136,7 +140,8 @@ const PatientsTable = ({tableValue,patientId}) => {
     setInputValue={setInputValue}
     setIsEditVisiable={setIsEditVisiable}
     setIsVisiable={setIsVisiable}
-    props={props}
+    // props={props}
+    handleUpload={handleUpload}
     isLoading={isLoading}
     />
 }
