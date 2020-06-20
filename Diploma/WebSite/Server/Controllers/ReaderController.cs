@@ -13,6 +13,7 @@
     using Server.Infrastructure.Classes;
     using Server.Infrastructure.Logic;
     using Server.Infrastructure.Models;
+    using RPeaksRecognizeDLL;
 
     [Produces("application/json")]
     [Route("api/reader")]

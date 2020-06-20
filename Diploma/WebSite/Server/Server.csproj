@@ -24,11 +24,6 @@
     </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-    <Folder Include="wwwroot\Upload\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.1.1" />
@@ -55,10 +50,16 @@
 
   <ItemGroup>
     <Reference Include="MWArray">
-      <HintPath>..\..\..\..\..\..\Downloads\MWArray.dll</HintPath>
+      <HintPath>matlablibs\MWArray.dll</HintPath>
     </Reference>
     <Reference Include="qrs">
-      <HintPath>..\..\..\..\..\..\Downloads\qrs.dll</HintPath>
+      <HintPath>matlablibs\qrs.dll</HintPath>
+    </Reference>
+    <Reference Include="RPeaksRecognizeDLL">
+      <HintPath>matlablibs\RPeaksRecognizeDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="RPeaksRecognizeDLLNative">
+      <HintPath>matlablibs\RPeaksRecognizeDLLNative.dll</HintPath>
     </Reference>
   </ItemGroup>
 

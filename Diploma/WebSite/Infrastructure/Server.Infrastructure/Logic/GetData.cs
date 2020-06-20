@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 
 namespace Server.Infrastructure.Logic
 {
@@ -42,7 +43,11 @@ namespace Server.Infrastructure.Logic
             string webRootPath = env.WebRootPath;
             string path = Path.Combine(webRootPath, folderName);
             path = Path.Combine(path, id + ".dat");
+            string filename = Path.Combine(id + ".dat");
             string path2 = Path.Combine(env.ContentRootPath, "Rpeaks.txt");
+            string peaksname = Path.Combine(id + ".txt");
+            string pathPeaks = Path.Combine(env.ContentRootPath, peaksname);
+
 
             List<string> peaks = new List<string>();
             using (StreamReader stream = new StreamReader(path))
@@ -50,12 +55,12 @@ namespace Server.Infrastructure.Logic
                 try
                 {
                     //Получаем пики и заносим их в список
-//var peaksDetection = new PeaksDetection();
-
-                    PeaksDetection.GetRPeaks(path);
+                    PeaksDetection.GetRPeaks(path, path2);
                     peaks = PeaksDetection.RPeaksToList(path2);
+
+                    //peaks = PeaksDetection.RPeaksToList(pathPeaks);
                 }
-                catch (Exception ex)
+                catch (ThreadAbortException ex)
                 {
                     throw new Exception(ex.InnerException.Message, ex.InnerException.InnerException);
                 }

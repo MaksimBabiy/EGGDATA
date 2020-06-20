@@ -24,10 +24,16 @@
 
   <ItemGroup>
     <Reference Include="MWArray">
-      <HintPath>..\..\..\..\..\..\..\Downloads\MWArray.dll</HintPath>
+      <HintPath>..\..\Server\matlablibs\MWArray.dll</HintPath>
     </Reference>
     <Reference Include="qrs">
-      <HintPath>..\..\..\..\..\..\..\Downloads\qrs.dll</HintPath>
+      <HintPath>..\..\Server\matlablibs\qrs.dll</HintPath>
+    </Reference>
+    <Reference Include="RPeaksRecognizeDLL">
+      <HintPath>..\..\Server\matlablibs\RPeaksRecognizeDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="RPeaksRecognizeDLLNative">
+      <HintPath>..\..\Server\matlablibs\RPeaksRecognizeDLLNative.dll</HintPath>
     </Reference>
   </ItemGroup>
 
