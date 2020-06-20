@@ -1,5 +1,4 @@
 import React from 'react'
-
 import c from '../../assets/images/c.jpg'
 import './Doctors.css'
 const Doctors = () => {

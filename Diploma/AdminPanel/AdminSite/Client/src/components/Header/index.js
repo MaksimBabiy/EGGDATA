@@ -10,7 +10,7 @@ const Header = ({isAuth, setIsAuth}) => {
     return (
         <header className="main-header">
         <div className="navbar-fixed">
-            <nav className="transparent">
+            <nav className="nav-color">
                 <div className="container">
                     <div className="nav-wrapper">
                         <Link className="brand-logo" to="/"><img src={logo} height="50" width="50" alt="" />ECGData</Link>

@@ -1,9 +1,10 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import { DoctorItem } from 'components'
 import axios from 'axios'
 const DoctorsPage = () => {
+    const [doctors, setDoctors] = useState([])
     useEffect(() => {
-       axios.get('http://localhost:10847/api/Doctors/Get').then(({data}) => console.log(data))
+       axios.get('http://localhost:10847/api/Doctors/Get').then(({data}) => setDoctors(data))
     }, [])
     return (
    <section class="doctors">
@@ -15,11 +16,11 @@ const DoctorsPage = () => {
           </div>
           <hr class="col l3 m6" />
           <div class="col l3 right-align">
-              <a href="#" class="record purple-text accent-4"><i class="material-icons">date_range</i> Записаться на приём</a>
+              <a href="#" class="record purple-text accent-4"> Записаться на приём</a>
           </div>
     </div> 
     <div class="row">
-        <DoctorItem />
+    {doctors.map(item => <DoctorItem {...item}/>)}
     </div>
     </div>
     </section>
