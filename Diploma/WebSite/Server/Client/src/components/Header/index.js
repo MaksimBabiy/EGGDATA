@@ -19,13 +19,13 @@ const Header = ({isAuth, setIsAuth}) => {
                         </a>
                         <ul className="right hide-on-med-and-down">
                             <li>
-                                <a >О нас</a>
+                                <Link className="link-menu" to="/FAQ">О Нас</Link>
                             </li>
                             <li>
                                 <Link className="link-menu" to="/doctors">Доктора</Link>
                             </li>
                             <li>
-                                <a  >Новости</a>
+                                <Link className="link-menu" to="/news">Новости</Link>
                             </li>
                             <li>
                                 <a >Ответы</a>
