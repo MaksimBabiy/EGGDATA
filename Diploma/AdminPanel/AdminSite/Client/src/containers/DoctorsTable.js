@@ -3,6 +3,7 @@ import { DoctorsTable as BaseDoctorsTable} from 'components'
 import { connect } from 'react-redux'
 import { userActions } from 'redux/actions'
 import { doctorApi } from 'utils/api'
+import  openDialogs  from '../utils/openDialogs'
 const DoctorsTable = ({tableValue, doctorId}) => {
   const [data,setData] = useState()
   const [isVisiable, setIsVisiable] = useState(false)
@@ -29,7 +30,11 @@ const DoctorsTable = ({tableValue, doctorId}) => {
       })
     }
     const handleAdd = () => {
-        doctorApi.add(inputValue).then((data) => console.log(data)).finally(() => setIsVisiable(false), setInputValue(''))
+        doctorApi.add(inputValue).then(({data}) => openDialogs({
+          title: 'Информация',
+          text: data, 
+          type: "info"
+        })).finally(() => setIsVisiable(false), setInputValue(''))
     }
     const handleUpdate = () => {
         doctorApi.update(editValue).finally(() => {

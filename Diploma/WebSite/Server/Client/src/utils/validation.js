@@ -19,12 +19,7 @@ export default ({ isAuth,values,errors }) => {
       errors.password = "Слижком легкий пароль"
           }
         },
-      // password2: value => {
-      //     if(!isAuth && value !== values.password){
-      //       errors.password2 = 'Пароли не совпадают'
-      //     }
-          
-      //       },
+
         Login: value => {
           if(!isAuth && !value){
             errors.fullname = 'Укажите свое имя и фамилию'

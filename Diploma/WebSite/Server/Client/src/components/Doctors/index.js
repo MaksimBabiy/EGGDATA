@@ -13,7 +13,7 @@ const Doctors = () => {
             </div>
             <hr className="col l3 m6"/>
             <div className="col l3 right-align">
-                <a href="#" className="record purple-text accent-4"><i className="material-icons">date_range</i> Записаться на приём</a>
+                <a href="#" className="record purple-text accent-4"> Записаться на приём</a>
             </div>
         </div>
         <div className="row">
