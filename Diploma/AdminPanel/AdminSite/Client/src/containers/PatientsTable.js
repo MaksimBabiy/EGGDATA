@@ -10,6 +10,7 @@ const PatientsTable = ({tableValue,patientId}) => {
     const [isVisiable, setIsVisiable] = useState(false)
     const [isEditVisiable, setIsEditVisiable] = useState(false)
     const [isVisiableGraph, setIsVisiableGraph] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const [inputValue, setInputValue] = useState({
        cardiogram: null
     })
@@ -79,13 +80,19 @@ const PatientsTable = ({tableValue,patientId}) => {
       );
 
       const handleGetGraph = (id) => {
-       patientApi.getGraph(id).then(({data}) => setGraphData(data)).finally(() => setIsVisiableGraph(!isVisiableGraph))
+       patientApi.getGraph(id).then(({data}) => setGraphData(data)).finally(() => {
+        setIsVisiableGraph(!isVisiableGraph)
+        setIsLoading(false)
+       })
       }
 
       let arr = []
       data && data.forEach((item => {
     
-       item.cardiogram = <button onClick={()=> handleGetGraph(item.patientId)} style={{zIndex: 99999999}}>Отобразить</button>
+       item.cardiogram = <button onClick={()=> {
+         setIsLoading(true)
+         handleGetGraph(item.patientId)
+        }} style={{zIndex: 99999999}}>Отобразить</button>
        item.subRows = undefined
        arr.push(item)
       }))
@@ -130,6 +137,7 @@ const PatientsTable = ({tableValue,patientId}) => {
     setIsEditVisiable={setIsEditVisiable}
     setIsVisiable={setIsVisiable}
     props={props}
+    isLoading={isLoading}
     />
 }
 

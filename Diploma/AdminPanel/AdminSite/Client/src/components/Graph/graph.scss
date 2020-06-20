@@ -7,7 +7,9 @@
     background-color: lightblue;
 }
 .ct-chart {
-    overflow: hidden;
+    width: 1920px;
+    overflow: auto;
+    margin-bottom: 20px;
 }
 // .ant-modal-content{
 //     width: 1050px;

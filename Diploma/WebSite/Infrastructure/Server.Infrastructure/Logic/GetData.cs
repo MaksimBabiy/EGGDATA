@@ -60,6 +60,7 @@ namespace Server.Infrastructure.Logic
                     throw new Exception(ex.InnerException.Message, ex.InnerException.InnerException);
                 }
             }
+            
 
             return peaks;
         }

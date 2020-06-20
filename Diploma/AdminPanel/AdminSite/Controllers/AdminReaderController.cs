@@ -65,6 +65,42 @@
                 return this.Json(new string[] { "Exception", ex.Message });
             }
         }
+        
+        // [Authorize]
+        [HttpGet("Get/{id}")]
+        public IActionResult Get(int id)
+        {
+           List<string> data = new List<string>();
+
+           string folderName = "Upload";
+           string webRootPath = this.hostingEnvironment.WebRootPath;
+           string path = Path.Combine(webRootPath, folderName);
+           try
+           {
+               using (FileStream stream = new FileStream(Path.Combine(path, id + ".dat"), FileMode.Open))
+               {
+                   try
+                   {
+                       //data - все точки
+                       data = Reader.GetData(stream);
+                   }
+                   catch (Exception ex)
+                   {
+                       return this.Json(new string[] { "Inner Exception", ex.Message });
+                   }
+               }
+           }
+           catch (Exception ex)
+           {
+                
+               return this.Json(new string[] { "Outer Ex", ex.Message });
+           }
+           this.Response.Headers.Add("Vary", "Accept-Encoding");
+           this.Response.Headers.Add("Content-type", "text/plain");
+
+            
+           return this.Json(data);
+        }
 
         // [Authorize]
         [HttpGet("getinfo/{id}")]
@@ -119,7 +155,7 @@
                         //peaks = peaksDetection.RPeaksToList(path2);
 
                         PeaksDetection.GetRPeaks(path);
-                        peaks = PeaksDetection.RPeaksToList(path2);
+                        // peaks = PeaksDetection.RPeaksToList(path2);
                     }
                     catch (Exception ex)
                     {
@@ -138,11 +174,12 @@
             JsonResultModel model = new JsonResultModel
             {
                 Points = data,
-                Peaks = peaks,
-                CorelationResult = CorrelationRes
+                //Peaks = peaks,
+                //CorelationResult = CorrelationRes
             };
 
             return this.Json(model);
+
 
         }
 
