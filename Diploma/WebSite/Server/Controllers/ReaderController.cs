@@ -9,6 +9,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Newtonsoft.Json;
+    using Server.DataBaseCore.SignatureFolderData;
     using Server.Infrastructure.Classes;
     using Server.Infrastructure.Logic;
     using Server.Infrastructure.Models;
@@ -36,17 +37,25 @@
                 //все результаті корреляции
                 List<double> CorrelationRes = Correlation.CorrelationPoints(data, peaks);
 
+
+                List<double> test = new List<double>();
+
+                foreach(var item in CorrelationRes)
+                {
+                    if (item <= 0.6) test.Add(item);
+                }
+
                 //модель ответа пользователю
                 JsonResultModel model = new JsonResultModel
                 {
                     Points = data,
                     Peaks = peaks,
-                    CorelationResult = CorrelationRes
+                    CorelationResult = test
                 };
 
                 return this.Json(model);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return this.BadRequest(ex.Message);
             }
