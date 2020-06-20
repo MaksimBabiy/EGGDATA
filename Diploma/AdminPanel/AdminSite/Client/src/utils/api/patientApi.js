@@ -4,11 +4,11 @@ export default {
    add: data => axios.post(`http://localhost:56839/api/AdminPatients/AddPatient`, data),
    update: data => axios.patch(`http://localhost:56839/api/AdminPatients/UpdatePatient`,data),
    delete: id => axios.delete(`http://localhost:56839/api/AdminPatients/DeletePatient/${id}`),
-   uploadFile: formData =>  axios.post(`http://localhost:56839/api/AdminPatients/UploadFile`,formData, {
+   uploadFile: (formData,id) =>  axios.post(`http://localhost:56839/api/reader/add/${id}`,formData, {
       headers: {
          "Content-Type": `multipart/form-data;`
      }
    }
   ),
-  getGraph: id =>  axios.get(`http://localhost:56839/api/reader/getdata/8`)
+  getGraph: id =>  axios.get(`http://localhost:56839/api/reader/getdata/${id}`)
 }

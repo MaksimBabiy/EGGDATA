@@ -79,7 +79,7 @@ const PatientsTable = ({
             <UploadOutlined /> Выберите файл
           </Button>
         </Upload>
-        <Button onClick={handleDelete}>Удалить доктора</Button>
+        <Button onClick={handleDelete}>Удалить пациента</Button>
       </Modal>}
       <Table columns={columns} data={data} isEditVisiable={isEditVisiable} setIsEditVisiable={setIsEditVisiable} setEditValue={setEditValue} />     
       </div>

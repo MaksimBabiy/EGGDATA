@@ -109,8 +109,8 @@ const PatientsTable = ({tableValue,patientId}) => {
             let formData = new FormData()
             const file = new File([info.file], 'file.dat')
             formData.append('file', file)
-      
-            patientApi.uploadFile(formData).then((data) => console.log(data))
+            console.log(patientId)
+            patientApi.uploadFile(formData,patientId).then((data) => console.log(data))
           } else if (info.file.status === 'error') {
             message.error(`${info.file.name} file upload failed.`);
           }
