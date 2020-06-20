@@ -1,7 +1,8 @@
 import React from 'react';
-import { Form, Button } from 'antd';
+import { Form, Button, Input } from 'antd';
 import { Link } from 'react-router-dom'
 import { FormField, WhiteBlock } from 'components'
+import { UserOutlined,LockOutlined,ArrowLeftOutlined } from '@ant-design/icons';
 import './register.scss'
 
 const Register = props => {
@@ -15,7 +16,7 @@ const Register = props => {
       isValid,
       dirty,
     } = props;
-    
+
     return ( 
       <div>
            <div className="auth__top">
@@ -24,46 +25,47 @@ const Register = props => {
          </div>
          <WhiteBlock>
          <Form onSubmit={handleSubmit} className="login-form">
-           <FormField 
-           name="Email"
-           placeholder="E-Mail"
-           handleChange={handleChange}
-           handleBlur={handleBlur}
-           touched={touched}
-           errors={errors}
-           values={values}
-           />
-            <FormField 
-           name="Login"
-           placeholder="Ваше имя"
-           handleChange={handleChange}
-           handleBlur={handleBlur}
-           touched={touched}
-           errors={errors}
-           values={values}
-           />
-            <FormField 
-           name="Password"
-           placeholder="Пароль"
-           handleChange={handleChange}
-           handleBlur={handleBlur}
-           touched={touched}
-           errors={errors}
-           values={values}
-           type="password"
-           />
-           {/* <FormField 
-           name="password2"
-           type="password"
-           placeholder="Повторить пароль"
-           handleChange={handleChange}
-           handleBlur={handleBlur}
-           touched={touched}
-           errors={errors}
-           values={values}
-           /> */}
+         <Form.Item 
+           validateStatus={!touched.email ? '' : errors.email ? 'error' : 'success'} 
+           hasFeedback
+           help={!touched.email ? '' : errors.email}>
+               <Input
+                 id="Email"
+                 size="large"
+                 prefix={<UserOutlined />}
+                 placeholder="E-Mail"
+                 value={values.email}
+                 onChange={handleChange}
+                 onBlur={handleBlur}
+               />
+           </Form.Item>
+           <Form.Item >
+               <Input
+                 id="Login"
+                 size="large"
+                 type="text"
+                 value={values.login}
+                 placeholder="Login"
+                 onChange={handleChange}
+                 onBlur={handleBlur}
+               />
+           </Form.Item>
+             <Form.Item 
+           validateStatus={!touched.password ? '' : errors.password ? 'error' : 'success'} 
+           hasFeedback
+           help={!touched.password ? '' : errors.password}>
+               <Input
+                 id="Password"
+                 size="large"
+                 type="password"
+                 value={values.password}
+                 prefix={<LockOutlined />}
+                 placeholder="Пароль"
+                 onChange={handleChange}
+                 onBlur={handleBlur}
+               />
+           </Form.Item>
              <Form.Item>
-             {dirty && !isValid ? <span>Ошибка!</span> : '' }
                <Button type="primary" onClick={handleSubmit} htmlType="submit" size="large" className="login-form-button" >
                Зареєструватися
                </Button>

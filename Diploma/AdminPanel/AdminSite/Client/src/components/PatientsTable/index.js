@@ -25,7 +25,7 @@ const PatientsTable = ({
   isVisiableGraph,
   isLoading
 }) => {
-  console.log(isLoading)
+
   const mystyle = {
     fontSize: '60px',
     position: 'absolute',

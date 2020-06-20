@@ -1,19 +1,46 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-const DoctorItem = ({name, desc, _id='1'}) => {
+import React, { useState } from 'react'
+import {Button,DatePicker,Modal,Input } from 'antd'
+import './DoctorItem.scss'
+const DoctorItem = (props) => {
+
+    const [isVisiable, setIsVisiable] = useState(false)
+    const  [infoValue, setInfoValue] = useState({})
+  
+    const handleInfo = (e) => {
+        console.log(e)
+        setInfoValue({
+            ...infoValue,
+            [e.target.name] : e.target.value
+        })
+    }
+    const handleDate = (date, dateString) => {
+        setInfoValue({
+            ...infoValue,
+            'date' : dateString
+        })
+    }
     return (
         <div class="col s12 m4">
               <div class="card">
-                  <div class="card-image">
-                      <img src="../../../assets/images/c.jpg" />
-                  </div>
                   <div class="card-content">
-                      <span class="card-title">Максим Иванов</span>
-                      <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
+                      <span class="card-title">{props.firstName} {props.lastName} {props.middleName}</span>
+                      <p>{props.condition}</p>
                    </div>
                   <div class="card-action">
-                      <Link class="purple-text accent-4" to={`/doctors/${_id}`}>Узнать больше</Link>
+                  <Button type="primary" onClick={() => setIsVisiable(!isVisiable)}>
+                    Записаться на прием
+                  </Button>
+                  <div className="sem">
+                    <Modal
+                        title="Modal"
+                        visible={isVisiable}
+                        onOk={() => setIsVisiable(!isVisiable)}
+                        onCancel={() => setIsVisiable(!isVisiable)}
+                        >
+                     <Input placeholder="ФИО" onChange={(e) => handleInfo(e)} name="info" />
+                     <DatePicker onChange={handleDate} />
+                    </Modal>
+                    </div>
                   </div>
               </div>
           </div>

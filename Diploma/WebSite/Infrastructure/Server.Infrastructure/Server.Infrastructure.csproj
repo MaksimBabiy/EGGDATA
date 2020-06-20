@@ -29,6 +29,12 @@
     <Reference Include="qrs">
       <HintPath>..\..\Server\matlablibs\qrs.dll</HintPath>
     </Reference>
+    <Reference Include="RPeaksRecognizeDLL">
+      <HintPath>..\..\Server\matlablibs\RPeaksRecognizeDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="RPeaksRecognizeDLLNative">
+      <HintPath>..\..\Server\matlablibs\RPeaksRecognizeDLLNative.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -149,7 +149,12 @@
                 {
                     try
                     {
-                        PeaksDetection.GetRPeaks(path);
+                        //var peaksDetection = new PeaksDetection();
+
+                        //peaksDetection.GetRPeaks(path);
+                        //peaks = peaksDetection.RPeaksToList(path2);
+
+                        PeaksDetection.GetRPeaks(path, path2);
                         // peaks = PeaksDetection.RPeaksToList(path2);
                     }
                     catch (Exception ex)
@@ -164,18 +169,16 @@
                 return this.Json(new string[] { "Cannot open file!", ex.Message });
             }
 
-            List<double> CorrelationRes = Correlation.CorrelationPoints(data, peaks);
+            List<double> correlationRes = Correlation.CorrelationPoints(data, peaks);
 
             JsonResultModel model = new JsonResultModel
             {
                 Points = data,
-                //Peaks = peaks,
-                //CorelationResult = CorrelationRes
+                Peaks = peaks,
+                CorelationResult = correlationRes
             };
 
             return this.Json(model);
-
-
         }
 
         [HttpGet("data")]

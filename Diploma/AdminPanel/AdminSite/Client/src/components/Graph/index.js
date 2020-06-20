@@ -26,7 +26,7 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
         high: Math.max(...graphData),
         low:  Math.min(...graphData),
         showArea: false,
-        showPoint: false,
+        showPoint: true,
         lineSmooth: false,
         width: 20000,
         height: 800,
@@ -59,7 +59,17 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
     svgRef.current.chart.style.transform = `scale(${count},${count})`;
     svgRef.current.chart.style.transformOrigin = x + 'px '+ y+'px';
     }
-    
+    const picksDetect = () => {
+    let arr = [2091,2092,2077,2070,2071]
+    let dots = document.querySelectorAll('.ct-point')
+    console.log(dots)
+    dots.forEach(item => {
+      if ( arr.includes(Number(item.getAttribute('ct:value')))) {
+        item.style.stroke = 'black'
+        item.style.strokeWidth = '5px'
+      }
+    })
+    }
     return ( 
       <>
       <Modal
@@ -72,7 +82,7 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
         <div style={{overflow: 'hidden'}} className="sema" >
         <ChartistGraph data={datamin} options={options} type={type} ref={svgRef} />
         </div>
-         <div className="mainGraph__footer"><Button className="mainGraph__footer-text" onClick={() => document.querySelector('.sema').addEventListener('wheel', (e) => onWheel(e))}>Трансформування</Button></div>
+         <div className="mainGraph__footer"><Button className="mainGraph__footer-text" onClick={() => document.querySelector('.sema').addEventListener('wheel', (e) => onWheel(e))}>Трансформування</Button><Button onClick={() => picksDetect()}>Rpicks</Button></div>
     </Modal>
     </>     
      );

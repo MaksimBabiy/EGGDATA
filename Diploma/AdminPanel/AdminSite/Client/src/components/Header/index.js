@@ -10,7 +10,7 @@ const Header = ({isAuth, setIsAuth}) => {
     return (
         <header className="main-header">
         <div className="navbar-fixed">
-            <nav className="transparent">
+            <nav className="nav-color">
                 <div className="container">
                     <div className="nav-wrapper">
                         <Link className="brand-logo" to="/"><img src={logo} height="50" width="50" alt="" />ECGData</Link>
@@ -18,14 +18,14 @@ const Header = ({isAuth, setIsAuth}) => {
                             <i className="material-icons">menu</i>
                         </a>
                         <ul className="right hide-on-med-and-down">
-                            <li>
-                                <a >О нас</a>
+                        <li>
+                                <Link className="link-menu" to="/FAQ">О Нас</Link>
                             </li>
                             <li>
                                 <Link className="link-menu" to="/doctors">Доктора</Link>
                             </li>
                             <li>
-                                <a>Новости</a>
+                                <Link className="link-menu" to="/news">Новости</Link>
                             </li>
                             <li>
                                 <a >Ответы</a>

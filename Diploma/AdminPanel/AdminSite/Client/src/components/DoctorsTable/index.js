@@ -22,8 +22,8 @@ const DoctorsTable = ({
 }) => {
  
     return (
-        <div className="doctors">
-        <Button className="doctors__btn" onClick={() => setIsVisiable(!isVisiable)}>Добавить Доктора</Button>
+        <div className="doctorsTable">
+        <Button className="doctorsTable__btn" onClick={() => setIsVisiable(!isVisiable)}>Добавить Доктора</Button>
         <Modal
           title="Добавление доктора"
           visible={isVisiable}
