@@ -58,8 +58,6 @@ namespace Server.Infrastructure.Logic
                     throw new Exception("Cannot get RPeaks");
                 }
             }
-            
-
             return peaks;
         }
     }
