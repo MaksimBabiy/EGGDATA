@@ -24,10 +24,10 @@
 
   <ItemGroup>
     <Reference Include="MWArray">
-      <HintPath>..\..\Server\matlablibs\MWArray.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Downloads\MWArray.dll</HintPath>
     </Reference>
     <Reference Include="qrs">
-      <HintPath>..\..\Server\matlablibs\qrs.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Downloads\qrs.dll</HintPath>
     </Reference>
   </ItemGroup>
 

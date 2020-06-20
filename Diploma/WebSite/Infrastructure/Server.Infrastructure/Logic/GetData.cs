@@ -50,12 +50,14 @@ namespace Server.Infrastructure.Logic
                 try
                 {
                     //Получаем пики и заносим их в список
+//var peaksDetection = new PeaksDetection();
+
                     PeaksDetection.GetRPeaks(path);
                     peaks = PeaksDetection.RPeaksToList(path2);
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Cannot get RPeaks");
+                    throw new Exception(ex.InnerException.Message, ex.InnerException.InnerException);
                 }
             }
             
