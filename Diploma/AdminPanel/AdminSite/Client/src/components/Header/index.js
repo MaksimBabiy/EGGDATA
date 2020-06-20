@@ -40,7 +40,7 @@ const Header = ({isAuth, setIsAuth}) => {
                                     <Link to="admin_panel">Панель администратора</Link>
                                  }
                             </li>                        
-                            <li>
+                            {/* <li>
                                 { !isAuth ? 
                                 <Link className="link-menu" to="signIn">Войти</Link>
                                 :
@@ -49,7 +49,7 @@ const Header = ({isAuth, setIsAuth}) => {
                                     window.localStorage.clear()
                                 }}>Выйти</a>
                                 }
-                            </li>                                                
+                            </li>                                                 */}
                         </ul>
                     </div>
                 </div>  

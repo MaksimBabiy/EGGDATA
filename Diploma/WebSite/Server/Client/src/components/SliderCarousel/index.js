@@ -13,11 +13,16 @@ const SliderCarousel = () => {
       <AwesomeSlider
       cssModule={semen}
       >
-      <p data-src={a} >Lorem12</p>
-      <p data-src={b} >Lorem12</p>
-      <p data-src={c} >Lorem12</p>
-      <p data-src={d} >Lorem12</p>
-      <p data-src={e} >Lorem12</p>
+      <p data-src={a} >This is our big Tagline!
+Here's our small slogan.</p>
+      <p data-src={b} >Right Aligned Caption
+Here's our small slogan.</p>
+      <p data-src={c} >Left Aligned Caption
+Here's our small slogan.</p>
+      <p data-src={d} >This is our big Tagline!
+Here's our small slogan.</p>
+      <p data-src={e} >Right Aligned Caption
+Here's our small slogan.</p>
     </AwesomeSlider>
     )
 }

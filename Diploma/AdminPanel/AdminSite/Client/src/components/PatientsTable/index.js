@@ -1,9 +1,7 @@
 import React from 'react'
 import { Table,Graph } from 'components';
 import { Button,Modal, Input, Upload } from 'antd'
-import { UploadOutlined } from '@ant-design/icons';
 import './patienttable.scss'
-import { patientApi } from 'utils/api'
 import { LoadingOutlined } from '@ant-design/icons';
 const PatientsTable = ({
   handleAdd,
@@ -57,7 +55,6 @@ const PatientsTable = ({
         <Input placeholder="Мобильный телефон" onChange={handleChangeInput} name="PhoneNumber" value={inputValue.PhoneNumber}/>
         <Input placeholder="Домашний телефон" onChange={handleChangeInput} name="HomeNumber" value={inputValue.HomeNumber}/>
         <Input placeholder="E-mail" onChange={handleChangeInput} name="Email" value={inputValue.Email}/>
-        <Input placeholder="О докторе" onChange={handleChangeInput} name="Condition" value={inputValue.Condition}/>
       </Modal>
       {editValue && <Modal
         title="Редагування пацієнта"
@@ -75,9 +72,7 @@ const PatientsTable = ({
         <Input placeholder="Мобильный телефон" value={editValue.phoneNumber} onChange={handleChangeEditInput} name="phoneNumber"/>
         <Input placeholder="Домашний телефон" value={editValue.homeNumber} onChange={handleChangeEditInput} name="homeNumber"/>
         <Input placeholder="E-mail" value={editValue.email} onChange={handleChangeEditInput} name="email"/>
-        <Input placeholder="О докторе" value={editValue.condition} onChange={handleChangeEditInput} name="condition"/>
-      
-        <Input type="file" name="file" onChange={handleUpload}/>
+        <Input type="file" name="file" onChange={handleUpload} style={{border: '0'}}/>
         <Button onClick={handleDelete}>Удалить пациента</Button>
       </Modal>}
       <Table columns={columns} data={data} isEditVisiable={isEditVisiable} setIsEditVisiable={setIsEditVisiable} setEditValue={setEditValue} />     

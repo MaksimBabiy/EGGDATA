@@ -3,7 +3,8 @@ import { PatientsTable as BasePatientsTable } from 'components'
 import { connect } from 'react-redux'
 import { userActions } from 'redux/actions' 
 import { patientApi } from 'utils/api'
-import { message  } from 'antd'
+import { Button } from 'antd'
+
 const PatientsTable = ({tableValue,patientId}) => {
     const [data,setData] = useState()
     const [graphData, setGraphData] = useState()
@@ -15,7 +16,7 @@ const PatientsTable = ({tableValue,patientId}) => {
        cardiogram: null
     })
     const [editValue, setEditValue] = useState()
-
+    const [isDisible, setIsDisible] = useState(true)
     useEffect(() => {
       patientApi.get().then(({data}) => setData(data))
     },[isVisiable, isEditVisiable])
@@ -51,26 +52,34 @@ const PatientsTable = ({tableValue,patientId}) => {
       const columns = React.useMemo(
           () => [
             {
-              Header: "PatientTable",
+              Header: "Таблиця пацієнтів",
               columns: [
                 {
-                  Header: "Full Name",
-                  accessor: "firstName"
+                  Header: "Ім'я",
+                  accessor: "firstName", 
                 },
                 {
-                  Header: "Age",
+                  Header: "Прізвище",
+                  accessor: "lastName", 
+                },
+                {
+                  Header: "По батькові",
+                  accessor: "middleName", 
+                },
+                {
+                  Header: "Вік",
                   accessor: "age"
                 },
                 {
-                  Header: "Email",
+                  Header: "Електронна пошта",
                   accessor: "email"
                 },
                 {
-                  Header: "Mobile",
+                  Header: "Телефон",
                   accessor: "phoneNumber"
                 },
                 {
-                  Header: "Cardiogram",
+                  Header: "Кардіограма",
                   accessor: "cardiogram"
                 }
               ]
@@ -85,21 +94,28 @@ const PatientsTable = ({tableValue,patientId}) => {
         setIsLoading(false)
        })
       }
-      
+      const handleDisible = (patientId) => {
+        setIsDisible({
+          ...isDisible,
+          [patientId]: false
+        })
+      }
       let arr = []
+      
+      let newArr = Object.keys(isDisible).map(item => Number(item))
       data && data.forEach((item => {
-    
-       item.cardiogram = <button onClick={()=> {
+       
+       item.cardiogram = <Button onClick={()=> {
          setIsLoading(true)
          handleGetGraph(item.patientId)
-        }} style={{zIndex: 99999999}}>Отобразить</button>
+        }} style={{zIndex: 99999999}} disabled={newArr.includes(item.patientId) && isDisible[patientId] !== undefined ? false : true}>Отобразить</Button>
        item.subRows = undefined
        arr.push(item)
       }))
       const handleUpload = (e) => {
         const data = new FormData() 
         data.append('file', e.target.files[0])
-        patientApi.uploadFile(data,patientId).then((data) => console.log(data))
+        patientApi.uploadFile(data,patientId).then(() => handleDisible(patientId))
       }
       // const props = {
       //   name: 'file',

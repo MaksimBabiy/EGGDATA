@@ -14,7 +14,7 @@ const AdminPanel = ({userData}) => {
              <MenuOutlined />
             </div>
             <div className="user-panel">
-                <p className="user-panel__name">zxc</p>
+                <p className="user-panel__name">Адміністратор</p>
                 <div className="user-panel__photo">
                 <UserOutlined />
                 </div> 
@@ -27,7 +27,7 @@ const AdminPanel = ({userData}) => {
                     <UserOutlined />
                 </div>
                 <div className="admin-name">
-                    <p>zxc</p>
+                    <p>Адміністратор</p>
                     <div className="admin-name__status"><span className="status" className="cl">online</span></div>
                 </div>
             </div>

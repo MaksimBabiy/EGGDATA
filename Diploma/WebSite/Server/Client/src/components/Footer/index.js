@@ -9,7 +9,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="call__text">
                         <h3 className="call__title">Свяжитесь с нами</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              
                     </div>
                     <div className="call__button">
                         <button className="btn waves-effect waves-light white blue-text">ПОЗВОНИТЬ</button>
@@ -42,7 +42,7 @@ const Footer = () => {
                 </div>
                 <div className="col l3 m6 s12">
                     <h5>Подписаться на рассылку</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                  
                     <form>
                         <input type="email" className="subscribe-email" name="email" placeholder="E-mail Address" />
                         <input type="submit" value=" " className="subscribe-submit" style={{ background: "url(../../../assets/images/subscribe.png)"}} />
@@ -67,14 +67,14 @@ const Footer = () => {
                 </div>
                 <div className="col l3 m6 s12">
                     <h5>Связаться с нами</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                  
                     <p>Телефон: +380933451211</p>
                     <p>E-mail: info@ecgdata.ru</p>
                 </div>
             </div>
             <hr />
             <p className="center">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta dignissimos odit aperiam?
+             
             </p>
         </div>
 </footer>

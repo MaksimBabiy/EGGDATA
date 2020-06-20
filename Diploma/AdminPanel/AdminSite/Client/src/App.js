@@ -10,7 +10,7 @@ const App = ({isAuth}) => {
     <Header />
     <Switch>
     <Route exact path={["/signIn","/signUp"]} component={Auth} />
-    <Route exact path="/admin_panel" render={() => (isAuth ? <AdminPanel /> : <Redirect to="/"/>)} />
+    <Route exact path="/admin_panel" component={AdminPanel} />
     <Route exact path={"/doctors"} component={DoctorsPage} />
     <Route exact path={"/doctor/:id"} component={Doctors} />
     <Route path={"/news"} component={News}/>

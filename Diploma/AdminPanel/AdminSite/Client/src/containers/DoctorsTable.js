@@ -49,24 +49,34 @@ const DoctorsTable = ({tableValue, doctorId}) => {
     const columns = React.useMemo(
         () => [
           {
-            Header: "DoctorTable",
+            Header: "Таблиця докторів",
             columns: [
               {
-                Header: "Full Name",
-                accessor: "firstName"
+                Header: "Ім'я",
+                accessor: "lastName", 
               },
               {
-                Header: "Age",
+                Header: "Прізвище",
+                accessor: "firstName", 
+              },
+              {
+                Header: "По батькові",
+                accessor: "middleName", 
+              },
+              {
+                Header: "Вік",
                 accessor: "age"
               },
+             
               {
-                Header: "Email",
-                accessor: "email"
-              },
-              {
-                Header: "Mobile",
+                Header: "Телефон",
                 accessor: "phoneNumber"
               },
+              {
+                Header: "Спеціальність",
+                accessor: "condition"
+              },
+              
             ]
           }
         ],
