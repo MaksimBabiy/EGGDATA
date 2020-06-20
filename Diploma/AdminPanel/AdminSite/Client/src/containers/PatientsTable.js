@@ -80,7 +80,7 @@ const PatientsTable = ({tableValue,patientId}) => {
       );
 
       const handleGetGraph = (id) => {
-       patientApi.getGraph(id).then(({data}) => setGraphData(data)).finally(() => {
+       patientApi.getGraph(id).then(({data}) => setGraphData(data), console.log(data)).finally(() => {
         setIsVisiableGraph(!isVisiableGraph)
         setIsLoading(false)
        })

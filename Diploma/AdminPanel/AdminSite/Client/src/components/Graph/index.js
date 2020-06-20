@@ -2,11 +2,13 @@ import React, { useState,useRef, useEffect } from 'react';
 import ChartistGraph from 'react-chartist';
 import { Button,Modal } from 'antd'
 import './graph.scss'
+import { createElement } from 'react';
+import { Bar } from 'chartist';
 
 const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
- 
   const svgRef = useRef(null)
- 
+  const [isVisiableResult,setIsVisiableResult] = useState(false)
+  let cor = 1
   let count = 1;
   // useEffect(() => {
   //   console.log('render')
@@ -18,13 +20,13 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
     var datamin = {
         // labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,55,22,77,22,77],
         series: [
-          graphData
+          graphData.points
         ]
       };
    
       var options = {
-        high: Math.max(...graphData),
-        low:  Math.min(...graphData),
+        high: Math.max(...graphData.points),
+        low:  Math.min(...graphData.points),
         showArea: false,
         showPoint: true,
         lineSmooth: false,
@@ -59,17 +61,21 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
     svgRef.current.chart.style.transform = `scale(${count},${count})`;
     svgRef.current.chart.style.transformOrigin = x + 'px '+ y+'px';
     }
+    let peaks = graphData.peaks.map(item => Number(item))
     const picksDetect = () => {
-    let arr = [2091,2092,2077,2070,2071]
+   
     let dots = document.querySelectorAll('.ct-point')
-    console.log(dots)
-    dots.forEach(item => {
-      if ( arr.includes(Number(item.getAttribute('ct:value')))) {
-        item.style.stroke = 'black'
-        item.style.strokeWidth = '5px'
-      }
+    console.log('peaks', peaks)
+    console.log('dots',dots)
+    peaks.pop()
+    peaks.map(item => {
+      dots[item].style.stroke = 'black';
+      dots[item].style.strokeWidth = '5px'
     })
     }
+    
+    
+  
     return ( 
       <>
       <Modal
@@ -82,7 +88,58 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
         <div style={{overflow: 'hidden'}} className="sema" >
         <ChartistGraph data={datamin} options={options} type={type} ref={svgRef} />
         </div>
-         <div className="mainGraph__footer"><Button className="mainGraph__footer-text" onClick={() => document.querySelector('.sema').addEventListener('wheel', (e) => onWheel(e))}>Трансформування</Button><Button onClick={() => picksDetect()}>Rpicks</Button></div>
+         <div className="mainGraph__footer">
+           <Button className="mainGraph__footer-text" onClick={() => document.querySelector('.sema').addEventListener('wheel', (e) => onWheel(e))}>Трансформування</Button>
+           <Button onClick={() => picksDetect()}>Rpicks</Button>
+           <Button onClick={() => {
+             setIsVisiableResult(!isVisiableResult)
+           
+             }}>Result</Button>
+        </div>
+        <Modal
+      visible={isVisiableResult}
+      onOk={() => setIsVisiableResult(!isVisiableResult)}
+      onCancel={() => setIsVisiableResult(!isVisiableResult)}
+      width={1920}
+    >
+      <ul className="result">
+        {graphData.corelationResult.map((item,index) => {
+        index = index % peaks.length - 1;
+        if(index == 94) {
+          cor = cor + 1
+        }
+        let count = index + 3
+        switch(cor){
+          case 2: {
+            count+=1
+          }
+          break;
+          case 3: {
+            count+=2
+          }
+          break;
+          case 4: {
+            count+=3
+          }
+          break;
+          case 5: {
+            count+=4
+          }
+          break;
+          case 6: {
+            count+=5
+          }
+          break;
+        }
+        console.log(cor)
+          // if(index % peaks.length - 1) {
+          //   cor++
+          //   index = index % peaks.length - 1
+          // }
+          return <li><span>{cor}:{count}</span>&nbsp;{item}</li>
+        })}
+        </ul>
+    </Modal>
     </Modal>
     </>     
      );

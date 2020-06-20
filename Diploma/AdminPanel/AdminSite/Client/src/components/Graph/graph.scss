@@ -6,6 +6,21 @@
     right: 0;
     background-color: lightblue;
 }
+ul.result {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 700px;
+    overflow: auto;
+}
+ul.result li {
+    margin: 0 10px;
+}
+ul.result li span{
+    font-weight: bold;
+    color: black;
+    background-color: blanchedalmond;
+}
 .ct-point {
     stroke-width: 0px;
 }
