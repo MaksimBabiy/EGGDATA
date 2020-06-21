@@ -7,15 +7,16 @@ import './graph.scss'
 const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
   useEffect(() => {
 
-    // returned function will be called on component unmount 
+
     return () => {
        graphData = []
     }
   }, [])
   const svgRef = useRef(null)
   const [isVisiableResult,setIsVisiableResult] = useState(false)
-  let cor = 1
+  
   let count = 1;
+  let arr = []
     var datamin = {
         // labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,55,22,77,22,77],
         series: [
@@ -72,9 +73,15 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
       dots[item].style.strokeWidth = '5px'
     })
     }
-    
-    
-  
+    const sem = () => {
+      for(let i = 1; i < peaks.length-1; i++) {
+        for(let j=i+1; j < peaks.length; j++) {
+          arr.push(`${i}:${j}`)
+        }
+      }
+    }
+    sem()
+  console.log(arr)
     return ( 
       <>
       <Modal
@@ -103,34 +110,7 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
     >
       <ul className="result">
         {graphData.corelationResult.map((item,index) => {
-        index = index % peaks.length - 1;
-        if(index == 94) {
-          cor = cor + 1
-        }
-        let count = index + 3
-        switch(cor){
-          case 2: {
-            count+=1
-          }
-          break;
-          case 3: {
-            count+=2
-          }
-          break;
-          case 4: {
-            count+=3
-          }
-          break;
-          case 5: {
-            count+=4
-          }
-          break;
-          case 6: {
-            count+=5
-          }
-          break;
-        }
-          return <li><span>{cor}:{count}</span>&nbsp;{item}</li>
+          return <li><span>{arr[index]}</span>&nbsp;{item}</li>
         })}
         </ul>
     </Modal>

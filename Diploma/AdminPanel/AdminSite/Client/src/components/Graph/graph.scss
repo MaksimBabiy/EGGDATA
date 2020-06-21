@@ -50,6 +50,9 @@ ul.result li span{
     &__footer {
         display: flex;
         justify-content: end;
+        button {
+            margin-right: 20px;
+        }
     }
 }
 .ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut{
