@@ -6,6 +6,21 @@
     right: 0;
     background-color: lightblue;
 }
+ul.resultToArtur {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 700px;
+    overflow: auto;
+}
+ul.resultToArtur li {
+    margin: 0 10px;
+}
+ul.resultToArtur li span{
+    font-weight: bold;
+    color: black;
+    background-color: blanchedalmond;
+}
 ul.result {
     display: flex;
     flex-direction: column;

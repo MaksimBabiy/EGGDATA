@@ -14,7 +14,7 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
   }, [])
   const svgRef = useRef(null)
   const [isVisiableResult,setIsVisiableResult] = useState(false)
-  
+  const [isVisiableResultToArtur, setIsVisiableResultToArtur] = useState(false)
   let count = 1;
   let arr = []
     var datamin = {
@@ -81,7 +81,7 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
       }
     }
     sem()
-  console.log(arr)
+ 
     return ( 
       <>
       <Modal
@@ -99,9 +99,25 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
            <Button onClick={() => picksDetect()}>Rpicks</Button>
            <Button onClick={() => {
              setIsVisiableResult(!isVisiableResult)
-           
              }}>Result</Button>
+            <Button onClick={() => {
+             setIsVisiableResultToArtur(!isVisiableResultToArtur)
+             }}>ResultToArtur</Button>
         </div>
+        <Modal
+      visible={isVisiableResultToArtur}
+      onOk={() => setIsVisiableResultToArtur(!isVisiableResultToArtur)}
+      onCancel={() => setIsVisiableResultToArtur(!isVisiableResultToArtur)}
+      width={1920}
+    >
+      <ul className="resultToArtur">
+        {graphData.corelationResult.map((item,index) => {
+          if(Math.sign(item) == -1 && item < 0.6) {
+            return <li><span>{arr[index]}</span>&nbsp;{item}</li>
+          }
+        })}
+        </ul>
+    </Modal>
         <Modal
       visible={isVisiableResult}
       onOk={() => setIsVisiableResult(!isVisiableResult)}

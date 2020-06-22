@@ -108,7 +108,7 @@ const PatientsTable = ({tableValue,patientId}) => {
        item.cardiogram = <Button onClick={()=> {
          setIsLoading(true)
          handleGetGraph(item.patientId)
-        }} style={{zIndex: 99999999}} disabled={newArr.includes(item.patientId) && isDisible[patientId] !== undefined ? false : true}>Отобразить</Button>
+        }}  disabled={newArr.includes(item.patientId) && isDisible[patientId] !== undefined ? false : true}>Отобразить</Button>
        item.subRows = undefined
        arr.push(item)
       }))
