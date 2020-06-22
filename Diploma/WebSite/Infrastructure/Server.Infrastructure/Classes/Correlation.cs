@@ -133,6 +133,8 @@
                             }
                         }
 
+                        corrCoefPoint = Math.Abs(corrCoefPoint);
+
                         corrPoints.Add(corrCoefPoint);
                         firstSegment.Clear();
                         secondSegment.Clear();

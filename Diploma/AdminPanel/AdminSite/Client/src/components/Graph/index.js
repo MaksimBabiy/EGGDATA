@@ -112,7 +112,7 @@ const Graph = ({graphData,isVisiableGraph,setIsVisiableGraph}) => {
     >
       <ul className="resultToArtur">
         {graphData.corelationResult.map((item,index) => {
-          if(Math.sign(item) == -1 && item < 0.6) {
+          if(item < 0.6) {
             return <li><span>{arr[index]}</span>&nbsp;{item}</li>
           }
         })}
